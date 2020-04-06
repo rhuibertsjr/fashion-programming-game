@@ -1,6 +1,10 @@
 # Fashion Programming Game
 A browser flexbox game with the theme fashion & programming. The goal of this project is to introduce girls to a visual programming language. In this game they program clothes, hats, boots etc. They can play with friends or solo and share there fashion code with people outside the game.
 
+## Documentation
+All the documentation is available in our Google Drive:
+https://drive.google.com/drive/folders/1MpMYdly9-e9o4uAlqV9fvkIIxPDR87ep?usp=sharing
+
 
 ## Getting Started
 
