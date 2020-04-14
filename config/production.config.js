@@ -46,5 +46,5 @@ module.exports = merge(common, {
 			logLevel: 'debug'
 		})
 	]
-	
+
 });
