@@ -1,0 +1,23 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": {
+          "version": "3.2",
+          "proposals": true
+        }
+      }
+    ],
+    "@babel/react"
+  ],
+  "env": {
+    "development": {
+      "presets": [
+        "@babel/typescript"
+      ]
+    }
+  },
+  "plugins": ["react-hot-loader/babel"]
+}

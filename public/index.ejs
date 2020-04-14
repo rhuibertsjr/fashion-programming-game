@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <% for (name in htmlWebpackPlugin.options.meta) { %>
+        <meta name="<%= name %>" content="<%= htmlWebpackPlugin.options.meta[name] %>" />
+    <% } %>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <% for (i in htmlWebpackPlugin.files.js) { %>
+        <link rel="preload" href="<%= htmlWebpackPlugin.files.js[i] %>" as="script">
+    <% } %>
+    <% for (i in htmlWebpackPlugin.files.css) { %>
+        <link rel="preload" href="<%= htmlWebpackPlugin.files.css[i] %>" as="style">
+    <% } %>
+    <% for (i in htmlWebpackPlugin.files.js) { %>
+        <script charset="utf-8" src="<%= htmlWebpackPlugin.files.js[i] %>"></script>
+    <% } %>
+    <% for (i in htmlWebpackPlugin.files.css) { %>
+        <link rel="stylesheet" type="text/css" href="<%= htmlWebpackPlugin.files.css[i] %>" />
+    <% } %>
+</head>
+<body>
+<noscript><%= htmlWebpackPlugin.options.noscript%></noscript>
+<div id="app" style="overflow: auto;"></div>
+</body>
+</html>

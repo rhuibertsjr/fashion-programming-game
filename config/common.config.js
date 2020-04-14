@@ -78,8 +78,8 @@ module.exports = {
 
 			hash: true,
 			inject: false,
-			title: appConfig['name_here.app.name'],
-			noscript: appConfig['name_here.app.noscript'],
+			title: appConfig['dresscode.app.name'],
+			noscript: appConfig['dresscode.app.noscript'],
 			template: path.join(__dirname, '../public', 'index.ejs'),
 
 			meta: {
