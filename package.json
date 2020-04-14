@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start:": "yarn clean && cross-env NODE_ENV=development webpack-dev-server --client-log-level warning --progress --config=config/development.config.js",
-    "start:server": "nodemon --exec babel-node ./server/server.js",
+    "start:server": "nodemon --exec babel-node server/server.js",
     "build": "yarn clean && cross-env NODE_ENV=production webpack --progress --config=config/production.config.js",
     "deploy": "cross-env NODE_ENV=production webpack --progress --config=config/deploy.config.js",
     "test": "jest --config ./config/jest.config.json",
