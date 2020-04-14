@@ -1,0 +1,53 @@
+AddDefaultCharset utf-8
+ServerSignature Off
+FileETag None
+
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule . index.html [L]
+
+</IfModule>
+
+<IfModule mod_mime.c>
+
+  AddType application/json            .json
+  AddType application/javascript      .js
+  AddType image/svg+xml               .svg
+  AddType image/jpeg                  .jpe?g
+  AddType application/font-woff2      .woff2
+  AddType application/x-font-opentype .otf
+  AddType application/x-font-ttf      .ttf
+
+  AddCharset utf-8 .css \
+                   .js \
+                   .json
+
+</IfModule>
+
+<IfModule mod_expires.c>
+
+  ExpiresActive on
+  ExpiresDefault          "access plus 1 year"
+
+  ExpiresByType text/html "access plus 0 seconds"
+
+</IfModule>
+
+<IfModule mod_filter.c>
+
+  AddOutputFilterByType DEFLATE "application/javascript" \
+                                "application/json" \
+                                "image/svg+xml" \
+                                "image/jpeg" \
+                                "text/css" \
+                                "text/html"
+
+</IfModule>
