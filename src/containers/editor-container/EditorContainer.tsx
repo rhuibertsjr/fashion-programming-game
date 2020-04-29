@@ -3,10 +3,9 @@ import s from './editor.module.less';
 
 class EditorContainer extends PureComponent
 {
-	
-	public componentDidMount(): void
+	constructor(props: any)
 	{
-	
+		super(props);
 	}
 	
 	public render(): JSX.Element
