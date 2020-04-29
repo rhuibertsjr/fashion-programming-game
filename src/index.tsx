@@ -1,12 +1,16 @@
 
-import React from "react";
+import React, { Fragment } from "react";
 import {render} from "react-dom";
 import './index.less';
 
-export const App = (props: any): JSX.Element => (
-	<h1>Hello {props.hello}</h1>
+import EditorContainer from "./containers/editor-container/EditorContainer";
+
+export const App = (): JSX.Element => (
+	<Fragment>
+		<EditorContainer />
+	</Fragment>
 );
 
 document.addEventListener('DOMContentLoaded', () => render(
-	<App hello="World" />, document.getElementById('app')
+	<App />, document.getElementById('app')
 ));
