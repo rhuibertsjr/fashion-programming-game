@@ -3,7 +3,7 @@ import s from './editor.module.less';
 
 import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
-import toolbox from './toolbox/toolbox.xml';
+import toolbox from './components/toolbox/toolbox.xml';
 
 class EditorContainer extends PureComponent
 {
@@ -18,15 +18,19 @@ class EditorContainer extends PureComponent
 	
 	public componentDidMount(): void
 	{
-		if (this.editor.current != null) {
-			// @ts-ignore
-			this.workspace = inject(this.editor.current, {
-				toolbox: toolbox,
-				move: {
-					scrollbars: false
-				}
-			})
-		} else throw new Error('Editor: cannot initialize the workspace');
+		// @TODO: FIX REF OF THIS.EDITOR.CURRENT
+		setTimeout(() =>
+		{
+			if (this.editor.current)
+			{
+				this.workspace = inject(this.editor.current, {
+					toolbox: toolbox,
+					move: {
+						scrollbars: false
+					}
+				});
+			}
+		}, 50);
 	}
 	
 	private onRunEventHandler = (): void => {
