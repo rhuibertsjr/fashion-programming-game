@@ -9,7 +9,7 @@
     "start": "yarn clean && cross-env NODE_ENV=development webpack-dev-server --client-log-level warning --progress --config=config/development.config.js",
     "start:server": "nodemon --exec babel-node server/server.js",
     "build:test": "yarn clean && cross-env NODE_ENV=production webpack --progress --config=config/production.config.js",
-    "build": "cross-env NODE_ENV=production webpack --progress --config=config/deploy.config.js",
+    "build": "NODE_ENV=production webpack --progress --config=config/deploy.config.js",
     "test": "jest --config ./config/jest.config.json",
     "clean": "rimraf ./dist"
   },
