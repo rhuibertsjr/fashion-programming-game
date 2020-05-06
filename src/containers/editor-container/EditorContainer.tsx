@@ -3,7 +3,8 @@ import s from './editor.module.less';
 
 import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
-import toolbox from './components/toolbox/toolbox.xml';
+import { toolbox } from './components';
+import * as Blocks from './components/blocks/Blocks';
 
 class EditorContainer extends PureComponent
 {
@@ -31,11 +32,21 @@ class EditorContainer extends PureComponent
 				});
 			}
 		}, 50);
+		console.log(Blocks);
 	}
 	
 	private onRunEventHandler = (): void => {
 		const code = Compiler.workspaceToCode(this.workspace);
-		console.log(code);
+		
+		try
+		{
+			eval(code);
+		}
+		catch (e)
+		{
+			throw new Error(`Cannot run the code: ${e}`);
+		}
+		
 	};
 	
 	public render(): JSX.Element

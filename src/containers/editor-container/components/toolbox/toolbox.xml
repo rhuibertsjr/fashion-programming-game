@@ -1,4 +1,7 @@
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <category name="Figuren" colour="%{BKY_VARIABLES_HUE}">
+        <block type="create_ellipse"/>
+    </category>
     <category name="Logica" colour="%{BKY_LOGIC_HUE}">
         <category name="If">
             <block type="controls_if"></block>
