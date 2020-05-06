@@ -6,7 +6,7 @@ const app = express();
 const http = require('http');
 const server = http.Server(app);
 
-app.use(express.static('client/build'));
+app.use(express.static('dist'));
 
 const PORT = process.env.PORT || 3000;
 
