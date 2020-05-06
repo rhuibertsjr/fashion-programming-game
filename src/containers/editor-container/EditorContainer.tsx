@@ -67,4 +67,5 @@ class EditorContainer extends PureComponent
 	}
 	
 }
+
 export default EditorContainer

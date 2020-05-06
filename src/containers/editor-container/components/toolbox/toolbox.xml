@@ -21,7 +21,7 @@
             <block type="logic_ternary"></block>
         </category>
     </category>
-    <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+    <category name="Herhaling" colour="%{BKY_LOOPS_HUE}">
         <block type="controls_repeat_ext">
             <value name="TIMES">
                 <block type="math_number">
@@ -92,7 +92,7 @@
     </category>
 
     <sep></sep>
-    <category name="Variable" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">
+    <category name="Variabelen" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">
     </category>
     <category name="Functies" custom="PROCEDURE" colour="%{BKY_PROCEDURES_HUE}">
     </category>
