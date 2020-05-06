@@ -3,10 +3,20 @@ import React from "react";
 import {render} from "react-dom";
 import './index.less';
 
-export const App = (props: any): JSX.Element => (
-	<h1>Hello {props.hello}</h1>
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import EditorContainer from "./containers/editor-container/EditorContainer";
+import GameContainer from "./containers/game-container/GameContainer";
+
+export const App = (): JSX.Element => (
+	<Router>
+		<Route path="/">
+			<EditorContainer />
+			<GameContainer />
+		</Route>
+	</Router>
 );
 
 document.addEventListener('DOMContentLoaded', () => render(
-	<App hello="World" />, document.getElementById('app')
+	<App />, document.getElementById('app')
 ));
