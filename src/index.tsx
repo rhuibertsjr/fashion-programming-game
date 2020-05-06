@@ -8,8 +8,10 @@ import GameContainer from "./containers/game-container/GameContainer";
 
 export const App = (): JSX.Element => (
 	<Fragment>
+		
 		<EditorContainer />
 		<GameContainer />
+		
 	</Fragment>
 );
 
