@@ -46,7 +46,6 @@ class EditorContainer extends PureComponent
 		{
 			throw new Error(`Cannot run the code: ${e}`);
 		}
-		
 	};
 	
 	public render(): JSX.Element
