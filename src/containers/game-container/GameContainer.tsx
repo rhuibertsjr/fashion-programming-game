@@ -2,7 +2,8 @@ import React, { PureComponent, createRef, RefObject } from "react";
 import * as PIXI from 'pixi.js';
 import s from './game.module.less';
 
-import character_1 from '@assets/game/characters/character_1.png';
+import character_1_body from '@assets/game/characters/character_1_body.png';
+import character_1_clothes from '@assets/game/characters/character_1_clothes.png';
 
 class GameContainer extends PureComponent<{}, IGameState>
 {
@@ -11,7 +12,10 @@ class GameContainer extends PureComponent<{}, IGameState>
 	
 	public state: IGameState = {
 		charachters: [
-			PIXI.Sprite.from(character_1)
+			{
+				body: PIXI.Sprite.from(character_1_body),
+				clothes: PIXI.Sprite.from(character_1_clothes)
+			}
 		],
 		stage: null
 	};
@@ -21,8 +25,11 @@ class GameContainer extends PureComponent<{}, IGameState>
 		super(props);
 		this.gameRef = createRef();
 		this.game = new PIXI.Application({
+			resolution: window.devicePixelRatio,
 			backgroundColor: 0xffffff,
-			antialias: process.env.NODE_ENV !== 'development',
+			antialias: true,
+			forceFXAA: true,
+			
 		});
 	}
 	
@@ -41,16 +48,29 @@ class GameContainer extends PureComponent<{}, IGameState>
 	private initializeGameObjects = (): void =>
 	{
 		const stage = new PIXI.Container();
-		const character = this.state.charachters[0];
+		const container = new PIXI.Container();
 		
-		character.scale.set(.09, .09);
-		character.anchor.set(.5, .5);
-		character.position.set(
+		const character_body = this.state.charachters[0].body;
+		const character_clothes = this.state.charachters[0].clothes;
+		
+		character_clothes.scale.set(.19, .19);
+		character_clothes.anchor.set(.5, .5);
+		character_clothes.position.set(
 			this.game.renderer.width / 2,
 			this.game.renderer.height /2
 		);
+		container.addChild(character_clothes);
 		
-		stage.addChild(character);
+		// container.mask = character_clothes;
+		
+		character_body.scale.set(.19, .19);
+		character_body.anchor.set(.5, .5);
+		character_body.position.set(
+			this.game.renderer.width / 2,
+			this.game.renderer.height /2
+		);
+		stage.addChild(container, character_body);
+		
 		this.setState({
 			stage: stage
 		});
