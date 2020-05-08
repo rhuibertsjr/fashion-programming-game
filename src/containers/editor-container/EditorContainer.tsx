@@ -33,6 +33,7 @@ class EditorContainer extends PureComponent
 			}
 		}, 50);
 		console.log(Blocks);
+		
 	}
 	
 	private onRunEventHandler = (): void => {

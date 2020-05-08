@@ -1,6 +1,7 @@
 // @ts-nocheck due to blockly's typings
 import Blockly from "blockly";
 import * as Compiler from "blockly/javascript";
+import { Circle } from '@containers/game-container/components';
 
 Blockly.Blocks['create_ellipse'] = {
 	init: function() {
@@ -22,6 +23,8 @@ Blockly.Blocks['create_ellipse'] = {
 Blockly.JavaScript['create_ellipse'] = function(block) {
 	let width = Compiler.valueToCode(block, 'width', Compiler.ORDER_ATOMIC);
 	let height = Compiler.valueToCode(block, 'hoogte', Compiler.ORDER_ATOMIC);
+	
+	let circle = new Circle({ x });
 
 	return `
 		console.log(${width},${height});
