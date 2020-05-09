@@ -37,7 +37,6 @@ class EditorContainer extends PureComponent
 	
 	private onRunEventHandler = (): void => {
 		const code = Compiler.workspaceToCode(this.workspace);
-		
 		try
 		{
 			eval(code);
