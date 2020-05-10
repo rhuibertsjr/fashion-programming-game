@@ -11,14 +11,20 @@ const socket = socketIo(ENDPOINT);
 
 class ShareContainer extends PureComponent {
 
+
     private getData = () => {
         const code = onRunEventHandler;
-        console.log(code);
-        socket.on("shareCode", () => {
-            console.log(code);
-            console.log('message');
-        });
-        socket.emit("shareCode", 'Hello');
+        // console.log(code);
+        socket.emit("shareCode", 'hello ' + socket.id);
+
+        //Sending the function, but only off there own code
+        //@TODO: GET THE CODE FROM EDITOR!! AND THEN SEND IT!!
+        socket.emit("shareCode", code + socket.id);
+
+        //@TODO:  Make a function to send users code to each other
+        // socket.on("shareCode", () => {
+        //     console.log(code);
+        // });
     }
 
     public render() {
