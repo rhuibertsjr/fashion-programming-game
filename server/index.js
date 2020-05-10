@@ -18,6 +18,9 @@ app.use(router);
 io.on('connection', socket => {
 	console.log('A user connected ' + socket.id);
 
+	socket.on('shareCode', (shareCode) => {
+		console.log(shareCode);
+	});
 
 
 	socket.on('disconnect', () => console.log('a user disconnected ' + socket.id));

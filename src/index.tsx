@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import EditorContainer from "./containers/editor-container/EditorContainer";
 import GameContainer from "./containers/game-container/GameContainer";
-import {LobbyContainer} from "./containers/lobby-container/LobbyContainer";
+import {ShareContainer} from "./containers/share-container/ShareContainer";
 
 
 export const App = (): JSX.Element => (
@@ -17,7 +17,7 @@ export const App = (): JSX.Element => (
 		<Route path="/">
 			<EditorContainer />
 			<GameContainer />
-			<LobbyContainer />
+			<ShareContainer />
 		</Route>
 	</Router>
 );
