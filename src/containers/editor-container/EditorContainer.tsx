@@ -7,6 +7,7 @@ import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
 import { toolbox } from './components';
 import * as Blocks from './components/blocks/Blocks';
+import { Title } from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
 {
@@ -53,6 +54,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	{
 		return (
 			<Fragment>
+				<Title />
 				<div className={s.appEditorContainer}>
 					<div className={s.appRunButton}>
 						<button onClick={this.onRunEventHandler}>

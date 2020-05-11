@@ -119,6 +119,17 @@ module.exports = {
 				]
 			},
 			{
+				test: /\.woff$|\.ttf$|\.wav$|\.mp3$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'assets/' + filename + '.[ext]'
+						}
+					}
+				]
+			},
+			{
 				test: /\.xml$/i,
 				use: 'raw-loader',
 			}

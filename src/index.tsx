@@ -1,15 +1,19 @@
 
 import React from "react";
-import {render} from "react-dom";
+import { render } from "react-dom";
 import './index.less';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import EditorContainer from "./containers/editor-container/EditorContainer";
+import { Landing } from "@components/index";
+import EditorContainer from "@containers/editor-container/EditorContainer";
 
 export const App = (): JSX.Element => (
 	<Router>
-		<Route path="/">
+		<Route exact path="/">
+			<Landing />
+		</Route>
+		<Route path="/werkplaats" >
 			<EditorContainer />
 		</Route>
 	</Router>
