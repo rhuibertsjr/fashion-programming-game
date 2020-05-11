@@ -2,6 +2,15 @@
 import Blockly from "blockly";
 import * as Compiler from "blockly/javascript";
 
+function getRandomString(length: number) {
+	let randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+	let result = '';
+	for ( let i = 0; i < length; i++ ) {
+		result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+	}
+	return result;
+}
+
 Blockly.Blocks['create_ellipse'] = {
 	init: function() {
 		this.appendValueInput("x")
@@ -26,16 +35,17 @@ Blockly.JavaScript['create_ellipse'] = function(block) {
 	let x = Compiler.valueToCode(block, 'x', Compiler.ORDER_ATOMIC);
 	let y = Compiler.valueToCode(block, 'y', Compiler.ORDER_ATOMIC);
 	let r = Compiler.valueToCode(block, 'radius', Compiler.ORDER_ATOMIC);
+	let name = getRandomString(10);
 	
 	return `
-		const circle = new PIXIJS.Graphics();
+		const ${name} = new PIXIJS.Graphics();
 
-		circle.beginFill(0x74cc3c);
-		circle.drawCircle(370, 185, 10);
-		circle.endFill();
+		${name}.beginFill(0x74cc3c);
+		${name}.drawCircle(${x}, ${y}, ${r});
+		${name}.endFill();
 		
-		circle.mask = character_clothes;
+		${name}.mask = this.state.stage.children[0].children[0];
 		
-		stage.addChild(circle);
+		this.state.stage.addChild(${name});
 	`;
 };

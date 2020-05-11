@@ -15,7 +15,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 	public state: IEditorState =
 	{
-		code: null
+		code: " "
 	};
 	
 	constructor(props: any)
@@ -51,8 +51,6 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 	public render(): JSX.Element
 	{
-		const { code } = this.state;
-		
 		return (
 			<Fragment>
 				<div className={s.appEditorContainer}>
@@ -66,7 +64,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 						ref={this.editor}
 					/>
 				</div>
-				<GameContainer code={code != null ? code : null } />
+				<GameContainer code={this.state.code} />
 			</Fragment>
 		);
 	}

@@ -62,6 +62,11 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		this.initializeGameObjects();
 	}
 	
+	public componentDidUpdate(): void
+	{
+		this.updateUserObjects();
+	}
+	
 	public componentWillUnmount(): void
 	{
 		this.game.stop();
@@ -103,6 +108,16 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		this.setState({
 			stage: stage
 		});
+		
+		this.currentGameLoop();
+	};
+	
+	private updateUserObjects = (): void =>
+	{
+		// @ts-ignore
+		const PIXIJS = PIXI;
+		console.log(this.props.code);
+		eval(this.props.code);
 		
 		this.currentGameLoop();
 	};

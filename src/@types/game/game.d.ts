@@ -8,7 +8,7 @@ declare interface IGameState
 
 declare interface IGameProps
 {
-	code: string | null
+	code: string
 }
 
 interface ICharacters

@@ -1,5 +1,5 @@
 
 declare interface IEditorState
 {
-	code: string | null
+	code: string
 }
