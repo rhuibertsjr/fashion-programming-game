@@ -10,7 +10,7 @@ class EditorContainer extends PureComponent
 {
 	private readonly editor: RefObject<HTMLDivElement>;
 	private workspace: Workspace | undefined;
-	
+
 	constructor(props: any)
 	{
 		super(props);
@@ -34,9 +34,10 @@ class EditorContainer extends PureComponent
 		}, 50);
 		console.log(Blocks);
 	}
-	
+
 	private onRunEventHandler = (): void => {
 		const code = Compiler.workspaceToCode(this.workspace);
+
 		try
 		{
 			eval(code);
@@ -46,7 +47,7 @@ class EditorContainer extends PureComponent
 			throw new Error(`Cannot run the code: ${e}`);
 		}
 	};
-	
+
 	public render(): JSX.Element
 	{
 		return (
@@ -65,5 +66,4 @@ class EditorContainer extends PureComponent
 	}
 	
 }
-
 export default EditorContainer

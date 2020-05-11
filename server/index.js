@@ -1,5 +1,4 @@
 
-const path = require('path');
 const express = require("express");
 const http = require('http');
 const socketIo = require('socket.io');
@@ -18,10 +17,9 @@ app.use(router);
 io.on('connection', socket => {
 	console.log('A user connected ' + socket.id);
 
-	socket.on('shareCode', (getData) => {
-		console.log(getData);
+	socket.on('share code', (getData) => {
+		console.log('Shared Code: ' + getData);
 	});
-
 
 	socket.on('disconnect', () => console.log('a user disconnected ' + socket.id));
 });
