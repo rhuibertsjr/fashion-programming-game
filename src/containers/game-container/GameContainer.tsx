@@ -2,10 +2,13 @@ import React, { PureComponent, createRef, RefObject } from "react";
 import * as PIXI from 'pixi.js';
 import s from './game.module.less';
 
-import character_1_body from '@assets/game/characters/character_1_body.png';
-import character_1_clothes from '@assets/game/characters/character_1_clothes.png';
+import character_1 from '@assets/game/characters/character_1.png';
+import character_2 from '@assets/game/characters/character_2.png';
+import character_3 from '@assets/game/characters/character_3.png';
+import character_4 from '@assets/game/characters/character_4.png';
+import clothes_1 from '@assets/game/clothes/clothes_1.png';
 
-class GameContainer extends PureComponent<{}, IGameState>
+class GameContainer extends PureComponent<IGameProps, IGameState>
 {
 	private readonly game: PIXI.Application;
 	private readonly gameRef: RefObject<HTMLDivElement>;
@@ -13,9 +16,28 @@ class GameContainer extends PureComponent<{}, IGameState>
 	public state: IGameState = {
 		charachters: [
 			{
-				body: PIXI.Sprite.from(character_1_body),
-				clothes: PIXI.Sprite.from(character_1_clothes)
+				body: PIXI.Sprite.from(character_1),
+				playable: true,
+				active: false
+			},
+			{
+				body: PIXI.Sprite.from(character_2),
+				playable: true,
+				active: true
+			},
+			{
+				body: PIXI.Sprite.from(character_3),
+				playable: true,
+				active: false
+			},
+			{
+				body: PIXI.Sprite.from(character_4),
+				playable: true,
+				active: false
 			}
+		],
+		clothes: [
+			PIXI.Sprite.from(clothes_1)
 		],
 		stage: null
 	};
@@ -50,8 +72,22 @@ class GameContainer extends PureComponent<{}, IGameState>
 		const stage = new PIXI.Container();
 		const container = new PIXI.Container();
 		
-		const character_body = this.state.charachters[0].body;
-		const character_clothes = this.state.charachters[0].clothes;
+		let body = this.state.charachters[0].body;
+		this.state.charachters.map((character) =>
+		{
+			if (character.playable && character.active) {
+				body = character.body;
+			}
+			
+			body.scale.set(.19, .19);
+			body.anchor.set(.5, .5);
+			body.position.set(
+				this.game.renderer.width / 2,
+				this.game.renderer.height /2
+			);
+		});
+		
+		let character_clothes = this.state.clothes[0];
 		
 		character_clothes.scale.set(.19, .19);
 		character_clothes.anchor.set(.5, .5);
@@ -59,17 +95,10 @@ class GameContainer extends PureComponent<{}, IGameState>
 			this.game.renderer.width / 2,
 			this.game.renderer.height /2
 		);
+		
 		container.addChild(character_clothes);
 		
-		// container.mask = character_clothes;
-		
-		character_body.scale.set(.19, .19);
-		character_body.anchor.set(.5, .5);
-		character_body.position.set(
-			this.game.renderer.width / 2,
-			this.game.renderer.height /2
-		);
-		stage.addChild(container, character_body);
+		stage.addChild(container, body);
 		
 		this.setState({
 			stage: stage
@@ -78,15 +107,9 @@ class GameContainer extends PureComponent<{}, IGameState>
 		this.currentGameLoop();
 	};
 	
-	private animateGameObjects = (): void =>
-	{
-	
-	};
-	
 	private currentGameLoop = (): void =>
 	{
 		if (this.state.stage) this.game.renderer.render(this.state.stage);
-		this.animateGameObjects();
 		requestAnimationFrame(this.currentGameLoop);
 	};
 	
