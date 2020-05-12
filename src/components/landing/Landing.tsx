@@ -3,17 +3,11 @@ import s from './landing.module.less';
 import { useHistory } from 'react-router-dom';
 import {socket} from "@components/socket-client/SocketClient";
 
+const history = useHistory();
+
 export const Landing = (): JSX.Element =>
 {
-	const history = useHistory();
-	function werkplaats() {
-		history.push('/werkplaats');
-
-		socket.emit("new user", socket.id);
-		socket.on("new user", (getUser: any) => {
-			console.log('a new user joined: ' +  getUser);
-		});
-	}
+	
 	return (
 		<Fragment>
 			<div className={s.appLandingContainer}>
@@ -34,3 +28,12 @@ export const Landing = (): JSX.Element =>
 		</Fragment>
 	)
 };
+
+function werkplaats() {
+	history.push('/werkplaats');
+	
+	socket.emit("new user", socket.id);
+	socket.on("new user", (getUser: any) => {
+		console.log('a new user joined: ' +  getUser);
+	});
+}
