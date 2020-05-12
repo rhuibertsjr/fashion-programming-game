@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 import s from './landing.module.less';
 import { useHistory } from 'react-router-dom';
-import {socket} from "@components/socket-client/SocketClient";
-
-const history = useHistory();
+import * as sk from "@components/socket-client/SocketClient";
 
 export const Landing = (): JSX.Element =>
 {
+	const history = useHistory();
 	
 	return (
 		<Fragment>
@@ -22,9 +21,8 @@ export const Landing = (): JSX.Element =>
 				<button
 					onClick={() => {
 						history.push('/werkplaats');
-						
-						socket.emit("new user", socket.id);
-						socket.on("new user", (getUser: any) => {
+						sk.socket.emit("new user", sk.socket.id);
+						sk.socket.on("new user", (getUser: any) => {
 							console.log('a new user joined: ' +  getUser);
 						});
 					}}
