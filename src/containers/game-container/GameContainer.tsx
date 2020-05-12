@@ -76,20 +76,18 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		const stage = new PIXI.Container();
 		const container = new PIXI.Container();
 		const backstage = new PIXI.Graphics();
+		const under = PIXI.Sprite.from(clothes_1);
 		
-		backstage.beginFill(0xFAFAFA);
-		backstage.drawRect(0, this.game.renderer.height - 300, this.game.renderer.width, 300);
-		backstage.endFill();
-		
-		let character_clothes = this.state.clothes[0];
-		
-		character_clothes.anchor.set(.5, .5);
-		character_clothes.position.set(
+		under.anchor.set(.5, .5);
+		under.position.set(
 			this.game.renderer.width / 2,
 			this.game.renderer.height /2
 		);
 		
-		container.addChild(character_clothes);
+		
+		backstage.beginFill(0xFAFAFA);
+		backstage.drawRect(0, this.game.renderer.height - 300, this.game.renderer.width, 300);
+		backstage.endFill();
 		
 		let body = this.state.charachters[0].body;
 		this.state.charachters.map((character) =>
@@ -105,7 +103,29 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 			);
 		});
 		
-		stage.addChild(backstage, body, container);
+		let character_clothes = this.state.clothes[0];
+		
+		character_clothes.anchor.set(.5, .5);
+		character_clothes.position.set(
+			this.game.renderer.width / 2,
+			this.game.renderer.height /2
+		);
+		
+		const bg = new PIXI.Graphics();
+		bg.beginFill(0xFAFAFA);
+		bg.drawRect(0,0, 100,100);
+		bg.endFill();
+		
+		container.addChild(bg);
+		container.addChild(character_clothes);
+		
+		stage.addChild(
+			backstage,
+			body,
+			under,
+			container
+		);
+		console.log(stage);
 		
 		this.setState({
 			stage: stage
@@ -120,6 +140,7 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		const PIXIJS = PIXI;
 		console.log(this.props.code);
 		eval(this.props.code);
+		console.log(this.state.stage);
 		
 		this.currentGameLoop();
 	};
@@ -134,6 +155,7 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 	{
 		return (
 			<div className={s.appGameContainer}>
+				
 				<div
 					className={s.appGame}
 					ref={this.gameRef}

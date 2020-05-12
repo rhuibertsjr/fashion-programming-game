@@ -44,8 +44,8 @@ Blockly.JavaScript['create_ellipse'] = function(block) {
 		${name}.drawCircle(${x}, ${y}, ${r});
 		${name}.endFill();
 		
-		${name}.mask = this.state.stage.children[0].children[0];
+		${name}.mask = this.state.stage.children[3].children[0];
 		
-		this.state.stage.addChild(${name});
+		this.state.stage.children[3].addChild(${name});
 	`;
 };

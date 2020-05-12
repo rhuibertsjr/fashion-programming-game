@@ -57,6 +57,11 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 			<Fragment>
 				<Title />
 				<div className={s.appEditorContainer}>
+					<div className={s.appRunButton}>
+						<button onClick={this.onRunEventHandler}>
+							Run
+						</button>
+					</div>
 					<div
 						className={s.appEditor}
 						ref={this.editor}
