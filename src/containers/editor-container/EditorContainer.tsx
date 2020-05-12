@@ -43,6 +43,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		console.log(Blocks);
 	}
 	
+	//@ts-ignore
 	private onRunEventHandler = (): void =>
 	{
 		this.setState({
@@ -56,11 +57,6 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 			<Fragment>
 				<Title />
 				<div className={s.appEditorContainer}>
-					<div className={s.appRunButton}>
-						<button onClick={this.onRunEventHandler}>
-							Run
-						</button>
-					</div>
 					<div
 						className={s.appEditor}
 						ref={this.editor}

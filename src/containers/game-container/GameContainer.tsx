@@ -47,12 +47,11 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		super(props);
 		this.gameRef = createRef();
 		this.game = new PIXI.Application({
-			resolution: window.devicePixelRatio,
 			backgroundColor: 0xffffff,
-			antialias: true,
-			forceFXAA: true,
-			
+			width: 2300,
+			height: 3200,
 		});
+		PIXI.settings.RESOLUTION = window.devicePixelRatio;
 	}
 	
 	public componentDidMount(): void
@@ -76,25 +75,14 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 	{
 		const stage = new PIXI.Container();
 		const container = new PIXI.Container();
+		const backstage = new PIXI.Graphics();
 		
-		let body = this.state.charachters[0].body;
-		this.state.charachters.map((character) =>
-		{
-			if (character.playable && character.active) {
-				body = character.body;
-			}
-			
-			body.scale.set(.19, .19);
-			body.anchor.set(.5, .5);
-			body.position.set(
-				this.game.renderer.width / 2,
-				this.game.renderer.height /2
-			);
-		});
+		backstage.beginFill(0xFAFAFA);
+		backstage.drawRect(0, this.game.renderer.height - 300, this.game.renderer.width, 300);
+		backstage.endFill();
 		
 		let character_clothes = this.state.clothes[0];
 		
-		character_clothes.scale.set(.19, .19);
 		character_clothes.anchor.set(.5, .5);
 		character_clothes.position.set(
 			this.game.renderer.width / 2,
@@ -103,7 +91,21 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		
 		container.addChild(character_clothes);
 		
-		stage.addChild(container, body);
+		let body = this.state.charachters[0].body;
+		this.state.charachters.map((character) =>
+		{
+			if (character.playable && character.active) {
+				body = character.body;
+			}
+			
+			body.anchor.set(.5, .5);
+			body.position.set(
+				this.game.renderer.width / 2,
+				this.game.renderer.height /2
+			);
+		});
+		
+		stage.addChild(backstage, body, container);
 		
 		this.setState({
 			stage: stage

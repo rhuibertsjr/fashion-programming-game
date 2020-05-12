@@ -6,3 +6,7 @@ export {
 export {
 	Title
 } from './title/Title';
+
+export {
+	Navigation
+} from './navigation/Navigation';
