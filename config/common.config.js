@@ -56,7 +56,10 @@ module.exports = {
 
 		extensions: ['.ts', '.tsx', '.js', '.json'],
 		alias: {
-			'@components': path.resolve(__dirname, '../src/components')
+			'@assets': path.resolve(__dirname, '../src/assets'),
+			'@components': path.resolve(__dirname, '../src/components'),
+			'@containers': path.resolve(__dirname, '../src/containers')
+
 		}
 
 	},
@@ -106,6 +109,17 @@ module.exports = {
 			},
 			{
 				test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'assets/' + filename + '.[ext]'
+						}
+					}
+				]
+			},
+			{
+				test: /\.woff$|\.ttf$|\.wav$|\.mp3$/,
 				use: [
 					{
 						loader: 'file-loader',

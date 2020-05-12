@@ -1,22 +1,34 @@
-import React, { PureComponent, createRef, RefObject } from "react";
+import React, { PureComponent, createRef, RefObject, Fragment } from "react";
 import s from './editor.module.less';
+
+import GameContainer from "@containers/game-container/GameContainer";
 
 import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
 import { toolbox } from './components';
 import * as Blocks from './components/blocks/Blocks';
+import socketIo from "socket.io-client";
+import { Title } from "@components/index";
 
-class EditorContainer extends PureComponent
+const ENDPOINT = 'http://127.0.0.1:3000';
+const socket = socketIo(ENDPOINT);
+
+class EditorContainer extends PureComponent<{}, IEditorState>
 {
 	private readonly editor: RefObject<HTMLDivElement>;
 	private workspace: Workspace | undefined;
+	
+	public state: IEditorState =
+	{
+		code: " "
+	};
 	
 	constructor(props: any)
 	{
 		super(props);
 		this.editor = createRef();
 	}
-	
+
 	public componentDidMount(): void
 	{
 		// @TODO: FIX REF OF THIS.EDITOR.CURRENT
@@ -35,34 +47,40 @@ class EditorContainer extends PureComponent
 		console.log(Blocks);
 	}
 	
-	private onRunEventHandler = (): void => {
+	private onRunEventHandler = (): void =>
+	{
 		const code = Compiler.workspaceToCode(this.workspace);
 		
-		try
-		{
-			eval(code);
-		}
-		catch (e)
-		{
-			throw new Error(`Cannot run the code: ${e}`);
-		}
+        socket.emit("share code", code);
+
+        socket.on("share code", (getdata: any) => {
+			console.log('Shared code: ' + getdata);
+		});
 		
+		this.setState({
+			code: Compiler.workspaceToCode(this.workspace)
+		});
+
 	};
 	
 	public render(): JSX.Element
 	{
 		return (
-			<div className={s.appEditorContainer}>
-				<div className={s.appRunButton}>
-					<button onClick={this.onRunEventHandler}>
-						Run
-					</button>
+			<Fragment>
+				<Title />
+				<div className={s.appEditorContainer}>
+					<div className={s.appRunButton}>
+						<button onClick={this.onRunEventHandler}>
+							Run
+						</button>
+					</div>
+					<div
+						className={s.appEditor}
+						ref={this.editor}
+					/>
 				</div>
-				<div
-					className={s.appEditor}
-					ref={this.editor}
-				/>
-			</div>
+				<GameContainer code={this.state.code} />
+			</Fragment>
 		);
 	}
 	

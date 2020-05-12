@@ -1,21 +1,24 @@
 
 .app-editor-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 50%; height: 100%;
+  position: relative;
+  width: 60%; height: 90vh;
+  z-index: 0;
   left: 0;
 }
 
 .app-editor {
-  height: 80%; width: 90%;
-  align-self: flex-end;
-  margin-top: 10px;
+  height: 100%; width: 100%;
 }
 
 .app-run-button {
-  align-self: flex-start;
-  margin-left: 10%;
+  position: absolute;
+  right: 0;
+  margin: 50px;
+  z-index: 100;
+}
+
+:global {
+  .blocklyMainBackground {
+    stroke-width: 0;
+  }
 }
