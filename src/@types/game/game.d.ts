@@ -3,7 +3,8 @@ declare interface IGameState
 {
 	charachters: ICharacters[],
 	clothes: PIXI.Sprite[]
-	stage: PIXI.Container | null
+	stage: PIXI.Container | null,
+	old_stage: PIXI.Container | null,
 }
 
 declare interface IGameProps

@@ -39,7 +39,8 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		clothes: [
 			PIXI.Sprite.from(clothes_1)
 		],
-		stage: null
+		stage: null,
+		old_stage: null
 	};
 	
 	constructor(props: any)
@@ -117,12 +118,16 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 			container
 		);
 		
-		this.setState({ stage: stage });
+		this.setState({ stage: stage, old_stage: stage });
 		this.currentGameLoop();
 	};
 	
 	private updateUserObjects = (): void =>
 	{
+		this.setState({
+			stage: this.state.old_stage
+		});
+		
 		// @ts-ignore
 		const PIXIJS = PIXI;
 		console.log(this.props.code);
