@@ -7,11 +7,8 @@ import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
 import { toolbox } from './components';
 import * as Blocks from './components/blocks/Blocks';
-import socketIo from "socket.io-client";
+import {socket} from "@components/socket-client/SocketClient";
 import { Title } from "@components/index";
-
-const ENDPOINT = 'http://127.0.0.1:3000';
-const socket = socketIo(ENDPOINT);
 
 class EditorContainer extends PureComponent<{}, IEditorState>
 {
@@ -55,6 +52,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 
         socket.on("share code", (getdata: any) => {
 			console.log('Shared code: ' + getdata);
+			console.log('User: ', socket.id);
 		});
 		
 		this.setState({
