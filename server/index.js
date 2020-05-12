@@ -16,10 +16,16 @@ app.use(router);
 
 io.on('connection', socket => {
 	console.log('A user connected ' + socket.id);
+	socket.broadcast.emit('Hello');
+
 
 	socket.on('share code', (getData) => {
 		console.log('Shared Code: ' + getData);
+		io.emit('share code', getData);
 	});
+	//
+	// socket.broadcast.emit('send code');
+
 
 	socket.on('disconnect', () => console.log('a user disconnected ' + socket.id));
 });

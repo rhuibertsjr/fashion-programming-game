@@ -5,6 +5,10 @@ import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
 import { toolbox } from './components';
 import * as Blocks from './components/blocks/Blocks';
+import socketIo from "socket.io-client";
+
+const ENDPOINT = 'http://127.0.0.1:3000';
+const socket = socketIo(ENDPOINT);
 
 class EditorContainer extends PureComponent
 {
@@ -16,7 +20,7 @@ class EditorContainer extends PureComponent
 		super(props);
 		this.editor = createRef();
 	}
-	
+
 	public componentDidMount(): void
 	{
 		// @TODO: FIX REF OF THIS.EDITOR.CURRENT
@@ -38,7 +42,13 @@ class EditorContainer extends PureComponent
 	private onRunEventHandler = (): void => {
 		const code = Compiler.workspaceToCode(this.workspace);
 
-		try
+        socket.emit("share code", code);
+
+        socket.on("share code", (getdata: any) => {
+			console.log('Shared code: ' + getdata);
+		});
+
+        try
 		{
 			eval(code);
 		}
@@ -64,6 +74,6 @@ class EditorContainer extends PureComponent
 			</div>
 		);
 	}
-	
+
 }
 export default EditorContainer
