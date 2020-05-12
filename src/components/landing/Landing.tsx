@@ -8,6 +8,15 @@ const history = useHistory();
 export const Landing = (): JSX.Element =>
 {
 	
+	function werkplaats() {
+		history.push('/werkplaats');
+		
+		socket.emit("new user", socket.id);
+		socket.on("new user", (getUser: any) => {
+			console.log('a new user joined: ' +  getUser);
+		});
+	}
+	
 	return (
 		<Fragment>
 			<div className={s.appLandingContainer}>
@@ -29,11 +38,4 @@ export const Landing = (): JSX.Element =>
 	)
 };
 
-function werkplaats() {
-	history.push('/werkplaats');
-	
-	socket.emit("new user", socket.id);
-	socket.on("new user", (getUser: any) => {
-		console.log('a new user joined: ' +  getUser);
-	});
-}
+
