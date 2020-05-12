@@ -1,18 +1,35 @@
 
-const path = require('path');
 const express = require("express");
-const app = express();
-
 const http = require('http');
-const server = http.Server(app);
-
-app.use(express.static('dist'));
+const socketIo = require('socket.io');
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => res.sendFile(path.resolve('dist', 'index.html')));
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
 
-server.listen(PORT, () => {
-	console.log('Up and running...')
+const router = require('./routes/router');
+
+app.use(express.static('dist'));
+app.use(router);
+
+io.on('connection', socket => {
+	console.log('A user connected ' + socket.id);
+	socket.broadcast.emit('Hello');
+
+
+	socket.on('share code', (getData) => {
+		console.log('Shared Code: ' + getData);
+		io.emit('share code', getData);
+	});
+	//
+	// socket.broadcast.emit('send code');
+
+
+	socket.on('disconnect', () => console.log('a user disconnected ' + socket.id));
 });
+
+
+server.listen(PORT, () => console.log('Up and running...'));
 

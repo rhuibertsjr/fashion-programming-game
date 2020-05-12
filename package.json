@@ -8,7 +8,7 @@
   "scripts": {
     "start": " yarn clean && cross-env NODE_ENV=development webpack-dev-server --client-log-level warning --progress --config=config/development.config.js",
     "build:test": "yarn clean && cross-env NODE_ENV=production webpack --progress --config=config/production.config.js",
-    "build": "node server/index.js",
+    "build": "nodemon server/index.js",
     "heroku-postbuild": "NODE_ENV=production webpack --progress --config=config/deploy.config.js ",
     "test": "jest --config ./config/jest.config.json",
     "clean": "rimraf ./dist"
@@ -68,11 +68,14 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@types/socket.io": "^2.1.4",
+    "@types/socket.io-client": "^1.4.32",
     "blockly": "^3.20200402.1",
     "express": "^4.17.1",
     "pixi.js": "^5.2.3",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "socket.io": "^2.3.0"
   }
 }
