@@ -32,20 +32,33 @@ Blockly.Blocks['create_ellipse'] = {
 };
 
 Blockly.JavaScript['create_ellipse'] = function(block) {
-	let x = Compiler.valueToCode(block, 'x', Compiler.ORDER_ATOMIC);
-	let y = Compiler.valueToCode(block, 'y', Compiler.ORDER_ATOMIC);
-	let r = Compiler.valueToCode(block, 'radius', Compiler.ORDER_ATOMIC);
-	let name = getRandomString(10);
+	const x = Compiler.valueToCode(block, 'x', Compiler.ORDER_ATOMIC);
+	const y = Compiler.valueToCode(block, 'y', Compiler.ORDER_ATOMIC);
+	const r = Compiler.valueToCode(block, 'radius', Compiler.ORDER_ATOMIC);
+	const n = getRandomString(5);
 	
-	return `
-		const ${name} = new PIXIJS.Graphics();
+	return (
+		`
+		const ${n} = new PIXIJS.Graphics();
+	
+		${n}.beginFill(0x74cc3c);
+		${n}.drawCircle(${x}, ${y}, ${r});
+		${n}.endFill();
+	
+		${n}.mask = this.state.stage.children[3].children[0];
+		this.state.stage.children[3].addChild(${n});
+	`
+	);
+};
 
-		${name}.beginFill(0x74cc3c);
-		${name}.drawCircle(${x}, ${y}, ${r});
-		${name}.endFill();
-		
-		${name}.mask = this.state.stage.children[3].children[0];
-		
-		this.state.stage.children[3].addChild(${name});
-	`;
+Blockly.Blocks['start'] = {
+	init: function() {
+		this.appendValueInput("start")
+		.setCheck(null)
+		.appendField("Als de code start");
+		this.setNextStatement(true, null);
+		this.setColour(230);
+		this.setTooltip("Als je op de 'start' knop drukt");
+		this.setHelpUrl("");
+	}
 };
