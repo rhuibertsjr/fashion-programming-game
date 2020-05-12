@@ -9,12 +9,8 @@ import './components/blocks/Language';
 
 import { toolbox } from './components';
 import './components/blocks/Blocks';
+import {socket} from "@components/socket-client/SocketClient";
 import { Title } from "@components/index";
-
-import socketIo from "socket.io-client";
-
-const ENDPOINT = 'http://127.0.0.1:3000';
-const socket = socketIo(ENDPOINT);
 
 class EditorContainer extends PureComponent<{}, IEditorState>
 {
@@ -57,6 +53,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		socket.emit("share code", code);
 		socket.on("share code", (getdata: any) => {
 			console.log('Shared code: ' + getdata);
+			console.log('User: ', socket.id);
 		});
 		
 		this.setState({
