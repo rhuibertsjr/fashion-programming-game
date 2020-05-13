@@ -118,12 +118,22 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 			container
 		);
 		
+		console.log(this.state.stage);
+		
 		this.setState({ stage: stage, old_stage: stage });
 		this.currentGameLoop();
 	};
 	
 	private updateUserObjects = (): void =>
 	{
+		// @ts-ignore
+		this.state.stage?.children[3].children.map((child: any, index: number) => {
+			if (index > 0) {
+				//@ts-ignore
+				this.state.stage?.children[3].removeChild(child);
+			}
+		});
+		
 		this.setState({
 			stage: this.state.old_stage
 		});
