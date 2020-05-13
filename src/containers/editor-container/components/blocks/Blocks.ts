@@ -124,3 +124,53 @@ Blockly.JavaScript['star'] = function(block)
 	`
 	);
 };
+
+Blockly.Blocks['rectangle'] =
+	{
+		init: function() {
+			this.appendValueInput("x")
+			.setCheck("Number")
+			.appendField("Teken een vlak, x");
+			this.appendValueInput("y")
+			.setCheck("Number")
+			.appendField("y");
+			this.appendValueInput("width")
+			.setCheck("Number")
+			.appendField("breedte");
+			this.appendValueInput("height")
+			.setCheck("Number")
+			.appendField("hoogte");
+			this.appendValueInput("color")
+			.setCheck(null)
+			.appendField("kleur");
+			this.setInputsInline(true);
+			this.setPreviousStatement(true, null);
+			this.setNextStatement(true, null);
+			this.setColour(330);
+			this.setTooltip("");
+			this.setHelpUrl("");
+		}
+	};
+
+Blockly.JavaScript['rectangle'] = function(block)
+{
+	const x = Compiler.valueToCode(block, 'x', Compiler.ORDER_ATOMIC);
+	const y = Compiler.valueToCode(block, 'y', Compiler.ORDER_ATOMIC);
+	const w = Compiler.valueToCode(block, 'width', Compiler.ORDER_ATOMIC);
+	const h = Compiler.valueToCode(block, 'height', Compiler.ORDER_ATOMIC);
+	const c = Compiler.valueToCode(block, 'color', Compiler.ORDER_ATOMIC).replace('#', '');
+	const n = getRandomString(5);
+	
+	return (
+		`
+		const ${n} = new PIXIJS.Graphics();
+		
+		${n}.beginFill(0x${c.replace("'", "").replace("'", "")});
+		${n}.drawRect(${x}, ${y}, ${w}, ${h});
+		${n}.endFill();
+	
+		${n}.mask = this.state.stage.children[3].children[0];
+		this.state.stage.children[3].addChild(${n});
+	`
+	);
+};

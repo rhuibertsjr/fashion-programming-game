@@ -2,6 +2,7 @@
     <category name="Figuren" colour="%{BKY_VARIABLES_HUE}">
         <block type="create_ellipse"/>
         <block type="star"/>
+        <block type="rectangle"/>
         <block type="start" />
     </category>
     <category name="Logica" colour="%{BKY_LOGIC_HUE}">
