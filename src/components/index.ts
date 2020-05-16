@@ -10,3 +10,7 @@ export {
 export {
 	Navigation
 } from './navigation/Navigation';
+
+export {
+	Ranking
+} from './ranking/Ranking';

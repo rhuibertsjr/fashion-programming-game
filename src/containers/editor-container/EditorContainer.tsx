@@ -7,11 +7,10 @@ import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
 import './components/blocks/Language';
 
-import { Levels } from '@components/levels/Levels';
 import { toolbox } from './components';
 import './components/blocks/Blocks';
-import * as sk from "@components/socket-client/SocketClient";
-import { Title } from "@components/index";
+// import * as sk from "@components/socket-client/SocketClient";
+import { Title, Ranking } from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
 {
@@ -20,7 +19,8 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 	public state: IEditorState =
 	{
-		code: " "
+		code: " ",
+		ranking: new Ranking()
 	};
 	
 	constructor(props: any)
@@ -31,7 +31,9 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 
 	public componentDidMount(): void
 	{
-		// @TODO: FIX REF OF THIS.EDITOR.CURRENT
+		this.state.ranking.init();
+		
+		// Timeout is needed because of how blockly loads a component.
 		setTimeout(() =>
 		{
 			if (this.editor.current)
@@ -44,27 +46,32 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 				});
 			}
 		}, 50);
-		
-		let levels = new Levels();
-		console.log(levels);
-		levels.start();
-		
 	}
 	
 	private onRunEventHandler = (): void =>
 	{
-		const code = Compiler.workspaceToCode(this.workspace);
+		// const code = Compiler.workspaceToCode(this.workspace);
 		
-		sk.socket.emit("share code", code);
-		sk.socket.on("share code", (getdata: any) => {
-			console.log('Shared code: ' + getdata);
-			console.log('User: ', sk.socket.id);
-		});
+		// sk.socket.emit("share code", code);
+		// sk.socket.on("share code", (getdata: any) => {
+		// 	console.log('Shared code: ' + getdata);
+		// 	console.log('User: ', sk.socket.id);
+		// });
 		
 		this.setState({
 			code: Compiler.workspaceToCode(this.workspace)
 		});
 		
+	};
+	
+	private nextLevel = (): void => {
+		this.state.ranking.incrementLevel();
+		console.log(this.state.ranking.getLevelDetails());
+	};
+	
+	private previousLevel = (): void => {
+		this.state.ranking.decreaseLevel();
+		console.log(this.state.ranking.getLevelDetails());
 	};
 	
 	public render(): JSX.Element
@@ -76,6 +83,12 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					<div className={s.appRunButton}>
 						<button onClick={this.onRunEventHandler}>
 							Run
+						</button>
+						<button onClick={this.nextLevel}>
+							Increment
+						</button>
+						<button onClick={this.previousLevel}>
+							Decrease
 						</button>
 					</div>
 					<div
