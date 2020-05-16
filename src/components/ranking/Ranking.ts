@@ -31,7 +31,6 @@ Ranking.prototype.init = function (): void
 	}
 	
 	localStorage.setItem('level', this.counter);
-	
 };
 
 Ranking.prototype.getLevel = function (): number
@@ -53,25 +52,21 @@ Ranking.prototype.incrementLevel = function (): void
 	
 	this.counter++;
 	localStorage.setItem('level', this.counter);
-	
-	console.log(this.counter);
 };
 
 Ranking.prototype.decreaseLevel = function (): void
 {
-	
 	if (this.counter <= 0) {
 		return;
 	}
 	
 	this.counter--;
 	localStorage.setItem('level', this.counter);
-	console.log(this.counter);
 };
 
 Ranking.prototype.getLevelDetails = function (): string
 {
-	return this.levelContent[this.counter].title
+	return this.levelContent[this.counter].title;
 };
 
 export {
