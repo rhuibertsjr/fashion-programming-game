@@ -7,6 +7,7 @@ import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
 import './components/blocks/Language';
 
+import { Levels } from '@components/levels/Levels';
 import { toolbox } from './components';
 import './components/blocks/Blocks';
 import * as sk from "@components/socket-client/SocketClient";
@@ -43,6 +44,10 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 				});
 			}
 		}, 50);
+		
+		let levels = new Levels();
+		console.log(levels);
+		levels.start();
 		
 	}
 	
