@@ -1,22 +1,28 @@
 
-import React from "react";
+import React, { Suspense } from "react";
 import { render } from "react-dom";
 import './index.less';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-import { Landing } from "@pages/index";
-import EditorContainer from "@containers/editor-container/EditorContainer";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Landing, Uitleg, Loading } from "@pages/index";
+const Werkplaats = React.lazy(() => import('./pages/index'));
 
 export const App = (): JSX.Element => (
-	<Router>
-		<Route exact path="/">
-			<Landing />
-		</Route>
-		<Route path="/werkplaats" >
-			<EditorContainer />
-		</Route>
-	</Router>
+	<BrowserRouter>
+		<Switch>
+			<Route exact path="/">
+				<Landing />
+			</Route>
+			<Route exact path="/uitleg">
+				<Uitleg />
+			</Route>
+			<Route exact path="/werkplaats">
+				<Suspense fallback={<Loading />}>
+					<Werkplaats />
+				</Suspense>
+			</Route>
+		</Switch>
+	</BrowserRouter>
 );
 
 document.addEventListener('DOMContentLoaded', () => render(

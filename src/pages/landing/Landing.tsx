@@ -1,12 +1,10 @@
 import React, { Fragment } from 'react';
 import s from './landing.module.less';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as sk from "@components/socket-client/SocketClient";
 
 export const Landing = (): JSX.Element =>
 {
-	const history = useHistory();
-	
 	return (
 		<Fragment>
 			<div className={s.appLandingContainer}>
@@ -18,16 +16,17 @@ export const Landing = (): JSX.Element =>
 					<br/>
 					om te leren programmeren voor echte fasionista's.
 				</h2>
-				<button
-					onClick={() => {
-						history.push('/werkplaats');
-						sk.socket.emit("new user", sk.socket.id);
-						sk.socket.on("new user", (getUser: any) => {
-							console.log('a new user joined: ' +  getUser);
-						});
-					}}
-				> Start het spel >
-				</button>
+				<Link to="/werkplaats">
+					<button
+						onClick={() => {
+							sk.socket.emit("new user", sk.socket.id);
+							sk.socket.on("new user", (getUser: any) => {
+								console.log('a new user joined: ' +  getUser);
+							});
+						}}
+					> Start het spel >
+					</button>
+				</Link>
 				<p> Ik heb al een account </p>
 			</div>
 		</Fragment>
