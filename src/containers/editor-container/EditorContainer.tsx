@@ -64,12 +64,14 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		
 	};
 	
-	private nextLevel = (): void => {
+	private nextLevel = (): void =>
+	{
 		this.state.ranking.incrementLevel();
 		console.log(this.state.ranking.getLevelDetails());
 	};
 	
-	private previousLevel = (): void => {
+	private previousLevel = (): void =>
+	{
 		this.state.ranking.decreaseLevel();
 		console.log(this.state.ranking.getLevelDetails());
 	};

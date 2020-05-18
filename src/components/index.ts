@@ -1,7 +1,7 @@
 
 export {
 	Landing
-} from './landing/Landing';
+} from '../pages/landing/Landing';
 
 export {
 	Title

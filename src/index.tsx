@@ -5,7 +5,7 @@ import './index.less';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { Landing } from "@components/index";
+import { Landing } from "@pages/index";
 import EditorContainer from "@containers/editor-container/EditorContainer";
 
 export const App = (): JSX.Element => (
