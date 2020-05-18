@@ -14,11 +14,6 @@ const router = require('./routes/router');
 app.use(express.static('dist'));
 app.use(router);
 
-io.configure(() => {
-	io.set('transports', ["xhr-polling"]);
-	io.set('polling duration', 10);
-})
-
 io.on('connection', socket => {
 	console.log('A user connected ' + socket.id);
 
