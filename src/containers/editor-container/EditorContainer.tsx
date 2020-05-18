@@ -5,9 +5,11 @@ import GameContainer from "@containers/game-container/GameContainer";
 
 import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
+import './components/blocks/Language';
+
 import { toolbox } from './components';
-import * as Blocks from './components/blocks/Blocks';
-import {socket} from "@components/socket-client/SocketClient";
+import './components/blocks/Blocks';
+import * as sk from "@components/socket-client/SocketClient";
 import { Title } from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
@@ -41,24 +43,23 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 				});
 			}
 		}, 50);
-		console.log(Blocks);
+		
 	}
 	
 	private onRunEventHandler = (): void =>
 	{
 		const code = Compiler.workspaceToCode(this.workspace);
 		
-        socket.emit("share code", code);
-
-        socket.on("share code", (getdata: any) => {
+		sk.socket.emit("share code", code);
+		sk.socket.on("share code", (getdata: any) => {
 			console.log('Shared code: ' + getdata);
-			console.log('User: ', socket.id);
+			console.log('User: ', sk.socket.id);
 		});
 		
 		this.setState({
 			code: Compiler.workspaceToCode(this.workspace)
 		});
-
+		
 	};
 	
 	public render(): JSX.Element
