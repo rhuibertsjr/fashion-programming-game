@@ -8,9 +8,5 @@ export {
 } from './title/Title';
 
 export {
-	Navigation
-} from './navigation/Navigation';
-
-export {
 	Ranking
 } from './ranking/Ranking';

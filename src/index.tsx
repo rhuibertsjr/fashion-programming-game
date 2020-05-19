@@ -1,11 +1,11 @@
 
-import React, { Suspense } from "react";
+import React  from "react";
 import { render } from "react-dom";
 import './index.less';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Landing, Uitleg, Loading } from "@pages/index";
-const Werkplaats = React.lazy(() => import('./pages/index'));
+import {Landing, Registreren, Uitleg} from "@pages/index";
+// const Werkplaats = React.lazy(() => import('./pages/index'));
 
 export const App = (): JSX.Element =>
 (
@@ -14,14 +14,17 @@ export const App = (): JSX.Element =>
 			<Route exact path="/">
 				<Landing />
 			</Route>
+			<Route exact path="/registreren">
+				<Registreren/>
+			</Route>
 			<Route exact path="/uitleg">
 				<Uitleg />
 			</Route>
-			<Route exact path="/werkplaats">
-				<Suspense fallback={<Loading />}>
-					<Werkplaats />
-				</Suspense>
-			</Route>
+			{/*<Route exact path="/werkplaats">*/}
+			{/*	<Suspense fallback={<Loading />}>*/}
+			{/*		<Werkplaats />*/}
+			{/*	</Suspense>*/}
+			{/*</Route>*/}
 		</Switch>
 	</BrowserRouter>
 );

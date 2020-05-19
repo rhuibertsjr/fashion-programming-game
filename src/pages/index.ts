@@ -4,6 +4,10 @@ export {
 } from './landing/Landing';
 
 export {
+	Registreren
+} from './registreren/Registreren';
+
+export {
 	Uitleg
 } from './uitleg/Uitleg';
 
@@ -14,3 +18,4 @@ export {
 export {
 	Werkplaats as default
 } from './werkplaats/Werkplaats';
+

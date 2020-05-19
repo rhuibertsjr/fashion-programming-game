@@ -20,7 +20,7 @@ export const Landing = (): JSX.Element =>
 					<br/>
 					om te leren programmeren voor echte fasionista's.
 				</h2>
-				<Link to="/werkplaats">
+				<Link to="/registreren">
 					<button
 						onClick={() => {
 							sk.socket.emit("new user", sk.socket.id);
