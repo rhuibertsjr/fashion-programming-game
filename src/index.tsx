@@ -7,7 +7,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Landing, Uitleg, Loading } from "@pages/index";
 const Werkplaats = React.lazy(() => import('./pages/index'));
 
-export const App = (): JSX.Element => (
+export const App = (): JSX.Element =>
+(
 	<BrowserRouter>
 		<Switch>
 			<Route exact path="/">

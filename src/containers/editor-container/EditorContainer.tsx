@@ -9,7 +9,7 @@ import './components/blocks/Language';
 
 import { toolbox } from './components';
 import './components/blocks/Blocks';
-// import * as sk from "@components/socket-client/SocketClient";
+import * as sk from "@components/socket-client/SocketClient";
 import { Title, Ranking } from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
@@ -50,13 +50,13 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 	private onRunEventHandler = (): void =>
 	{
-		// const code = Compiler.workspaceToCode(this.workspace);
+		const code = Compiler.workspaceToCode(this.workspace);
 		
-		// sk.socket.emit("share code", code);
-		// sk.socket.on("share code", (getdata: any) => {
-		// 	console.log('Shared code: ' + getdata);
-		// 	console.log('User: ', sk.socket.id);
-		// });
+		sk.socket.emit("share code", code);
+		sk.socket.on("share code", (getdata: any) => {
+			console.log('Shared code: ' + getdata);
+			console.log('User: ', sk.socket.id);
+		});
 		
 		this.setState({
 			code: Compiler.workspaceToCode(this.workspace)
