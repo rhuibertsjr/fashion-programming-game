@@ -50,12 +50,12 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	{
 		const code = Compiler.workspaceToCode(this.workspace);
 		
-		sk.socket.emit("share code", code);
 		sk.socket.on("share code", (getdata: any) => {
 			console.log('Shared code: ' + getdata);
 			console.log('User: ', sk.socket.id);
 		});
-		
+		sk.socket.emit("share code", code);
+
 		this.setState({
 			code: Compiler.workspaceToCode(this.workspace)
 		});

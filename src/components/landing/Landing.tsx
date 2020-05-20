@@ -20,7 +20,7 @@ export const Landing = (): JSX.Element =>
 				</h2>
 				<button
 					onClick={() => {
-						history.push('/werkplaats');
+						history.push('/dashboard');
 						sk.socket.emit("new user", sk.socket.id);
 						sk.socket.on("new user", (getUser: any) => {
 							console.log('a new user joined: ' +  getUser);
