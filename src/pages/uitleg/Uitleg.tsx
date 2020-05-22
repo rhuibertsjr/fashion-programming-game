@@ -5,6 +5,7 @@ import s from './uitleg.module.less';
 import blokken from '@assets/images/blokken.png';
 import werkplaats from '@assets/images/werkplaats.png';
 import editor from '@assets/images/editor.png';
+import {Link} from "react-router-dom";
 
 export const Uitleg = (): JSX.Element =>
 (
@@ -56,7 +57,9 @@ export const Uitleg = (): JSX.Element =>
 					</div>
 				</div>
 			</div>
-			<div className={`${s.button} ${s.nextButton}`}> Volgende Stap > </div>
+			<Link to="/werkplaats">
+				<div className={`${s.button} ${s.nextButton}`}> Volgende Stap > </div>
+			</Link>
 		</div>
 	</Fragment>
 );

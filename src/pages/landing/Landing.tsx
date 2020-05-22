@@ -20,7 +20,7 @@ export const Landing = (): JSX.Element =>
 					<br/>
 					om te leren programmeren voor echte fasionista's.
 				</h2>
-				<Link to="/registreren">
+				<Link to={isMember}>
 					<button
 						onClick={() => {
 							sk.socket.emit("new user", sk.socket.id);
@@ -46,6 +46,17 @@ export const Landing = (): JSX.Element =>
 			</div>
 		</Fragment>
 	)
+};
+
+const isMember = (): string =>
+{
+	if (localStorage.getItem('is_member'))
+	{
+		return '/login';
+	}
+	
+	return 'registreren';
+	
 };
 
 

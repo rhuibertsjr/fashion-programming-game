@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import s from './registreren.module.less';
+import {Link} from "react-router-dom";
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 const validateForm = (errors: any) => {
@@ -115,7 +116,9 @@ class RegistrerenContainer extends PureComponent<{}, IRegistrerenState> {
 				
 				</form>
 				<div className={s.formButton}>
-					<button> Volgende stap </button>
+					<Link to="/uitleg">
+						<button> Volgende stap </button>
+					</Link>
 				</div>
 			</Fragment>
 		);

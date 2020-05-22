@@ -3,6 +3,7 @@ import s from './login.module.less';
 import { Title, Input } from "@components/index";
 import spotlight from '@assets/images/spotlight.png';
 import blockly from '@assets/images/blockly.png';
+import {Link} from "react-router-dom";
 
 export const Login = (): JSX.Element =>
 {
@@ -25,7 +26,9 @@ export const Login = (): JSX.Element =>
 					<div className={s.validator}>
 						<input maxLength={4} />
 					</div>
-					<button className={s.start}> Start het spel > </button>
+					<Link to="/uitleg" style={{ width: '20%', alignSelf: 'center' }}>
+						<button className={s.start}> Start het spel > </button>
+					</Link>
 				</div>
 			</div>
 			<div className={s.imageContainer}>
