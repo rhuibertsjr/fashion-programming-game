@@ -1,6 +1,6 @@
 import socketIo from 'socket.io-client';
 
-const ENDPOINT = 'localhost:3000';
+const ENDPOINT = 'https://dresscode-fun.herokuapp.com';
 const socket = socketIo(ENDPOINT);
 
 
