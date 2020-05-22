@@ -10,7 +10,7 @@ import './components/blocks/Language';
 import { toolbox } from './components';
 import './components/blocks/Blocks';
 import * as sk from "@components/socket-client/SocketClient";
-import { Title } from "@components/index";
+import { Title, Ranking } from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
 {
@@ -19,7 +19,8 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 	public state: IEditorState =
 	{
-		code: " "
+		code: " ",
+		ranking: new Ranking()
 	};
 	
 	constructor(props: any)
@@ -30,7 +31,9 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 
 	public componentDidMount(): void
 	{
-		// @TODO: FIX REF OF THIS.EDITOR.CURRENT
+		this.state.ranking.init();
+		
+		// Timeout is needed because of how blockly loads a component.
 		setTimeout(() =>
 		{
 			if (this.editor.current)
@@ -43,7 +46,6 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 				});
 			}
 		}, 50);
-		
 	}
 	
 	private onRunEventHandler = (): void =>
@@ -62,6 +64,18 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		
 	};
 	
+	private nextLevel = (): void =>
+	{
+		this.state.ranking.incrementLevel();
+		console.log(this.state.ranking.getLevelDetails());
+	};
+	
+	private previousLevel = (): void =>
+	{
+		this.state.ranking.decreaseLevel();
+		console.log(this.state.ranking.getLevelDetails());
+	};
+	
 	public render(): JSX.Element
 	{
 		return (
@@ -71,6 +85,12 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					<div className={s.appRunButton}>
 						<button onClick={this.onRunEventHandler}>
 							Run
+						</button>
+						<button onClick={this.nextLevel}>
+							Increment
+						</button>
+						<button onClick={this.previousLevel}>
+							Decrease
 						</button>
 					</div>
 					<div

@@ -1,0 +1,145 @@
+
+.button {
+  font-size: 2vh;
+  font-family: 'Roboto Slab', sans-serif;
+  color: #FFFFFF;
+  border-radius: 20px;
+
+  position: absolute;
+  right: 18vw;
+  padding: 12px 25px;
+  background: url("/src/assets/icons/warning.svg") no-repeat scroll 10% 50%;
+  background-color: #E96597;
+  background-size: 20%;
+  padding-left: 2.2% !important;
+  width: 6%;
+}
+
+.second-button {
+  font-size: 2vh;
+  font-family: 'Roboto Slab', sans-serif;
+  background-color: #E96597;
+  color: #FFFFFF;
+  border-radius: 20px;
+  background: url("/src/assets/icons/next_arrow.svg") no-repeat scroll 90% 55%;
+  background-color: #E96597;
+  background-size: 6%;
+  width: 11%;
+  white-space: nowrap;
+
+  position: absolute;
+  right: 10vw;
+  padding: 10px 20px;
+}
+
+.next-button {
+  position: absolute;
+  right: 8vw; bottom: 10vh;
+}
+
+.uitleg-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 90%; width: 100%;
+  padding: 5vh 5vw;
+}
+
+.uitleg-title {
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 4vh;
+  text-align: center;
+  color: #E96597;
+
+  margin-bottom: 5vh;
+}
+
+.uitleg-proces-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  width: 100%; height: 2vh;
+  background-color: #F2F2F2;
+
+  .proces-bar {
+    background-color: #FDDDE0;
+  }
+
+}
+
+.uitleg-tabel {
+  position: relative;
+  width: 100%; height: 100%;
+}
+
+.uitleg-row {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%; height: 100%;
+}
+
+.uitleg-cell {
+  position: relative;
+  height: 100%;
+}
+
+.uitleg-cell:nth-child(even) {
+  background-color: #FFFFFF;
+}
+.uitleg-cell:nth-child(odd) {
+  background-color: #F2F2F2;
+}
+.uitleg-cell:nth-child(1) {
+  width: 30vw;
+}
+.proces-bar:nth-child(1) {
+  width: 33vw;
+}
+.uitleg-cell:nth-child(2) {
+  width: 25vw;
+}
+.proces-bar:nth-child(2) {
+  width: 22vw;
+}
+.uitleg-cell:nth-child(3) {
+  width: 40vw;
+}
+.proces-bar:nth-child(3) {
+  width: 34vw;
+}
+
+.cell-image {
+  position: relative;
+  margin: 5vh auto;
+  width: 80%; height: 30vh;
+
+  img {
+    width: 100%; height: auto;
+  }
+
+}
+
+.cell-text-container {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+
+  font-family: 'Roboto Slab', sans-serif;
+  color: #707070;
+  line-height: 1.2;
+
+  h1 {
+    font-weight: bold;
+    font-size: 3vh;
+    margin: 20px 0;
+  }
+
+  p {
+    font-size: 2vh;
+  }
+
+}
+
+

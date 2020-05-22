@@ -11,7 +11,6 @@
 
   text-align: center;
 
-
   h1 {
     font-size: 10vh;
     font-family: 'Pacifico', cursive;
@@ -36,11 +35,18 @@
     background-color: #23C8E5;
     padding: 15px 30px;
     border-radius: 35px;
-    box-shadow: none;
 
     margin-bottom: 3vh;
+    -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transition: 200ms linear;
   }
 
+  button:hover {
+    transform: scale(.95);
+    transition: 200ms linear;
+  }
 
   p {
     font-size: 1.5vh;
@@ -49,5 +55,35 @@
     text-decoration: underline;
   }
 
+}
 
+.image-container {
+  position: absolute;
+  width: 100vw; height: 100vh;
+  top: 0; left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.codeImage {
+  position: absolute;
+  right: -5vw; top: 0;
+  width: 30vw;
+}
+
+.modeshow {
+  position: absolute;
+  left: -2vw; bottom: -2vw;
+  width: 22vw;
+}
+
+.users {
+  position: absolute;
+  right: -4vw; bottom: -15vh;
+  width: 35vw;
+}
+
+.image {
+  width: 100%;
+  height: auto;
 }
