@@ -110,13 +110,13 @@ class RegistrerenContainer extends PureComponent<{}, IRegistrerenState> {
 						<br />
 						<label>
 							<input type="radio" name="terms" checked={this.state.radio.terms} onChange={this.onRadioCheck} />
-							<p>Ik ga akkoord met de regels en algemene voorwaarden van dit spel.</p>
+							<p>Ik ga akkoord met de <span>regels</span> en <span>algemene voorwaarden</span> van dit spel.</p>
 						</label>
 					</div>
 				
 				</form>
 				<div className={s.formButton}>
-					<Link to="/uitleg">
+					<Link to="/uitleg/hello">
 						<button> Volgende stap </button>
 					</Link>
 				</div>

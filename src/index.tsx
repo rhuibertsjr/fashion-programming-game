@@ -20,7 +20,7 @@ export const App = (): JSX.Element =>
 			<Route exact path="/registreren">
 				<Registreren/>
 			</Route>
-			<Route exact path="/uitleg">
+			<Route path="/uitleg">
 				<Uitleg />
 			</Route>
 			{/*<Route exact path="/werkplaats">*/}

@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
-import { Title } from "@components/index";
+import { Modal, Title } from "@components/index";
+import { Link, Route } from "react-router-dom";
 import s from './uitleg.module.less';
 
 import blokken from '@assets/images/blokken.png';
 import werkplaats from '@assets/images/werkplaats.png';
 import editor from '@assets/images/editor.png';
-import {Link} from "react-router-dom";
 
 export const Uitleg = (): JSX.Element =>
 (
@@ -58,8 +58,11 @@ export const Uitleg = (): JSX.Element =>
 				</div>
 			</div>
 			<Link to="/werkplaats">
-				<div className={`${s.secondButton} ${s.nextButton}`}> Volgende Stap > </div>
+				<div className={`${s.secondButton} ${s.nextButton}`}> Volgende Stap </div>
 			</Link>
+			<Route path="/uitleg/hello">
+				<Modal to="/uitleg" title="Hoi! Ik ben Jodie." paragraph="Ik ben hier om jou door de game te helpen. Je krijgt straks een uitleg van mij hoe de game werkt. Wanneer je tijdens de game hulp of een hint nodig hebt laat het me dan weten!" />
+			</Route>
 		</div>
 	</Fragment>
 );

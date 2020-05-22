@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import s from './login.module.less';
-import { Title, Input } from "@components/index";
+import { Title } from "@components/index";
 import spotlight from '@assets/images/spotlight.png';
 import blockly from '@assets/images/blockly.png';
 import {Link} from "react-router-dom";
@@ -17,8 +17,15 @@ export const Login = (): JSX.Element =>
 					<div className={s.retrieveLoginText}>
 						<h1> Welkom terug! </h1>
 						<p> Vul je email adres in en je krijgt dan binnen enkele minuten jou bevestigingscode binnen om jouw account te bevestigen! </p>
-						<Input labelName="E-mail" style={{ width: '80%' }}/>
-						<button className={s.send}> Verstuur > </button>
+						<label>
+							<input
+								type="email"
+								name="email"
+								className={s.formInput}
+								placeholder="Email"
+								formNoValidate
+							/>
+						</label>						<button className={s.loginButton}> Verstuur </button>
 					</div>
 				</div>
 				<div className={s.login}>
@@ -26,8 +33,8 @@ export const Login = (): JSX.Element =>
 					<div className={s.validator}>
 						<input maxLength={4} />
 					</div>
-					<Link to="/uitleg" style={{ width: '20%', alignSelf: 'center' }}>
-						<button className={s.start}> Start het spel > </button>
+					<Link to="/uitleg/hello" style={{ width: '30%', alignSelf: 'center' }}>
+						<button className={s.loginButton} style={{ width: '100%', backgroundColor: '#23C8E5' }}> Start het spel </button>
 					</Link>
 				</div>
 			</div>

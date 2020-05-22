@@ -14,3 +14,7 @@ export {
 export {
 	Input
 } from './input/Input';
+
+export {
+	Modal
+} from './modal/Modal';
