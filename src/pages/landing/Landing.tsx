@@ -31,7 +31,9 @@ export const Landing = (): JSX.Element =>
 					> Start het spel >
 					</button>
 				</Link>
-				<p> Ik heb al een account </p>
+				<Link to="/login">
+					<p> Ik heb al een account </p>
+				</Link>
 			</div>
 			<div className={s.imageContainer}>
 				<div className={s.codeImage}>
