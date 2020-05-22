@@ -10,3 +10,7 @@ export {
 export {
 	Ranking
 } from './ranking/Ranking';
+
+export {
+	Input
+} from './input/Input';

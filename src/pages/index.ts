@@ -8,6 +8,10 @@ export {
 } from './registreren/Registreren';
 
 export {
+	Login
+} from './login/Login';
+
+export {
 	Uitleg
 } from './uitleg/Uitleg';
 
@@ -18,4 +22,3 @@ export {
 export {
 	Werkplaats as default
 } from './werkplaats/Werkplaats';
-

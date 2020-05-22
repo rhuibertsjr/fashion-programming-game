@@ -118,7 +118,7 @@ Blockly.JavaScript['star'] = function(block)
 		${n}.beginFill(0x${c.replace("'", "").replace("'", "")});
 		${n}.drawStar(${x}, ${y}, ${p}, ${r});
 		${n}.endFill();
-	
+		
 		${n}.mask = this.state.stage.children[3].children[0];
 		this.state.stage.children[3].addChild(${n});
 	`

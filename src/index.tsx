@@ -1,10 +1,10 @@
 
-import React  from "react";
+import React from "react";
 import { render } from "react-dom";
 import './index.less';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import {Landing, Registreren, Uitleg} from "@pages/index";
+import {Landing, Login, Registreren, Uitleg} from "@pages/index";
 // const Werkplaats = React.lazy(() => import('./pages/index'));
 
 export const App = (): JSX.Element =>
@@ -13,6 +13,9 @@ export const App = (): JSX.Element =>
 		<Switch>
 			<Route exact path="/">
 				<Landing />
+			</Route>
+			<Route exact path="/login">
+				<Login/>
 			</Route>
 			<Route exact path="/registreren">
 				<Registreren/>

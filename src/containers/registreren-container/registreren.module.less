@@ -1,0 +1,90 @@
+
+//.form { background-color: red }
+.form {
+  position: relative;
+  height: auto; width: 100%;
+
+  &-username {
+    margin: 5vh;
+  }
+
+  &-email {
+    margin: 5vh;
+  }
+
+  &-username input, &-email input {
+    padding: 17px;
+    border-radius: 25px;
+    -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+    border: none;
+    width: 40%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4vh;
+  }
+
+  &-username input:focus, &-email input:focus {
+    border: 2px solid #21C8E5;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  &-terms {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    height: 10%; width: 100%;
+    margin-bottom: 5vh;
+
+    p {
+      display: inline-block;
+      font-family: 'Roboto', sans-serif;
+      color: #707070;
+    }
+
+    input[type="radio"] {
+      box-sizing: border-box;
+      appearance: none;
+      background: white;
+      outline: 1px solid #707070;
+      border: 1px solid white;
+      width: 16px;
+      height: 16px;
+
+      transform: translateY(25%);
+
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+  }
+
+
+
+  &-button {
+    position: absolute;
+    right: 10vw; bottom: 5vh;
+    transform: translateX(50vw);
+
+    button {
+      font-size: 2vh;
+      font-family: 'Roboto', sans-serif;
+      color: #FFFFFF;
+      background-color: #E96597;
+      border-radius: 20px;
+      padding: 10px 15px;
+    }
+  }
+
+  .error {
+
+  }
+
+}
+
