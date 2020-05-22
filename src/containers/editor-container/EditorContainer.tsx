@@ -7,10 +7,10 @@ import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
 import './components/blocks/Language';
 
-import { toolbox } from './components';
+import { toolbox, Styles } from './components';
 import './components/blocks/Blocks';
 import * as sk from "@components/socket-client/SocketClient";
-import { Title, Ranking } from "@components/index";
+import { Title, Ranking, RankingComponent } from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
 {
@@ -40,6 +40,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 			{
 				this.workspace = inject(this.editor.current, {
 					toolbox: toolbox,
+					theme: Styles,
 					move: {
 						scrollbars: false
 					}
@@ -78,20 +79,15 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 	public render(): JSX.Element
 	{
+		console.log(this.nextLevel(), this.previousLevel());
 		return (
 			<Fragment>
 				<Title />
+				<RankingComponent />
 				<div className={s.appEditorContainer}>
 					<div className={s.appRunButton}>
-						<button onClick={this.onRunEventHandler}>
-							Run
-						</button>
-						<button onClick={this.nextLevel}>
-							Increment
-						</button>
-						<button onClick={this.previousLevel}>
-							Decrease
-						</button>
+						<button onClick={this.onRunEventHandler} />
+						<button onClick={this.onRunEventHandler} />
 					</div>
 					<div
 						className={s.appEditor}
@@ -99,6 +95,10 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					/>
 				</div>
 				<GameContainer code={this.state.code} />
+				<div className={s.toolboxButtons}>
+					<button> Hint! </button>
+					<button> Reset </button>
+				</div>
 			</Fragment>
 		);
 	}

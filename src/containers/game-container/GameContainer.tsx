@@ -49,8 +49,8 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		this.gameRef = createRef();
 		this.game = new PIXI.Application({
 			backgroundColor: 0xffffff,
-			width: 2300,
-			height: 3200,
+			width: 2700,
+			height: 3000,
 		});
 		PIXI.settings.RESOLUTION = window.devicePixelRatio;
 	}

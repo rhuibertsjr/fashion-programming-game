@@ -12,9 +12,9 @@ export {
 } from './ranking/Ranking';
 
 export {
-	Input
-} from './input/Input';
-
-export {
 	Modal
 } from './modal/Modal';
+
+export {
+	RankingComponent
+} from './ranking/RankingComponent';

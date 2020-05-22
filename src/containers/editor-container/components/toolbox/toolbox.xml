@@ -1,30 +1,27 @@
 <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-    <category name="Figuren" colour="%{BKY_VARIABLES_HUE}">
+    <category name="Blokken" categorystyle="blokken"/>
+    <category name="Figuren"  categorystyle="figuren">
         <block type="create_ellipse"/>
         <block type="star"/>
         <block type="rectangle"/>
         <block type="start" />
     </category>
-    <category name="Logica" colour="%{BKY_LOGIC_HUE}">
-        <category name="Als">
-            <block type="controls_if"></block>
-            <block type="controls_if">
-                <mutation else="1"></mutation>
-            </block>
-            <block type="controls_if">
-                <mutation elseif="1" else="1"></mutation>
-            </block>
-        </category>
-        <category name="Waar / Onwaar" colour="%{BKY_LOGIC_HUE}">
-            <block type="logic_compare"></block>
-            <block type="logic_operation"></block>
-            <block type="logic_negate"></block>
-            <block type="logic_boolean"></block>
-            <block type="logic_null"></block>
-            <block type="logic_ternary"></block>
-        </category>
+    <category name="Logica" categorystyle="logica">
+        <block type="controls_if"></block>
+        <block type="controls_if">
+            <mutation else="1"></mutation>
+        </block>
+        <block type="controls_if">
+            <mutation elseif="1" else="1"></mutation>
+        </block>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+        <block type="logic_negate"></block>
+        <block type="logic_boolean"></block>
+        <block type="logic_null"></block>
+        <block type="logic_ternary"></block>
     </category>
-    <category name="Herhaling" colour="%{BKY_LOOPS_HUE}">
+    <category name="Herhaling" categorystyle="herhaling">
         <block type="controls_repeat_ext">
             <value name="TIMES">
                 <block type="math_number">
@@ -54,7 +51,7 @@
         <block type="controls_forEach"></block>
         <block type="controls_flow_statements"></block>
     </category>
-    <category name="Rekenen" colour="%{BKY_MATH_HUE}">
+    <category name="Rekenen" categorystyle="rekenen">
         <block type="math_number">
             <field name="NUM">123</field>
         </block>
@@ -94,8 +91,7 @@
         <block type="math_atan2"></block>
     </category>
 
-    <sep></sep>
-    <category name="Kleuren" colour="20">
+    <category name="Kleuren" categorystyle="kleuren">
         <block type="colour_picker"></block>
         <block type="colour_random"></block>
         <block type="colour_rgb">
@@ -134,11 +130,9 @@
         </block>
     </category>
 
-    <sep></sep>
-    <category name="Variabelen" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">
+    <category name="Variabelen" custom="VARIABLE" categorystyle="variabelen">
     </category>
-    <category name="Functies" custom="PROCEDURE" colour="%{BKY_PROCEDURES_HUE}">
+    <category name="Functies" custom="PROCEDURE" categorystyle="functies">
     </category>
-    <sep></sep>
 
 </xml>
