@@ -20,7 +20,8 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	public state: IEditorState =
 	{
 		code: " ",
-		ranking: new Ranking()
+		ranking: new Ranking(),
+		visualCodeToggle: false
 	};
 	
 	constructor(props: any)
@@ -42,7 +43,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					toolbox: toolbox,
 					theme: Styles,
 					move: {
-						scrollbars: false
+						scrollbars: true
 					}
 				});
 			}
@@ -77,6 +78,14 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		console.log(this.state.ranking.getLevelDetails());
 	};
 	
+	private clearWorkspace = (): void =>
+	{
+		if (this.workspace !== undefined)
+		{
+			this.workspace.clear();
+		}
+	};
+	
 	public render(): JSX.Element
 	{
 		console.log(this.nextLevel(), this.previousLevel());
@@ -87,7 +96,10 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 				<div className={s.appEditorContainer}>
 					<div className={s.appRunButton}>
 						<button onClick={this.onRunEventHandler} />
-						<button onClick={this.onRunEventHandler} />
+						<button onClick={() => {
+							this.setState({ visualCodeToggle: !this.state.visualCodeToggle });
+							console.log('pressed');
+						}} />
 					</div>
 					<div
 						className={s.appEditor}
@@ -97,7 +109,11 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 				<GameContainer code={this.state.code} />
 				<div className={s.toolboxButtons}>
 					<button> Hint! </button>
-					<button> Reset </button>
+					<button onClick={this.clearWorkspace}> Reset </button>
+				</div>
+				<div className={s.appCodeGenerator} style={this.state.visualCodeToggle ? { right: '0' } : { right: '-30%' }}>
+					<h1> Hier is je geschreven code: </h1>
+					<p> {this.state.code} </p>
 				</div>
 			</Fragment>
 		);
