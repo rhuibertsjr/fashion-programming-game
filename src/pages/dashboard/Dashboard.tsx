@@ -1,12 +1,15 @@
-import React, { Fragment } from 'react';
+import React, {Fragment, useState} from 'react';
 import s from './dashboard.module.less'
 import { Title, RankingComponent } from "@components/index";
 
 import character_2 from '@assets/game/characters/character_1.png';
 import clothes from '@assets/game/clothes/clothes_1.png';
+import {Link} from "react-router-dom";
 
 export const Dashboard = (): JSX.Element =>
 {
+	const [room, setRoom] = useState('');
+
 	return (
 		<Fragment>
 			<Title
@@ -51,7 +54,13 @@ export const Dashboard = (): JSX.Element =>
 					<div className={s.appDashboardContainerFriendlistText}>
 						<h1> Nodig vrienden uit! </h1>
 						<p>Kopieer deze link en stuur het door naar je vriendinnen om ze uit te nodigen! Hoe leuk is het om met elkaar te kunnen chatten en modeshows van elkaar te bekijken?</p>
-						<input type="text" placeholder="JOUWLINK123"/>
+						<input type="text"
+							   placeholder="JOUWLINK123"
+							   onChange={(event) => setRoom(event.target.value)}
+						/>
+						<Link onClick={e => (!room) ? e.preventDefault() : null} to={`/werkplaats?room=${room}`}>
+							<button type="submit">maak groep</button>
+						</Link>
 						<p>of</p>
 						<p> Bekijk jouw vrienden </p>
 					</div>

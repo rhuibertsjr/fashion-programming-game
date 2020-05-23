@@ -19,14 +19,13 @@ app.use(cors());
 app.use(router);
 
 io.on('connection', socket => {
-    // console.log('A user connected ' + socket.id);
+    console.log('A user connected ' + socket.id);
     // let's user join a room
     socket.on('join',  ({room}, callback) => {
+
         const {error, user} = addUser({id: socket.id, room});
         if (error) return callback(error);
         socket.join(user.room);
-
-        socket.broadcast.to(user.room).emit('message', `Welkom, ${socket.id} to room ${user.room}` );
 
         io.to(user.room).emit('roomData', {room: user.room, users: getUsersInRoom(user.room)});
 
@@ -35,17 +34,25 @@ io.on('connection', socket => {
         callback();
     });
 
+    // Chat
+    socket.on('chat message', msg => {
+        console.log(`${socket.id}: ${msg}`);
+        io.emit('chat message', msg);
+    });
+
+    // share the code the user made
+    socket.on('share code',  (getData) => {
+        console.log('Shared Code: ' + getData);
+        io.emit('share code', getData);
+    });
+
     // log if there is a new user
     socket.on('new user', async (getUser) => {
         console.log('a new user: ' + getUser);
         io.emit('new user', getUser)
     });
 
-    // share the code the user made
-    socket.on('share code', async (getData) => {
-        console.log('Shared Code: ' + getData);
-        io.emit('share code', getData);
-    });
+
 
 
     socket.on('disconnect', () => console.log('a user disconnected ' + socket.id));
