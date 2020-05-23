@@ -1,5 +1,65 @@
 
 .app-modeshow-container {
+  display: flex;
+  position: relative;
+  bottom: 0; right: 0; left: 0;
+  height: 80vh; width: 100vw;
+
+  .app-modeshow { background: #7572B0 }
+  .app-modeshow {
+    position: relative;
+    height: 100%;
+    width: 60%;
+
+    h1 {
+      position: absolute;
+      left: 4vw; top: 4vh;
+      font-family: 'Roboto Slab', sans-serif;
+      font-size: 2vh;
+      color: #FFFFFF;
+    }
+
+    &-user {
+      position: absolute;
+      height: 90%; width: auto;
+      bottom: 2vh; left: 30%;
+      transform: translateX(-50%);
+
+      img {
+        position: absolute;
+        height: 100%;
+        width: auto;
+      }
+
+    }
+
+    &-floor { background-color: #F2F2F2 }
+    &-floor {
+      position: absolute;
+      width: 100%; height: 15%;
+      bottom: 0; right: 0; left: 0;
+    }
+
+    &-spotlight-first {
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 15%;
+    }
+
+    &-spotlight-last {
+      position: absolute;
+      right: 0; bottom: 0;
+      transform: rotateY(180deg);
+      width: 15%;
+    }
+
+  }
+
+  .app-friends {
+    position: relative;
+    height: 100%; width: 40%;
+    box-shadow: -3px 0 3px -3px #333;
+  }
 
 }
 
