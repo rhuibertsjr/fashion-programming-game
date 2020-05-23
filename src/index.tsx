@@ -13,8 +13,7 @@ export const App = (): JSX.Element => (
         <Route exact path="/">
             <Landing/>
         </Route>
-        <Route path="/dashboard">
-            <DashboardContainer />
+        <Route path="/dashboard" exact component={DashboardContainer}>
         </Route>
         <Route path="/werkplaats">
             <EditorContainer/>

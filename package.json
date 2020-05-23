@@ -68,6 +68,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@types/query-string": "^6.3.0",
     "@types/socket.io": "^2.1.4",
     "@types/socket.io-client": "^1.4.32",
     "blockly": "^3.20200402.1",

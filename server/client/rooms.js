@@ -1,20 +1,24 @@
-const rooms = [];
+const users = [];
 
-const addUser = ({id, room}) => {
-    room = room.trim().toLowerCase();
+const addUser = ({ id, room }) => {
 
-    if (!room) return {error: 'room are required'};
+    if(!room) return { error: 'Room are required.' };
 
-    const chamber = {id, room};
+    const user = { id, room };
 
-    rooms.push(chamber);
+    users.push(user);
 
-    console.log(chamber);
-    return {chamber};
+    return { user };
 }
 
-const getUser = (id) => rooms.find((chamber) => chamber.id === id);
+const removeUser = (id) => {
+    const index = users.findIndex((user) => user.id === id);
 
-const getUsersInRoom = (room) => rooms.filter((chamber) => chamber.room === room);
+    if(index !== -1) return users.splice(index, 1)[0];
+}
 
-module.exports = {addUser, getUser, getUsersInRoom};
+const getUser = (id) => users.find((user) => user.id === id);
+
+const getUsersInRoom = (room) => users.filter((user) => user.room === room);
+
+module.exports = { addUser, removeUser, getUser, getUsersInRoom };
