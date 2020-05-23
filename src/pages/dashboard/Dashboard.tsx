@@ -4,6 +4,7 @@ import { Title, RankingComponent } from "@components/index";
 
 import character_2 from '@assets/game/characters/character_1.png';
 import clothes from '@assets/game/clothes/clothes_1.png';
+import {Link} from "react-router-dom";
 
 export const Dashboard = (): JSX.Element =>
 {
@@ -28,23 +29,25 @@ export const Dashboard = (): JSX.Element =>
 							<p>Hier worden de patronen opgeslagen. Bij het ben je klaar om jouw gemaakte patronen te showen op de modeshow.</p>
 							<button> Volgende </button>
 						</div>
-						<div className={s.pallete}>
-							<div className={s.column}>
-								<div className={s.block} />
-								<div className={s.block} />
-								<div className={s.block} />
+						<Link to="/werkplaats">
+							<div className={s.pallete}>
+								<div className={s.column}>
+									<div className={s.block} />
+									<div className={s.block} />
+									<div className={s.block} />
+								</div>
+								<div className={s.column}>
+									<div className={s.block} />
+									<div className={s.block} />
+									<div className={s.block} />
+								</div>
+								<div className={s.column}>
+									<div className={s.block} />
+									<div className={s.block} />
+									<div className={s.block} />
+								</div>
 							</div>
-							<div className={s.column}>
-								<div className={s.block} />
-								<div className={s.block} />
-								<div className={s.block} />
-							</div>
-							<div className={s.column}>
-								<div className={s.block} />
-								<div className={s.block} />
-								<div className={s.block} />
-							</div>
-						</div>
+						</Link>
 					</div>
 				</div>
 				<div className={s.appDashboardContainerFriendlist}>

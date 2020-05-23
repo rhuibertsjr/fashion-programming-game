@@ -57,7 +57,7 @@ export const Uitleg = (): JSX.Element =>
 					</div>
 				</div>
 			</div>
-			<Link to="/werkplaats">
+			<Link to="/dashboard">
 				<div className={`${s.secondButton} ${s.nextButton}`}> Volgende Stap </div>
 			</Link>
 			<Route path="/uitleg/hello">
