@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import './index.less';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import {Landing, Loading, Login, Registreren, Uitleg} from "@pages/index";
+import {Dashboard, Landing, Loading, Login, Modeshow, Registreren, Uitleg} from "@pages/index";
 const Werkplaats = React.lazy(() => import('./pages/index'));
 
 export const App = (): JSX.Element =>
@@ -20,6 +20,9 @@ export const App = (): JSX.Element =>
 			<Route exact path="/registreren">
 				<Registreren/>
 			</Route>
+			<Route exact path="/dashboard">
+				<Dashboard/>
+			</Route>
 			<Route path="/uitleg">
 				<Uitleg />
 			</Route>
@@ -27,6 +30,9 @@ export const App = (): JSX.Element =>
 				<Suspense fallback={<Loading />}>
 					<Werkplaats />
 				</Suspense>
+			</Route>
+			<Route exact path="/modeshow">
+				<Modeshow/>
 			</Route>
 		</Switch>
 	</BrowserRouter>

@@ -16,9 +16,17 @@ export {
 } from './uitleg/Uitleg';
 
 export {
+	Dashboard
+} from './dashboard/Dashboard';
+
+export {
 	Loading
 } from './loading/Loading';
 
 export {
 	Werkplaats as default
 } from './werkplaats/Werkplaats';
+
+export {
+	Modeshow
+} from './modeshow/Modeshow';

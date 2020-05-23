@@ -56,6 +56,19 @@ export class RankingComponent extends PureComponent<{}, IRankingState> {
 						<button> Chat </button>
 					</div>
 				</Route>
+				<Route path={['/dashboard', '/modeshow']}>
+					<div className={s.rankings} style={{ width: '40%' }}>
+						<p> Level: </p>
+						<div className={s.rankingsLevel}>
+							<p>{(this.state.rank.getLevel() + 1)}</p>
+						</div>
+						<p> Modeshow punten: </p>
+						<div className={s.rankingsPoints} />
+					</div>
+					<div className={s.rankingContainerButtons}>
+						<button style={{ width: '40%' }}> Jouw vriendenlijst </button>
+					</div>
+				</Route>
 			</div>
 		);
 	}
