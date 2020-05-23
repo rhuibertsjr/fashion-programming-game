@@ -1,0 +1,176 @@
+
+.button {
+  font-size: 2vh;
+  font-family: 'Roboto Slab', sans-serif;
+  color: #FFFFFF;
+  background-color: #E96597;
+  border-radius: 20px;
+
+  position: absolute;
+  right: 10vw;
+  padding: 10px 15px;
+  background: url("/src/assets/icons/warning.svg") no-repeat scroll 10% 50%;
+  background-size: 25%;
+  padding-left: 35px !important;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%; height: 90%;
+  overflow: hidden;
+}
+
+.retrieve-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%; width: 50%;
+}
+
+.retrieve-login-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+  height: 80%; width: 50%;
+  padding-bottom: 5vh;
+  text-align: center;
+
+  font-family: 'Roboto Slab', sans-serif;
+  color: #707070;
+  line-height: 1.2;
+
+  h1 {
+    font-size: 6.3vh;
+    color: #E96597;
+  }
+
+  p {
+    font-size: 2vh;
+  }
+
+}
+
+.form-input {
+  padding: 17px;
+  border-radius: 25px;
+  -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+  border: none;
+  width: 80%;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 1.5vh;
+
+  background: url("/src/assets/icons/email.svg") no-repeat scroll 5% 50%;
+  background-size: 6%;
+  padding-left: 50px !important;
+
+}
+
+@char-w: 1ch;
+@gap: .5 * @char-w;
+@n-char: 7;
+@in-w: @n-char*(@char-w + @gap);
+@sum: @in-w - @gap;
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%; width: 50%;
+
+  .validator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+
+    input {
+        display: block;
+        margin: 2em auto;
+        border: none;
+        padding: 0;
+        width: 19%;
+        background: repeating-linear-gradient(90deg,
+        dimgrey 0, dimgrey @char-w,
+        transparent 0, transparent @char-w + @gap)
+        0 100% / @sum 2px no-repeat;
+        font: 5ch droid sans mono, consolas, monospace;
+        letter-spacing: @gap;
+        border-bottom: 1px solid black;
+
+        &:focus {
+          outline: none;
+          color: #E96597;
+        }
+    }
+
+  }
+
+  p {
+    font-size: 2vh;
+    font-family: 'Roboto Slab', sans-serif;
+    color: #707070;
+    line-height: 1.2;
+  }
+
+}
+
+.login-button {
+  background: #E96597 url("/src/assets/icons/next_arrow.svg") no-repeat 90% 52%;
+  border-radius: 25px;
+}
+
+.login-button {
+  position: relative;
+  align-self: center;
+  padding: 10px 20px 10px 0;
+  width: 50%;
+
+  font-family: 'Roboto Slab', sans-serif;
+  white-space: nowrap;
+  font-size: 2.3vh;
+  color: #FFFFFF;
+}
+
+.spotlight {
+  position: absolute;
+  left: -2vw; bottom: -2vw;
+  width: 10vw;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+}
+
+.blockly {
+  position: absolute;
+  right: -2vw; bottom: -5vw;
+  width: 20vw;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+}
+
+.image-container {
+  position: absolute;
+  width: 100vw; height: 100vh;
+  top: 0; left: 0;
+  overflow: hidden;
+  z-index: -100;
+}

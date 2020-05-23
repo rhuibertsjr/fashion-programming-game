@@ -7,10 +7,10 @@ import { inject, Workspace } from "blockly";
 import Compiler from 'blockly/javascript';
 import './components/blocks/Language';
 
-import { toolbox } from './components';
+import { toolbox, Styles } from './components';
 import './components/blocks/Blocks';
 import * as sk from "@components/socket-client/SocketClient";
-import { Title } from "@components/index";
+import { Title, Ranking, RankingComponent } from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
 {
@@ -19,7 +19,9 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 	public state: IEditorState =
 	{
-		code: " "
+		code: " ",
+		ranking: new Ranking(),
+		visualCodeToggle: false
 	};
 	
 	constructor(props: any)
@@ -30,20 +32,22 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 
 	public componentDidMount(): void
 	{
-		// @TODO: FIX REF OF THIS.EDITOR.CURRENT
+		this.state.ranking.init();
+		
+		// Timeout is needed because of how blockly loads a component.
 		setTimeout(() =>
 		{
 			if (this.editor.current)
 			{
 				this.workspace = inject(this.editor.current, {
 					toolbox: toolbox,
+					theme: Styles,
 					move: {
-						scrollbars: false
+						scrollbars: true
 					}
 				});
 			}
 		}, 50);
-		
 	}
 	
 	private onRunEventHandler = (): void =>
@@ -62,16 +66,40 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		
 	};
 	
+	private nextLevel = (): void =>
+	{
+		this.state.ranking.incrementLevel();
+		console.log(this.state.ranking.getLevelDetails());
+	};
+	
+	private previousLevel = (): void =>
+	{
+		this.state.ranking.decreaseLevel();
+		console.log(this.state.ranking.getLevelDetails());
+	};
+	
+	private clearWorkspace = (): void =>
+	{
+		if (this.workspace !== undefined)
+		{
+			this.workspace.clear();
+		}
+	};
+	
 	public render(): JSX.Element
 	{
+		console.log(this.nextLevel(), this.previousLevel());
 		return (
 			<Fragment>
 				<Title />
+				<RankingComponent />
 				<div className={s.appEditorContainer}>
 					<div className={s.appRunButton}>
-						<button onClick={this.onRunEventHandler}>
-							Run
-						</button>
+						<button onClick={this.onRunEventHandler} />
+						<button onClick={() => {
+							this.setState({ visualCodeToggle: !this.state.visualCodeToggle });
+							console.log('pressed');
+						}} />
 					</div>
 					<div
 						className={s.appEditor}
@@ -79,6 +107,14 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					/>
 				</div>
 				<GameContainer code={this.state.code} />
+				<div className={s.toolboxButtons}>
+					<button> Hint! </button>
+					<button onClick={this.clearWorkspace}> Reset </button>
+				</div>
+				<div className={s.appCodeGenerator} style={this.state.visualCodeToggle ? { right: '0' } : { right: '-30%' }}>
+					<h1> Hier is je geschreven code: </h1>
+					<p> {this.state.code} </p>
+				</div>
 			</Fragment>
 		);
 	}

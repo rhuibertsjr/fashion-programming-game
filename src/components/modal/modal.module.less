@@ -1,0 +1,79 @@
+
+.modal-container {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 100%; width: 100%;
+  z-index: 100;
+
+  backdrop-filter: blur(2px);
+
+}
+
+.modal { background: #FFFFFF }
+.modal {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  height: 60%; width: 60%;
+
+  -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+  border-radius: 25px;
+
+  &-button {
+    background: #E96597 url("/src/assets/icons/next_arrow.svg") no-repeat 90% 50%;
+    border-radius: 20px;
+  }
+
+  &-button {
+    position: absolute;
+    padding: 10px 15px;
+    margin: 5% 20%;
+    right: 0; bottom: 0;
+    width: 22%;
+
+    font-family: 'Roboto Slab', sans-serif;
+    white-space: nowrap;
+    font-size: 2vh;
+    color: #FFFFFF;
+  }
+
+  &-character {
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 25%; height: 150%;
+    transform: translate(10%, -20%);
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+
+  }
+
+  .modal-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    position: relative;
+    width: 80%;
+    padding: 7vh 4vw;
+  }
+
+  &-title {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 4vh;
+    color: #21C8E5;
+    line-height: 1.2;
+    margin-bottom: 2vh;
+  }
+
+  &-paragraph {
+    font-family: 'Roboto Slab', sans-serif;
+    color: #707070;
+    line-height: 1.2;
+  }
+
+}

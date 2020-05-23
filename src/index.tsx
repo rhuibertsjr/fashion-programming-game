@@ -1,26 +1,43 @@
-import React from "react";
-import {render} from "react-dom";
+
+import React, { Suspense } from "react";
+import { render } from "react-dom";
 import './index.less';
 
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import {Dashboard, Landing, Loading, Login, Modeshow, Registreren, Uitleg} from "@pages/index";
+const Werkplaats = React.lazy(() => import('./pages/index'));
 
-import {Landing} from "@components/index";
-import EditorContainer from "@containers/editor-container/EditorContainer";
-import DashboardContainer from "@containers/dashboard-container/DashboardContainer";
-
-export const App = (): JSX.Element => (
-    <Router>
-        <Route exact path="/">
-            <Landing/>
-        </Route>
-        <Route path="/dashboard" exact component={DashboardContainer}>
-        </Route>
-        <Route path="/werkplaats">
-            <EditorContainer/>
-        </Route>
-    </Router>
+export const App = (): JSX.Element =>
+(
+	<BrowserRouter>
+		<Switch>
+			<Route exact path="/">
+				<Landing />
+			</Route>
+			<Route exact path="/login">
+				<Login/>
+			</Route>
+			<Route exact path="/registreren">
+				<Registreren/>
+			</Route>
+			<Route exact path="/dashboard">
+				<Dashboard/>
+			</Route>
+			<Route path="/uitleg">
+				<Uitleg />
+			</Route>
+			<Route exact path="/werkplaats">
+				<Suspense fallback={<Loading />}>
+					<Werkplaats />
+				</Suspense>
+			</Route>
+			<Route exact path="/modeshow">
+				<Modeshow/>
+			</Route>
+		</Switch>
+	</BrowserRouter>
 );
 
 document.addEventListener('DOMContentLoaded', () => render(
-    <App/>, document.getElementById('app')
+	<App />, document.getElementById('app')
 ));

@@ -1,12 +1,20 @@
 
 export {
 	Landing
-} from './landing/Landing';
+} from '../pages/landing/Landing';
 
 export {
 	Title
 } from './title/Title';
 
 export {
-	Navigation
-} from './navigation/Navigation';
+	Ranking
+} from './ranking/Ranking';
+
+export {
+	Modal
+} from './modal/Modal';
+
+export {
+	RankingComponent
+} from './ranking/RankingComponent';

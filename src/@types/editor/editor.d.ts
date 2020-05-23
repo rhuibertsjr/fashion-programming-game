@@ -1,5 +1,7 @@
 
 declare interface IEditorState
 {
-	code: string
+	code: string,
+	ranking: Ranking,
+	visualCodeToggle: boolean
 }

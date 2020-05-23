@@ -1,12 +1,25 @@
 import React from 'react';
 import s from './title.module.less';
-import SocketRooms from "@components/socket-client/socket-rooms/SocketRooms";
 
-export const Title = (): JSX.Element =>
-(
+export const Title = (props: ITitleProps): JSX.Element =>
+{
+	let suffex: JSX.Element;
+
+	if (!props.suffex)
+	{
+		return (
+			<div className={s.appTitle}>
+				<h1> Dresscode </h1>
+			</div>
+		)
+	}
+
+	suffex = props.suffex;
+
+	return (
 		<div className={s.appTitle}>
 			<h1> Dresscode </h1>
-			<SocketRooms />
+			{ suffex }
 		</div>
-
-);
+	);
+};

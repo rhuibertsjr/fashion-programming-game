@@ -18,12 +18,12 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 			{
 				body: PIXI.Sprite.from(character_1),
 				playable: true,
-				active: false
+				active: true
 			},
 			{
 				body: PIXI.Sprite.from(character_2),
 				playable: true,
-				active: true
+				active: false
 			},
 			{
 				body: PIXI.Sprite.from(character_3),
@@ -49,8 +49,8 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		this.gameRef = createRef();
 		this.game = new PIXI.Application({
 			backgroundColor: 0xffffff,
-			width: 2300,
-			height: 3200,
+			width: 600,
+			height: 800,
 		});
 		PIXI.settings.RESOLUTION = window.devicePixelRatio;
 	}
@@ -86,7 +86,7 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		
 		const backstage = new PIXI.Graphics();
 		backstage.beginFill(0xFAFAFA);
-		backstage.drawRect(0, this.game.renderer.height - 300, this.game.renderer.width, 300);
+		backstage.drawRect(0, this.game.renderer.height - 100, this.game.renderer.width, 100);
 		backstage.endFill();
 		
 		let body = this.state.charachters[0].body;
