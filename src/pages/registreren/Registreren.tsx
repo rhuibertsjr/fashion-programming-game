@@ -27,7 +27,7 @@ export const Registreren = (): JSX.Element =>
 					
 				</div>
 				<div className={s.userProfiel}>
-					<CharacterHub  />
+					<CharacterHub />
 				</div>
 			</div>
 		</Fragment>

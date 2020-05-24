@@ -1,13 +1,25 @@
 import React, { Fragment } from 'react';
-import s from './dashboard.module.less'
-import { Title, RankingComponent } from "@components/index";
+import {Title, RankingComponent, Character} from "@components/index";
+import { Link } from "react-router-dom";
 
-import character_2 from '@assets/game/characters/character_1.png';
+import s from './dashboard.module.less'
+
+import char1 from '@assets/game/characters/character_1.png';
+import char2 from '@assets/game/characters/character_2.png';
+import char3 from '@assets/game/characters/character_3.png';
+import char4 from '@assets/game/characters/character_4.png';
 import clothes from '@assets/game/clothes/clothes_1.png';
-import {Link} from "react-router-dom";
 
 export const Dashboard = (): JSX.Element =>
 {
+	
+	const character = [
+		char1, char2, char3, char4
+	];
+	
+	const characterLib = new Character();
+	const currentCharacter = characterLib.getCharacter();
+	
 	return (
 		<Fragment>
 			<Title
@@ -21,7 +33,7 @@ export const Dashboard = (): JSX.Element =>
 					<div className={s.appDashboardContainerUserFloor} />
 					<h1> [Character Name] </h1>
 					<div className={s.appDashboardContainerUserProfile}>
-						<img src={character_2} alt="Dresscode Character"/>
+						<img src={character[currentCharacter]} alt="Dresscode Character"/>
 						<img src={clothes} alt="Dresscode Character"/>
 					</div>
 					<div className={s.appDashboardContainerUserPaletteContainer}>

@@ -1,7 +1,8 @@
 
 declare interface IGameState
 {
-	charachters: ICharacters[],
+	charachters: any,
+	currentCharacter: number
 	clothes: PIXI.Sprite[]
 	stage: PIXI.Container | null,
 	old_stage: PIXI.Container | null,
@@ -10,11 +11,4 @@ declare interface IGameState
 declare interface IGameProps
 {
 	code: string
-}
-
-interface ICharacters
-{
-	body: PIXI.Sprite,
-	active: boolean,
-	playable: boolean
 }

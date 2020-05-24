@@ -2,6 +2,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const appConfig = require('./app/app');
 const theme = require('./app/theme');
 
@@ -16,7 +17,8 @@ const less = modules => ({
 			loader: MiniCssExtractPlugin.loader,
 			options: {
 				hmr: dev,
-				reloadAll: true
+				reloadAll: true,
+
 			}
 		},
 		{
@@ -68,7 +70,7 @@ module.exports = {
 
 		new MiniCssExtractPlugin({
 			filename: 'bundles/' + filename + '.css',
-			chunkFilename: 'chunks/' + chunkname + '.css'
+			chunkFilename: 'chunks/' + chunkname + '.css',
 		}),
 
 		new HtmlWebpackPlugin({
@@ -126,7 +128,7 @@ module.exports = {
 						loader: 'url-loader',
 						options: {
 							limit: 5000,
-							name: 'assets/' + filename + '.[ext]'
+							name: 'assets/' + filename + '.[ext]',
 						}
 					}
 				]
