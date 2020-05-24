@@ -109,7 +109,7 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+				test: /\.woff$|\.ttf$|\.wav$|\.mp3$/,
 				use: [
 					{
 						loader: 'file-loader',
@@ -120,11 +120,12 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.woff$|\.ttf$|\.wav$|\.mp3$/,
+				test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
 				use: [
 					{
-						loader: 'file-loader',
+						loader: 'url-loader',
 						options: {
+							limit: 5000,
 							name: 'assets/' + filename + '.[ext]'
 						}
 					}
