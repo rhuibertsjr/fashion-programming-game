@@ -1,3 +1,4 @@
+
 const express = require("express");
 const http = require('http');
 const socketIo = require('socket.io');
@@ -19,11 +20,12 @@ app.use(cors());
 app.use(router);
 
 io.on('connection', socket => {
-    console.log('A user connected ' + socket.id);
+    const {id} = socket.client;
+    console.log('A user connected ' + id);
     // let's user join a room
     socket.on('join',  ({room}, callback) => {
 
-        const {error, user} = addUser({id: socket.id, room});
+        const {error, user} = addUser({id: id, room});
         if (error) return callback(error);
         socket.join(user.room);
 
@@ -36,7 +38,7 @@ io.on('connection', socket => {
 
     // Chat
     socket.on('chat message', msg => {
-        console.log(`${socket.id}: ${msg}`);
+        console.log(`${id}: ${msg}`);
         io.emit('chat message', msg);
     });
 
@@ -55,7 +57,7 @@ io.on('connection', socket => {
 
 
 
-    socket.on('disconnect', () => console.log('a user disconnected ' + socket.id));
+    socket.on('disconnect', () => console.log('a user disconnected ' + id));
 });
 
 

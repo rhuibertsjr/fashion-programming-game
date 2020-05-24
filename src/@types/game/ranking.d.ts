@@ -36,4 +36,5 @@ interface LevelContent {
 
 interface IRankingState {
 	rank: Ranking
+	toggle: boolean
 }
