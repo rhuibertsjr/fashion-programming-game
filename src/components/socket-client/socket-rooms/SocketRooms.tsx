@@ -2,15 +2,14 @@ import React, {useEffect, useState} from "react";
 import {socket, ENDPOINT} from "@components/socket-client/SocketClient";
 import queryString from "query-string";
 
+import './room.module.less';
 
 function SocketRooms() {
     const [room, setRoom] = useState('');
     const [users, setUsers] = useState('');
 
-
     useEffect(() => {
         const {room} = queryString.parse(location.search);
-
         // @ts-ignore
         setRoom(room);
         socket.emit('join', {room}, (error: any) => {
@@ -26,6 +25,7 @@ function SocketRooms() {
         });
         console.log(users);
     }, []);
+
 
     return (
         <div className="room-title">
