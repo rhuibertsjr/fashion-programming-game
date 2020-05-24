@@ -5,39 +5,39 @@ import './chat.module.less';
 // @ts-ignore
 class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
 
-    constructor(props: any) {
-        super(props);
-        this.state = {
-            msg: "",
-            chat: []
-        };
+    constructor() {
+        // @ts-ignore
+        super();
+        this.state = { msg: "", chat: [] };
     }
 
     componentDidMount() {
         // @ts-ignore
-        socket.on("chat message", ({id}: number, {msg}: string) => {
+        socket.on("chat message", ({ id, msg }) => {
+            console.log(msg);
             this.setState({
-                chat: [...this.state.chat, {id, msg}]
-            })
-        })
+                chat: [...this.state.chat, { id, msg }]
+            });
+        });
     }
 
-    onTextChange = (e:any) => {
-        this.setState({msg: e.target.value});
-    }
+    onTextChange = (e: any)=> {
+        console.log(this.state.msg);
+        this.setState({ msg: e.target.value });
+    };
 
     onMessageSubmit = () => {
+        console.log(this.state.msg);
         socket.emit("chat message", this.state.msg);
-        this.setState({msg: ""})
-    }
+        this.setState({ msg: "" });
+    };
 
-
-    private renderChat() {
-        const {chat} = this.state;
-        // @ts-ignore
-        return chat.map(({id}: number,{msg}: string, idx) => (
+    renderChat() {
+        const { chat } = this.state;
+        console.log(this.state.msg);
+        return chat.map(({ id, msg }: any, idx: any) => (
             <div key={idx}>
-                <span style={{color: "green"}}> {id}: </span>
+                <span style={{ color: "green" }}>{id}: </span>
 
                 <span>{msg}</span>
             </div>
