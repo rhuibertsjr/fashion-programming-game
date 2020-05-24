@@ -17,8 +17,7 @@ const less = modules => ({
 			loader: MiniCssExtractPlugin.loader,
 			options: {
 				hmr: dev,
-				reloadAll: true,
-
+				reloadAll: true
 			}
 		},
 		{
@@ -62,15 +61,13 @@ module.exports = {
 			'@components': path.resolve(__dirname, '../src/components'),
 			'@containers': path.resolve(__dirname, '../src/containers'),
 			'@pages': path.resolve(__dirname, '../src/pages')
-
 		}
 
 	},
 	plugins: [
-
 		new MiniCssExtractPlugin({
 			filename: 'bundles/' + filename + '.css',
-			chunkFilename: 'chunks/' + chunkname + '.css',
+			chunkFilename: 'chunks/' + chunkname + '.css'
 		}),
 
 		new HtmlWebpackPlugin({
@@ -111,24 +108,12 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.woff$|\.ttf$|\.wav$|\.mp3$/,
+				test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
 				use: [
 					{
 						loader: 'file-loader',
 						options: {
 							name: 'assets/' + filename + '.[ext]'
-						}
-					}
-				]
-			},
-			{
-				test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-				use: [
-					{
-						loader: 'url-loader',
-						options: {
-							limit: 5000,
-							name: 'assets/' + filename + '.[ext]',
 						}
 					}
 				]
