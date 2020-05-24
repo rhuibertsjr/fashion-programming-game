@@ -19,6 +19,7 @@ export const Dashboard = (): JSX.Element =>
 	
 	const characterLib = new Character();
 	const currentCharacter = characterLib.getCharacter();
+	const username = localStorage.getItem('username');
 	
 	return (
 		<Fragment>
@@ -31,7 +32,7 @@ export const Dashboard = (): JSX.Element =>
 			<div className={s.appDashboardContainer}>
 				<div className={s.appDashboardContainerUser}>
 					<div className={s.appDashboardContainerUserFloor} />
-					<h1> [Character Name] </h1>
+					<h1> {username ? username : ''} </h1>
 					<div className={s.appDashboardContainerUserProfile}>
 						<img src={character[currentCharacter]} alt="Dresscode Character"/>
 						<img src={clothes} alt="Dresscode Character"/>
