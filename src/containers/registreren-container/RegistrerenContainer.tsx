@@ -82,14 +82,43 @@ class RegistrerenContainer extends PureComponent<{}, IRegistrerenState> {
 						<label>
 							<input
 								type="text"
+								name="Naam"
+								className={s.formInput}
+								placeholder="Naam"
+								formNoValidate
+							/>
+						</label>
+						<label>
+							<input
+								type="text"
 								name="username"
 								className={s.formInput}
-								placeholder="Username"
+								placeholder="Gebruikersnaam"
 								onChange={this.handleChange}
 								formNoValidate
 							/>
 						</label>
 						{ errors.username.length > 0 && <span className={s.error}>{errors.username}</span> }
+					</div>
+					<div className={s.formAge}>
+						<label>
+							<input
+								type="text"
+								name="birthday"
+								className={s.formInput}
+								placeholder="Geboortedatum"
+								formNoValidate
+							/>
+						</label>
+						<label>
+							<input
+								type="text"
+								name="birthyear"
+								className={`${s.formInput} ${s.birthyear}`}
+								placeholder="Geboortejaar"
+								formNoValidate
+							/>
+						</label>
 					</div>
 					<div className={s.formEmail}>
 						<label>

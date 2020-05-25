@@ -9,7 +9,9 @@ declare interface Character
 	
 	nextCharacter(): void;
 	
-	previousCharacter(): void
+	previousCharacter(): void;
+	
+	isMemeber(): boolean;
 }
 
 declare interface ICharacterHubState

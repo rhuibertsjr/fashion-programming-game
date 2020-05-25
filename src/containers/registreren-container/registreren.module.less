@@ -3,6 +3,7 @@
 .form {
   position: relative;
   height: auto; width: 100%;
+  margin: 10vh 0;
 
   &-username {
     margin: 5vh;
@@ -26,7 +27,23 @@
 
   }
 
-  &-username input, &-email input {
+  &-age {
+    margin: 5vh;
+
+    input {
+      background: url("../../../src/assets/icons/calendar.svg") no-repeat scroll 7% 50%;
+      background-size: 8%;
+      padding-left: 50px !important;
+    }
+
+    .birthyear {
+      background: url("../../../src/assets/icons/cake.svg") no-repeat scroll 7% 50%;
+      background-size: 9%;
+      padding-left: 50px !important;
+    }
+  }
+
+  &-username input, &-email input, &-age input {
     padding: 17px;
     border-radius: 25px;
     -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
@@ -34,11 +51,21 @@
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
     border: none;
     width: 40%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
+    letter-spacing: .8px;
+    color: #707070;
+    margin-right: 10%;
     font-size: 1.4vh;
   }
 
-  &-username input:focus, &-email input:focus {
+  &-username input::placeholder , &-email input::placeholder , &-age input::placeholder {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: bold;
+    letter-spacing: .8px;
+    color: #BEBEBE;
+  }
+
+  &-username input:focus, &-email input:focus, &-age input:focus {
     border: 2px solid #21C8E5;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -52,6 +79,7 @@
     position: relative;
     height: 10%; width: 100%;
     margin-bottom: 5vh;
+    margin-top: 10vh;
 
     p {
       display: inline-block;
@@ -92,19 +120,22 @@
     right: 10vw; bottom: 5vh;
     transform: translateX(50vw);
 
+    button {   background: url("../../../src/assets/icons/next_arrow.svg") no-repeat scroll 90% 55% }
     button {
       font-size: 2vh;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto Slab', sans-serif;
       border: none;
       color: #FFFFFF;
       background-color: #E96597;
       border-radius: 20px;
-      padding: 10px 15px;
+      padding: 10px 35px;
     }
   }
 
   .error {
-
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 1.7vh;
+    color: #FD659B;
   }
 
 }

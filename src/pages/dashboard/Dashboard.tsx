@@ -29,7 +29,11 @@ export const Dashboard = (): JSX.Element =>
 		<Fragment>
 			<Title
 				suffex={
-					<div className={s.button}> Help </div>
+					<div className={s.button}>
+						<Link to="/uitleg/hello">
+							Help
+						</Link>
+					</div>
 				}
 			/>
 			<RankingComponent />
@@ -67,7 +71,7 @@ export const Dashboard = (): JSX.Element =>
 									<div className={s.block} />
 									<div className={s.block} />
 									<Link to="/modeshow">
-										<div className={s.block} />
+										<div className={s.block}  />
 									</Link>
 								</div>
 							</div>

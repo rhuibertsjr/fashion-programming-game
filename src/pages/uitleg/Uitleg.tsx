@@ -11,7 +11,11 @@ export const Uitleg = (): JSX.Element =>
 (
 	<Fragment>
 		<Title suffex={
-			<div className={s.button}> Help </div>
+			<div className={s.button}>
+				<Link to="/uitleg/hello">
+					Help
+				</Link>
+			</div>
 		}/>
 		<div className={s.uitlegContainer}>
 			<div className={s.uitlegTitle}> Hoe werkt het? </div>

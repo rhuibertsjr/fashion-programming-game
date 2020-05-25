@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Title, RankingComponent } from "@components/index";
+import { Link } from "react-router-dom";
 import s from './modeshow.module.less'
 
 import spotlight from '@assets/images/spotlight.png';
@@ -12,7 +13,11 @@ export const Modeshow = (): JSX.Element =>
 		<Fragment>
 			<Title
 				suffex={
-					<div className={s.button}> Help </div>
+					<div className={s.button}>
+						<Link to="/uitleg/hello">
+							Help
+						</Link>
+					</div>
 				}
 			/>
 			<RankingComponent />
