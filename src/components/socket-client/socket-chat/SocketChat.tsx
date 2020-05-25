@@ -43,26 +43,31 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
         const { chat } = this.state;
         return chat.map(({ id, msg }: any, idx: any) => (
             <div key={idx}>
-                <div style={{color: 'grey'}}>{id}: </div>
-                <div style={{color: 'grey'}}>{msg}</div>
+                <div className="usernameDiv">{id}</div>
+                <div className="messageDiv">{msg}</div>
             </div>
 
         ));
     }
 
    public render() {
+        // The title is possible
        return (
            <div>
                <div style={{paddingLeft: '45%'}}>
                    <SocketRooms />
                </div>
                <div className="chatContainerDiv">{this.renderChat()}</div>
-               <textarea
-                   className="inputField"
-                   onChange={e => this.onTextChange(e)}
-                   value={this.state.msg} rows={13}
-                   placeholder="Hier kan je type..."/>
-               <button className="versturenButton" onClick={this.onMessageSubmit}>Versturen</button>
+               <div className="inputContainerDiv">
+                   <textarea
+                       className="inputField"
+                       onChange={e => this.onTextChange(e)}
+                       value={this.state.msg} rows={13}
+                       placeholder="Hier kan je type..."
+                       spellCheck={"true"}
+                   />
+                   <button className="versturenButton" onClick={this.onMessageSubmit}>Versturen</button>
+               </div>
            </div>
        );
    }
