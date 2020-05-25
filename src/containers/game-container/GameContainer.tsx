@@ -94,8 +94,6 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 			container
 		);
 		
-		console.log(this.state.stage);
-		
 		this.setState({ stage: stage, old_stage: stage });
 		this.currentGameLoop();
 	};
@@ -116,7 +114,6 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		
 		// @ts-ignore
 		const PIXIJS = PIXI;
-		console.log(this.props.code);
 		eval(this.props.code);
 		
 		this.currentGameLoop();
