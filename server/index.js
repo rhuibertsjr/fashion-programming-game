@@ -21,7 +21,7 @@ app.use(router);
 
 io.on('connection', socket => {
     const {id} = socket.client;
-    console.log('A user connected ' + id);
+    console.log('A user connected: ' + id);
     // let's user join a room
     socket.on('join',  ({room}, callback) => {
 
@@ -39,7 +39,7 @@ io.on('connection', socket => {
     // Chat
     socket.on('chat message', msg => {
         console.log(`${id}: ${msg}`);
-        io.emit('chat message', msg);
+        io.emit('chat message', {id, msg});
     });
 
     // share the code the user made
