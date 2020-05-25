@@ -36,7 +36,7 @@ class RegistrerenContainer extends PureComponent<{}, IRegistrerenState> {
 		switch (name)
 		{
 			case 'username':
-				errors.username = value.length < 5 ? 'De gebruikers naam moet minimaal 5 letters lang zijn' : '';
+				errors.username = value.length > 15 ? 'De gebruikers naam mag maximaal 15 letters lang zijn' : '';
 				break;
 			case 'email':
 				errors.email = !validEmailRegex.test(value) ? 'Deze email is niet geldig.' : '';
@@ -45,8 +45,10 @@ class RegistrerenContainer extends PureComponent<{}, IRegistrerenState> {
 				break;
 		}
 		
-		this.setState({ errors, username: value, email: value }, () => {
-			console.log(errors);
+		// @ts-ignore
+		this.setState({
+			errors,
+			[name]: value
 		});
 		
 	};
@@ -54,9 +56,9 @@ class RegistrerenContainer extends PureComponent<{}, IRegistrerenState> {
 	private handleSubmit = (event: any): void =>
 	{
 		event.preventDefault();
-		if (validateForm(this.state.errors))
+		if (validateForm(this.state.errors) && this.state.username != null)
 		{
-			console.info('Valid Form');
+			localStorage.setItem('username', this.state.username)
 		}
 		else
 		{
@@ -80,14 +82,43 @@ class RegistrerenContainer extends PureComponent<{}, IRegistrerenState> {
 						<label>
 							<input
 								type="text"
+								name="Naam"
+								className={s.formInput}
+								placeholder="Naam"
+								formNoValidate
+							/>
+						</label>
+						<label>
+							<input
+								type="text"
 								name="username"
 								className={s.formInput}
-								placeholder="Username"
+								placeholder="Gebruikersnaam"
 								onChange={this.handleChange}
 								formNoValidate
 							/>
 						</label>
 						{ errors.username.length > 0 && <span className={s.error}>{errors.username}</span> }
+					</div>
+					<div className={s.formAge}>
+						<label>
+							<input
+								type="text"
+								name="birthday"
+								className={s.formInput}
+								placeholder="Geboortedatum"
+								formNoValidate
+							/>
+						</label>
+						<label>
+							<input
+								type="text"
+								name="birthyear"
+								className={`${s.formInput} ${s.birthyear}`}
+								placeholder="Geboortejaar"
+								formNoValidate
+							/>
+						</label>
 					</div>
 					<div className={s.formEmail}>
 						<label>
@@ -113,12 +144,13 @@ class RegistrerenContainer extends PureComponent<{}, IRegistrerenState> {
 							<p>Ik ga akkoord met de <span>regels</span> en <span>algemene voorwaarden</span> van dit spel.</p>
 						</label>
 					</div>
-				
 				</form>
 				<div className={s.formButton}>
-					<Link to="/uitleg/hello">
-						<button> Volgende stap </button>
-					</Link>
+					<button onClick={this.handleSubmit}>
+						<Link style={{ textDecoration: 'none', color: '#FFFFFF' }} to="/uitleg/hello">
+							Volgende stap
+						</Link>
+					</button>
 				</div>
 			</Fragment>
 		);

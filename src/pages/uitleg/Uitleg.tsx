@@ -11,7 +11,11 @@ export const Uitleg = (): JSX.Element =>
 (
 	<Fragment>
 		<Title suffex={
-			<div className={s.button}> Help </div>
+			<div className={s.button}>
+				<Link to="/uitleg/hello">
+					Help
+				</Link>
+			</div>
 		}/>
 		<div className={s.uitlegContainer}>
 			<div className={s.uitlegTitle}> Hoe werkt het? </div>
@@ -57,7 +61,7 @@ export const Uitleg = (): JSX.Element =>
 					</div>
 				</div>
 			</div>
-			<Link to="/werkplaats">
+			<Link to="/dashboard">
 				<div className={`${s.secondButton} ${s.nextButton}`}> Volgende Stap </div>
 			</Link>
 			<Route path="/uitleg/hello">

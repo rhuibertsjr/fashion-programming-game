@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import s from './registreren.module.less';
-import { Title } from "@components/title/Title";
+import { Character, Title } from "@components/index";
+import { Link, Redirect } from "react-router-dom";
 
 import RegistrerenContainer from "@containers/registreren-container/RegistrerenContainer";
 import { CharacterHub } from "./components/index";
@@ -10,7 +11,11 @@ export const Registreren = (): JSX.Element =>
 	return (
 		<Fragment>
 			<Title suffex={
-				<div className={s.button}> Help </div>
+				<div className={s.button}>
+					<Link to="/uitleg/hello">
+						Help
+					</Link>
+				</div>
 			}/>
 			<div className={s.registrerenContainer} >
 				<div className={s.registreren}>
@@ -27,9 +32,12 @@ export const Registreren = (): JSX.Element =>
 					
 				</div>
 				<div className={s.userProfiel}>
-					<CharacterHub  />
+					<CharacterHub />
 				</div>
 			</div>
+			{
+				new Character().isMemeber() ? '' : <Redirect to="/login"/>
+			}
 		</Fragment>
 	)
 };

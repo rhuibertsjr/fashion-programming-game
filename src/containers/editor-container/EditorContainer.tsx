@@ -69,13 +69,11 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	private nextLevel = (): void =>
 	{
 		this.state.ranking.incrementLevel();
-		console.log(this.state.ranking.getLevelDetails());
 	};
 	
 	private previousLevel = (): void =>
 	{
 		this.state.ranking.decreaseLevel();
-		console.log(this.state.ranking.getLevelDetails());
 	};
 	
 	private clearWorkspace = (): void =>
@@ -88,7 +86,9 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 	public render(): JSX.Element
 	{
-		console.log(this.nextLevel(), this.previousLevel());
+		
+		if (this.workspace) console.log(this.nextLevel(), this.previousLevel());
+		
 		return (
 			<Fragment>
 				<Title />
@@ -98,7 +98,6 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 						<button onClick={this.onRunEventHandler} />
 						<button onClick={() => {
 							this.setState({ visualCodeToggle: !this.state.visualCodeToggle });
-							console.log('pressed');
 						}} />
 					</div>
 					<div

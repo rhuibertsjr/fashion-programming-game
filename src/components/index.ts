@@ -12,6 +12,10 @@ export {
 } from './ranking/Ranking';
 
 export {
+	Character
+} from './character/Character';
+
+export {
 	Modal
 } from './modal/Modal';
 

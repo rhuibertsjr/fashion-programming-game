@@ -1,53 +1,83 @@
 import React, {Fragment, useState} from 'react';
-import s from './dashboard.module.less'
-import { Title, RankingComponent } from "@components/index";
+import {Title, RankingComponent, Character} from "@components/index";
+import { Link } from "react-router-dom";
 
-import character_2 from '@assets/game/characters/character_1.png';
+import s from './dashboard.module.less'
+
+import char1 from '@assets/game/characters/character_1.png';
+import char2 from '@assets/game/characters/character_2.png';
+import char3 from '@assets/game/characters/character_3.png';
+import char4 from '@assets/game/characters/character_4.png';
 import clothes from '@assets/game/clothes/clothes_1.png';
-import {Link} from "react-router-dom";
 
 export const Dashboard = (): JSX.Element =>
 {
+
+	let [ showPanel, setPanel ] = useState(false);
+
+	const character = [
+		char1, char2, char3, char4
+	];
+
+	const characterLib = new Character();
+	const currentCharacter = characterLib.getCharacter();
+	const username = localStorage.getItem('username');
+
+
+
 	const [room, setRoom] = useState('');
 
 	return (
 		<Fragment>
 			<Title
 				suffex={
-					<div className={s.button}> Help </div>
+					<div className={s.button}>
+						<Link to="/uitleg/hello">
+							Help
+						</Link>
+					</div>
 				}
 			/>
 			<RankingComponent />
 			<div className={s.appDashboardContainer}>
 				<div className={s.appDashboardContainerUser}>
 					<div className={s.appDashboardContainerUserFloor} />
-					<h1> [Character Name] </h1>
+					<h1> {username ? username : ''} </h1>
 					<div className={s.appDashboardContainerUserProfile}>
-						<img src={character_2} alt="Dresscode Character"/>
+						<img src={character[currentCharacter]} alt="Dresscode Character"/>
 						<img src={clothes} alt="Dresscode Character"/>
 					</div>
 					<div className={s.appDashboardContainerUserPaletteContainer}>
 						<div className={s.info}>
-							<p>Hier worden de patronen opgeslagen. Bij het ben je klaar om jouw gemaakte patronen te showen op de modeshow.</p>
-							<button> Volgende </button>
-						</div>
-						<div className={s.pallete}>
-							<div className={s.column}>
-								<div className={s.block} />
-								<div className={s.block} />
-								<div className={s.block} />
+							<div className={s.infoFirstView} style={ showPanel ? { opacity: '0' } : { opacity: '1' } }>
+								<p>Hier worden de patronen opgeslagen. Bij het ben je klaar om jouw gemaakte patronen te showen op de modeshow.</p>
+								<button onClick={() => setPanel(true)}> Volgende </button>
 							</div>
-							<div className={s.column}>
-								<div className={s.block} />
-								<div className={s.block} />
-								<div className={s.block} />
-							</div>
-							<div className={s.column}>
-								<div className={s.block} />
-								<div className={s.block} />
-								<div className={s.block} />
+							<div className={s.infoSecondView} style={ showPanel ? { opacity: '1' } : { opacity: '0' } }>
+								<p>Op jouw dashboard kun je je vriendenlijst zien en de code die je door kunt sturen. Start het spel door op het aangegeven + te klikken</p>
 							</div>
 						</div>
+						<Link to="/werkplaats">
+							<div className={s.pallete}>
+								<div className={s.column}>
+									<div className={s.block} />
+									<div className={s.block} />
+									<div className={s.block} />
+								</div>
+								<div className={s.column}>
+									<div className={s.block} />
+									<div className={s.block} />
+									<div className={s.block} />
+								</div>
+								<div className={s.column}>
+									<div className={s.block} />
+									<div className={s.block} />
+									<Link to="/modeshow">
+										<div className={s.block}  />
+									</Link>
+								</div>
+							</div>
+						</Link>
 					</div>
 				</div>
 				<div className={s.appDashboardContainerFriendlist}>

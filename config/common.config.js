@@ -2,6 +2,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const appConfig = require('./app/app');
 const theme = require('./app/theme');
 
@@ -60,12 +61,10 @@ module.exports = {
 			'@components': path.resolve(__dirname, '../src/components'),
 			'@containers': path.resolve(__dirname, '../src/containers'),
 			'@pages': path.resolve(__dirname, '../src/pages')
-
 		}
 
 	},
 	plugins: [
-
 		new MiniCssExtractPlugin({
 			filename: 'bundles/' + filename + '.css',
 			chunkFilename: 'chunks/' + chunkname + '.css'
@@ -85,6 +84,7 @@ module.exports = {
 			title: appConfig['dresscode.app.name'],
 			noscript: appConfig['dresscode.app.noscript'],
 			template: path.join(__dirname, '../public', 'index.ejs'),
+			favicon: 'public/favicon.png',
 
 			meta: {
 				viewport: 'width=device-width, initial-scale=1',
@@ -110,17 +110,6 @@ module.exports = {
 			},
 			{
 				test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-				use: [
-					{
-						loader: 'file-loader',
-						options: {
-							name: 'assets/' + filename + '.[ext]'
-						}
-					}
-				]
-			},
-			{
-				test: /\.woff$|\.ttf$|\.wav$|\.mp3$/,
 				use: [
 					{
 						loader: 'file-loader',

@@ -31,9 +31,10 @@ module.exports = merge(common, {
 					mangle: true
 				}
 			}),
-			new OptimizeCssAssetsPlugin({})
-		]
+			new OptimizeCssAssetsPlugin({
 
+			})
+		]
 	},
 
 	plugins: [
