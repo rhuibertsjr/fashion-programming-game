@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, {Fragment, useState} from 'react';
 import {Title, RankingComponent, Character} from "@components/index";
 import { Link } from "react-router-dom";
 
@@ -13,6 +13,8 @@ import clothes from '@assets/game/clothes/clothes_1.png';
 export const Dashboard = (): JSX.Element =>
 {
 	
+	let [ showPanel, setPanel ] = useState(false);
+	
 	const character = [
 		char1, char2, char3, char4
 	];
@@ -20,6 +22,8 @@ export const Dashboard = (): JSX.Element =>
 	const characterLib = new Character();
 	const currentCharacter = characterLib.getCharacter();
 	const username = localStorage.getItem('username');
+	
+	
 	
 	return (
 		<Fragment>
@@ -39,8 +43,13 @@ export const Dashboard = (): JSX.Element =>
 					</div>
 					<div className={s.appDashboardContainerUserPaletteContainer}>
 						<div className={s.info}>
-							<p>Hier worden de patronen opgeslagen. Bij het ben je klaar om jouw gemaakte patronen te showen op de modeshow.</p>
-							<button> Volgende </button>
+							<div className={s.infoFirstView} style={ showPanel ? { opacity: '0' } : { opacity: '1' } }>
+								<p>Hier worden de patronen opgeslagen. Bij het ben je klaar om jouw gemaakte patronen te showen op de modeshow.</p>
+								<button onClick={() => setPanel(true)}> Volgende </button>
+							</div>
+							<div className={s.infoSecondView} style={ showPanel ? { opacity: '1' } : { opacity: '0' } }>
+								<p>Op jouw dashboard kun je je vriendenlijst zien en de code die je door kunt sturen. Start het spel door op het aangegeven + te klikken</p>
+							</div>
 						</div>
 						<Link to="/werkplaats">
 							<div className={s.pallete}>
@@ -57,7 +66,9 @@ export const Dashboard = (): JSX.Element =>
 								<div className={s.column}>
 									<div className={s.block} />
 									<div className={s.block} />
-									<div className={s.block} />
+									<Link to="/modeshow">
+										<div className={s.block} />
+									</Link>
 								</div>
 							</div>
 						</Link>
