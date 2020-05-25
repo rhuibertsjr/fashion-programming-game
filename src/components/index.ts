@@ -12,9 +12,13 @@ export {
 } from './ranking/Ranking';
 
 export {
-	Input
-} from './input/Input';
+	Character
+} from './character/Character';
 
 export {
 	Modal
 } from './modal/Modal';
+
+export {
+	RankingComponent
+} from './ranking/RankingComponent';

@@ -1,0 +1,94 @@
+
+.ranking-container { background-color: #FAE5E8 }
+.ranking-container {
+  position: relative;
+  width: 100%; height: 10vh;
+
+  &-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    height: 100%; width: 40%;
+    right: 0; top: 0;
+
+    button {
+      font-family: 'Roboto Slab', sans-serif;
+      font-size: 2vh;
+      color: #FFFFFF;
+    }
+
+    button {
+      position: relative;
+      padding: 10px 15px;
+
+      border-radius: 20px;
+      border: none;
+
+      -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+      -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+    }
+
+    button:nth-child(1) {
+      background: url("../../../src/assets/icons/flip_arrow.svg") no-repeat scroll 10% 50%;
+      background-size: 5%;
+      width: 35%;
+    }
+
+    button:nth-child(1){ background-color: #21C8E5 }
+    button:nth-child(2){ background-color: #7572B0 }
+
+  }
+
+}
+
+.rankings {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%; width: 60%;
+
+  &-button {
+    position: relative;
+    height: 50px; width: 50px;
+    margin: 20px;
+    background: url("../../../src/assets/icons/level_arrow.svg") no-repeat 50% 50%;
+    background-size: contain;
+    border: none;
+  }
+  &-button:nth-child(2) { transform: rotateY(180deg) }
+
+  &-level {
+    position: relative;
+    height: 50px; width: 55px;
+    background: url("../../../src/assets/icons/star.svg") no-repeat;
+    background-size: contain;
+    margin: 0 .5vw;
+
+    p {
+      position: absolute;
+      transform: translate(-60%, -50%);
+      top: 50%;
+      left: 50%;
+    }
+  }
+
+  &-points {
+    position: relative;
+    height: 50px; width: 50px;
+    background: url("../../../src/assets/icons/heart.svg") no-repeat 50% 50%;
+    background-size: contain;
+    margin-left: 10px;
+  }
+
+  p {
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 2vh;
+    color: #7572B0;
+  }
+
+}

@@ -1,11 +1,12 @@
 import React, { PureComponent, createRef, RefObject } from "react";
+import { Character } from "@components/character/Character";
 import * as PIXI from 'pixi.js';
 import s from './game.module.less';
 
-import character_1 from '@assets/game/characters/character_1.png';
-import character_2 from '@assets/game/characters/character_2.png';
-import character_3 from '@assets/game/characters/character_3.png';
-import character_4 from '@assets/game/characters/character_4.png';
+import char1 from '@assets/game/characters/character_1.png';
+import char2 from '@assets/game/characters/character_2.png';
+import char3 from '@assets/game/characters/character_3.png';
+import char4 from '@assets/game/characters/character_4.png';
 import clothes_1 from '@assets/game/clothes/clothes_1.png';
 
 class GameContainer extends PureComponent<IGameProps, IGameState>
@@ -15,27 +16,9 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 	
 	public state: IGameState = {
 		charachters: [
-			{
-				body: PIXI.Sprite.from(character_1),
-				playable: true,
-				active: false
-			},
-			{
-				body: PIXI.Sprite.from(character_2),
-				playable: true,
-				active: true
-			},
-			{
-				body: PIXI.Sprite.from(character_3),
-				playable: true,
-				active: false
-			},
-			{
-				body: PIXI.Sprite.from(character_4),
-				playable: true,
-				active: false
-			}
+			char1, char2, char3, char4
 		],
+		currentCharacter: new Character().getCharacter(),
 		clothes: [
 			PIXI.Sprite.from(clothes_1)
 		],
@@ -49,8 +32,8 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		this.gameRef = createRef();
 		this.game = new PIXI.Application({
 			backgroundColor: 0xffffff,
-			width: 2300,
-			height: 3200,
+			width: 600,
+			height: 800,
 		});
 		PIXI.settings.RESOLUTION = window.devicePixelRatio;
 	}
@@ -86,22 +69,15 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		
 		const backstage = new PIXI.Graphics();
 		backstage.beginFill(0xFAFAFA);
-		backstage.drawRect(0, this.game.renderer.height - 300, this.game.renderer.width, 300);
+		backstage.drawRect(0, this.game.renderer.height - 100, this.game.renderer.width, 100);
 		backstage.endFill();
 		
-		let body = this.state.charachters[0].body;
-		this.state.charachters.map((character) =>
-		{
-			if (character.playable && character.active) {
-				body = character.body;
-			}
-			
-			body.anchor.set(.5, .5);
-			body.position.set(
-				this.game.renderer.width / 2,
-				this.game.renderer.height /2
-			);
-		});
+		let body = PIXI.Sprite.from(this.state.charachters[this.state.currentCharacter]);
+		body.anchor.set(.5, .5);
+		body.position.set(
+			this.game.renderer.width / 2,
+			this.game.renderer.height / 2
+		);
 		
 		let character_clothes = this.state.clothes[0];
 		character_clothes.anchor.set(.5, .5);
@@ -117,8 +93,6 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 			under,
 			container
 		);
-		
-		console.log(this.state.stage);
 		
 		this.setState({ stage: stage, old_stage: stage });
 		this.currentGameLoop();
@@ -140,7 +114,6 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		
 		// @ts-ignore
 		const PIXIJS = PIXI;
-		console.log(this.props.code);
 		eval(this.props.code);
 		
 		this.currentGameLoop();

@@ -33,3 +33,7 @@ declare interface Ranking {
 interface LevelContent {
 	title: string
 }
+
+interface IRankingState {
+	rank: Ranking
+}

@@ -10,7 +10,11 @@ export const Login = (): JSX.Element =>
 	return (
 		<Fragment>
 			<Title suffex={
-				<div className={s.button}> Help </div>
+				<div className={s.button}>
+					<Link to="/uitleg/hello">
+						Help
+					</Link>
+				</div>
 			}/>
 			<div className={s.loginContainer}>
 				<div className={s.retrieveLogin}>

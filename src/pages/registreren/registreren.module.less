@@ -3,15 +3,22 @@
   font-size: 2vh;
   font-family: 'Roboto', sans-serif;
   color: #FFFFFF;
-  background-color: #E96597;
   border-radius: 20px;
 
   position: absolute;
   right: 10vw;
   padding: 10px 15px;
-  background: url("/src/assets/icons/warning.svg") no-repeat scroll 10% 50%;
+  background: #E96597 url("../../../src/assets/icons/warning.svg") no-repeat scroll 10% 50%;
   background-size: 25%;
   padding-left: 35px !important;
+
+  a {
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+
 }
 
 .registreren-container {
@@ -38,7 +45,7 @@
 .registreren-introductie {
   position: relative;
 
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
   color: #707070;
   line-height: 1.2;
 
@@ -58,14 +65,14 @@
   flex-direction: row;
   align-items: center;
   position: relative;
-  width: 80%; height: 50%;
+  width: 90%; height: 50%;
   margin: 0 auto;
 
   &-portret {
     position: relative;
     border-radius: 50%;
     border: 10px solid #21C8E5;
-    width: 400px; height: 400px;
+    width: 25vw; height: 25vw;
     overflow: hidden;
 
     -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
@@ -87,7 +94,7 @@
   }
 
   &-arrow {
-    background-image: url("/src/assets/icons/arrow.svg");
+    background-image: url("../../../src/assets/icons/arrow.svg");
     background-color: #21C8E5;
     background-size: 40%;
     background-position: 50% 50%;
