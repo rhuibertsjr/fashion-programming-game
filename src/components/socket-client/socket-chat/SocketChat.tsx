@@ -30,10 +30,7 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
         this.setState({ msg: "" });
     };
 
-    // @ts-ignore
     private renderChat() {
-        const { chat } = this.state;
-
         /*
            @TODO: check if it comes from the user and then give it
                 a different styling.
@@ -42,12 +39,14 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
         // if (!isCurrentUser) {
         //     isCurrentUser = true;
         // }
-        return chat.map(({ id, msg }: any, idx: any) => (
-                <div key={idx} style={{padding: '20px'}}>
-                    <div style={{ color: "green" }}>{id}: </div>
 
-                    <div style={{color: 'black'}}>{msg}</div>
-                </div>
+        const { chat } = this.state;
+        return chat.map(({ id, msg }: any, idx: any) => (
+            <div key={idx}>
+                <div style={{color: 'grey'}}>{id}: </div>
+                <div style={{color: 'grey'}}>{msg}</div>
+            </div>
+
         ));
     }
 
@@ -57,7 +56,7 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
                <div style={{paddingLeft: '45%'}}>
                    <SocketRooms />
                </div>
-               <div className="chatContainerDiv">{this.renderChat}</div>
+               <div className="chatContainerDiv">{this.renderChat()}</div>
                <textarea
                    className="inputField"
                    onChange={e => this.onTextChange(e)}
