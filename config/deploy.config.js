@@ -5,6 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const path = require('path');
 
 // @ToDo: Add auto-deploy functions
@@ -31,9 +32,7 @@ module.exports = merge(common, {
 					mangle: true
 				}
 			}),
-			new OptimizeCssAssetsPlugin({
-
-			})
+			new OptimizeCssAssetsPlugin({}),
 		]
 	},
 
@@ -42,7 +41,8 @@ module.exports = merge(common, {
 		new CopyPlugin([
 			path.join(__dirname, '.htacces'),
 			path.join(__dirname, 'robots.txt')
-		])
+		]),
+		new CompressionWebpackPlugin({})
 	]
 
 });

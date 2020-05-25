@@ -5,6 +5,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
@@ -31,7 +32,7 @@ module.exports = merge(common, {
 					mangle: true
 				}
 			}),
-			new OptimizeCssAssetsPlugin({})
+			new OptimizeCssAssetsPlugin({}),
 		]
 	},
 
@@ -44,7 +45,8 @@ module.exports = merge(common, {
 		new BundleAnalyzerPlugin({
 			defaultSizes: 'gzip',
 			logLevel: 'debug'
-		})
+		}),
+		new CompressionWebpackPlugin({})
 	]
 
 });
