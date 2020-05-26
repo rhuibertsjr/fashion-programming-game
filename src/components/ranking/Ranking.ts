@@ -14,19 +14,19 @@ const Ranking = function (this: any)
 	[
 		{
 			title: 'Level 1: Het eerste figuur.',
-			paragraph: 'Level 1'
+			paragraph: 'In level 1 ga ik alle blokken uitleggen zodat je precies weet wat je moet doen. Het doel is om de jurk een kleur te geven met 1 cirkel er op. Dit doe je door de blokken op de juiste manier in elkaar te zetten en de cirkel de juiste plek te geven door de goede getallen in te vullen. Succes!'
 		},
 		{
-			title: 'Hallo ik ben level 2',
-			paragraph: 'Level 2'
+			title: 'Level 2:',
+			paragraph: 'In level 2 is het doel om jou gemaakte cirkel te herhalen zodat je een patroon krijgt. Dit doen je door je gemaakte cirkel te combineren met een herhaal blok. In dit blok kan je het aantal herhalingen aanpassen en zo een patroon creëren. Succes!'
 		},
 		{
-			title: 'Hallo ik ben level 3',
-			paragraph: 'Level 3'
+			title: 'Level 3: ',
+			paragraph: 'In level die ga je je voorbereiden op de modeshow. Het doel van dit level is een patroon te maken met twee verschillende vormen. Zoals je in level 2 hebt geleerd een figuur te herhalen, nu moet je een patroon maken met 2 figuren. Dit doe je ook met een blok uit de categorie herhalen. Succes!'
 		},
 		{
-			title: 'Vrijspel',
-			paragraph: 'Vrijspel'
+			title: 'Level 4: Vrijspel!',
+			paragraph: 'Nu je alle level heb afgerond kan je eindelijk een modeshow beginnen.'
 		}
 	];
 	
