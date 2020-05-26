@@ -11,6 +11,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 const {addUser, removeUser, getUser, getUsersInRoom} = require('./client/rooms');
+
 const router = require('./routes/router');
 
 app.use(express.json());
