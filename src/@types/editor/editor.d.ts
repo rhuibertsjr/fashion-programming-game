@@ -3,5 +3,6 @@ declare interface IEditorState
 {
 	code: string,
 	ranking: Ranking,
-	visualCodeToggle: boolean
+	visualCodeToggle: boolean,
+	toggleLevelScreen: boolean
 }

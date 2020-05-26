@@ -129,7 +129,6 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 	{
 		return (
 			<div className={s.appGameContainer}>
-				
 				<div
 					className={s.appGame}
 					ref={this.gameRef}

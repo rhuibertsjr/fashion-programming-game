@@ -10,7 +10,7 @@ import './components/blocks/Language';
 import { toolbox, Styles } from './components';
 import './components/blocks/Blocks';
 import * as sk from "@components/socket-client/SocketClient";
-import { Title, Ranking, RankingComponent } from "@components/index";
+import {Title, Ranking, RankingComponent, Modal} from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
 {
@@ -21,7 +21,8 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	{
 		code: " ",
 		ranking: new Ranking(),
-		visualCodeToggle: false
+		visualCodeToggle: false,
+		toggleLevelScreen: true
 	};
 	
 	constructor(props: any)
@@ -84,6 +85,14 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		}
 	};
 	
+	private levelPopup = (): void =>
+	{
+		this.setState({
+			toggleLevelScreen: !this.state.toggleLevelScreen
+		});
+		this.forceUpdate();
+	};
+	
 	public render(): JSX.Element
 	{
 		
@@ -103,7 +112,17 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					<div
 						className={s.appEditor}
 						ref={this.editor}
-					/>
+					>
+						{
+							this.state.toggleLevelScreen ? <Modal
+								title="Hallo"
+								paragraph="Dit is een test"
+								to="/werkplaats"
+								width={{width: '34%'}}
+								onClick={this.levelPopup}
+							/> : <div />
+						}
+					</div>
 				</div>
 				<GameContainer code={this.state.code} />
 				<div className={s.toolboxButtons}>
@@ -120,4 +139,4 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 }
 
-export default EditorContainer
+export default EditorContainer;
