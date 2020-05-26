@@ -58,11 +58,12 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
                    <SocketRooms />
                </div>
                <div className="chatContainerDiv">{this.renderChat()}</div>
+               <br/>
                <div className="inputContainerDiv">
                    <textarea
                        className="inputField"
                        onChange={e => this.onTextChange(e)}
-                       value={this.state.msg} rows={13}
+                       value={this.state.msg} rows={11}
                        placeholder="Hier kan je type..."
                        spellCheck={"true"}
                    />

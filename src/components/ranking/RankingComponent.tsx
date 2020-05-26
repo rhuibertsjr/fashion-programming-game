@@ -59,7 +59,7 @@ export class RankingComponent extends PureComponent<{}, IRankingState> {
 						<div className={s.rankingContainerButtons}>
 							<button>Terug naar lobby </button>
 							<button onClick={() => {this.setState({toggle: !this.state.toggle})}}>Chat</button>
-							<div className="chatOuterDiv" style={ this.state.toggle ? {right: '0%'} : {right:'-100%'}}>
+							<div className="chatOuterDiv" style={ this.state.toggle ? {right: '0%', display: 'block'} : {right:'-100%', display: 'none'}}>
 								<SocketChat />
 							</div>
 						</div>
