@@ -1,9 +1,13 @@
 import socketIo from 'socket.io-client';
 
-// If you work local change to http://localhost:3000/ or http://127.0.0.1:3000/
-// If you are going to push to Heroku than put https://dresscode-fun.herokuapp.com/
+/*
+you can put this in the 'ENDPOINT'
 
-const ENDPOINT = 'https://dresscode-fun.herokuapp.com';
+If you work local work with http://127.0.0.1:3000 or http://localhost:3000
+if you work or push to Heroku then use https://dresscode-fun.heroku.com
+ */
+const ENDPOINT = 'http://127.0.0.1:3000';
 const socket = socketIo(ENDPOINT);
 
-export {socket}
+
+export { socket, ENDPOINT }

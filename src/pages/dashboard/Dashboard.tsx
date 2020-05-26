@@ -12,17 +12,19 @@ import clothes from '@assets/game/clothes/clothes_1.png';
 
 export const Dashboard = (): JSX.Element =>
 {
-	
+
 	let [ showPanel, setPanel ] = useState(false);
-	
+
 	const character = [
 		char1, char2, char3, char4
 	];
-	
+
 	const characterLib = new Character();
 	const currentCharacter = characterLib.getCharacter();
 	const username = localStorage.getItem('username');
 	
+	const [room, setRoom] = useState('');
+
 	return (
 		<Fragment>
 			<Title
@@ -80,7 +82,13 @@ export const Dashboard = (): JSX.Element =>
 					<div className={s.appDashboardContainerFriendlistText}>
 						<h1> Nodig vrienden uit! </h1>
 						<p>Kopieer deze link en stuur het door naar je vriendinnen om ze uit te nodigen! Hoe leuk is het om met elkaar te kunnen chatten en modeshows van elkaar te bekijken?</p>
-						<input type="text" placeholder="JOUWLINK123"/>
+						<input type="text"
+							   placeholder="JOUWLINK123"
+							   onChange={(event) => setRoom(event.target.value)}
+						/>
+						<Link  onClick={e => (!room) ? e.preventDefault() : null} to={`/werkplaats?room=${room}`}>
+							<button className={s.maakGroep} type="submit">Groep aanmaken</button>
+						</Link>
 						<p>of</p>
 						<p> Bekijk jouw vrienden </p>
 					</div>
