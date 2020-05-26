@@ -33,7 +33,7 @@ export const Uitleg = (): JSX.Element =>
 						<div className={s.cellTextContainer}>
 							<h1> Blokken </h1>
 							<p>
-								In deze game maak je gebruik van blokken. Elk blok heeft een andere kleur, elke kleur geeft een onderwerp aan. Er zijn 8 verschillende onderwerpen, Kleur, Rekenen, Herhaling, Tekst, Functies, Variabelen, Logica en Tabel. Deze blokken doen op zich zelf niet zo veel, pas wanneer je ze gaan combineren kan je hele mooie dingen maken.
+								In deze game maak je gebruik van blokken. Elk blok heeft een andere kleur, elke kleur geeft een onderwerp aan. Er zijn 8 verschillende onderwerpen, Kleur, Rekenen, Herhaling, Tekst, Functies, Variabelen, Logica en Tabel. Deze blokken doen op zich zelf niet zo veel, pas wanneer je ze gaat combineren kan je hele mooie dingen maken.
 							</p>
 						</div>
 					</div>
@@ -44,7 +44,7 @@ export const Uitleg = (): JSX.Element =>
 						<div className={s.cellTextContainer}>
 							<h1> Werkplaats </h1>
 							<p>
-								In de werkplaats maak jij jouw patroon. Dit patroon maak je door de blokken van de elementen box te slepen in de werkplaats. Wanneer je de blokken goed in elkaar heb gezet krijg je jouw patroon.
+								In de werkplaats maak jij jouw patroon. Dit patroon maak je door de blokken van de elementenbox te slepen in de werkplaats. Wanneer je de blokken goed in elkaar hebt gezet krijg je jouw patroon.
 							</p>
 						</div>
 					</div>
@@ -55,7 +55,7 @@ export const Uitleg = (): JSX.Element =>
 						<div className={s.cellTextContainer}>
 							<h1> Code weergeven </h1>
 							<p>
-								Als je klaar bent met het origrammeren van je patroon heb je eigenlijk echte code geschreven. Na het vertonen van je patroon kan je kijken wat de code van jouw create is.
+								Als je klaar bent met het programmeren van je patroon hebt je eigenlijk echte code geschreven. Na het vertonen van je patroon kan je kijken wat de code van jouw create is.
 							</p>
 						</div>
 					</div>

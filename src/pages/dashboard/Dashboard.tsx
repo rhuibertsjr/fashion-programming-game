@@ -23,8 +23,6 @@ export const Dashboard = (): JSX.Element =>
 	const currentCharacter = characterLib.getCharacter();
 	const username = localStorage.getItem('username');
 	
-	
-	
 	return (
 		<Fragment>
 			<Title
@@ -48,11 +46,11 @@ export const Dashboard = (): JSX.Element =>
 					<div className={s.appDashboardContainerUserPaletteContainer}>
 						<div className={s.info}>
 							<div className={s.infoFirstView} style={ showPanel ? { opacity: '0' } : { opacity: '1' } }>
-								<p>Hier worden de patronen opgeslagen. Bij het ben je klaar om jouw gemaakte patronen te showen op de modeshow.</p>
+								<p>Hier worden de patronen opgeslagen. Bij het &hearts; ben je klaar om jouw gemaakte patronen te showen op de modeshow.</p>
 								<button onClick={() => setPanel(true)}> Volgende </button>
 							</div>
 							<div className={s.infoSecondView} style={ showPanel ? { opacity: '1' } : { opacity: '0' } }>
-								<p>Op jouw dashboard kun je je vriendenlijst zien en de code die je door kunt sturen. Start het spel door op het aangegeven + te klikken</p>
+								<p>Op jouw dashboard kun je je vriendinnenlijst zien en de code die je door kunt sturen. Start het spel door op een aangegeven + te klikken</p>
 							</div>
 						</div>
 						<Link to="/werkplaats">
