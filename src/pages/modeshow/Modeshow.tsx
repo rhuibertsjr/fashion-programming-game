@@ -1,15 +1,24 @@
 import React, { Fragment } from 'react';
-import { Title, RankingComponent } from "@components/index";
+import {Title, RankingComponent, Character} from "@components/index";
 import { Link } from "react-router-dom";
 import s from './modeshow.module.less'
 
 import spotlight from '@assets/images/spotlight.png';
-import character_2 from "@assets/game/characters/character_1.png";
 import clothes from "@assets/game/clothes/clothes_1.png";
+import char1 from "@assets/game/characters/character_1.png";
+import char2 from "@assets/game/characters/character_2.png";
+import char3 from "@assets/game/characters/character_3.png";
+import char4 from "@assets/game/characters/character_4.png";
 
 export const Modeshow = (): JSX.Element =>
 {
 	
+	const character = [
+		char1, char2, char3, char4
+	];
+	
+	const characterLib = new Character();
+	const currentCharacter = characterLib.getCharacter();
 	const username = localStorage.getItem('username');
 	
 	return (
@@ -31,7 +40,7 @@ export const Modeshow = (): JSX.Element =>
 					<img className={s.appModeshowSpotlightFirst} src={spotlight} alt="Dresscode spotlight"/>
 					<img className={s.appModeshowSpotlightLast} src={spotlight} alt="Dresscode spotlight"/>
 					<div className={s.appModeshowUser}>
-						<img src={character_2} alt="Dresscode Character"/>
+						<img src={character[currentCharacter]} alt="Dresscode Character"/>
 						<img src={clothes} alt="Dresscode Character"/>
 					</div>
 				</div>
