@@ -36,7 +36,7 @@ export const Registreren = (): JSX.Element =>
 				</div>
 			</div>
 			{
-				new Character().isMemeber() ? '' : <Redirect to="/login"/>
+				new Character().isMember() ? '' : <Redirect to="/login"/>
 			}
 		</Fragment>
 	)
