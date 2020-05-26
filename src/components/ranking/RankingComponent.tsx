@@ -4,27 +4,29 @@ import s from './ranking.module.less';
 
 import { Ranking } from "@components/index";
 
-export class RankingComponent extends PureComponent<{}, IRankingState> {
+export class RankingComponent extends PureComponent<IRankingProps, IRankingState> {
 	
 	public state: IRankingState =
 	{
 		rank: new Ranking()
 	};
 	
-	public componentDidMount(): void
+	constructor(props: any)
 	{
-		this.state.rank.init();
+		super(props);
 	}
 	
 	private nextLevel = (): void =>
 	{
-		this.state.rank.incrementLevel();
+		if (this.props.rank) this.props.rank.incrementLevel();
+		if (this.props.cb) this.props.cb();
 		this.forceUpdate();
 	};
 	
 	private previousLevel = (): void =>
 	{
-		this.state.rank.decreaseLevel();
+		if (this.props.rank) this.props.rank.decreaseLevel();
+		if (this.props.cb) this.props.cb();
 		this.forceUpdate();
 	};
 	
@@ -36,9 +38,9 @@ export class RankingComponent extends PureComponent<{}, IRankingState> {
 					<div className={s.rankings}>
 						<p> Level: </p>
 						<button className={s.rankingsButton} onClick={this.previousLevel}/>
-						{this.state.rank.levelContent.map((_value, i, _array) =>
+						{this.props.rank && this.props.rank.levelContent.map((_value, i, _array) =>
 						{
-							if (i <= this.state.rank.counter)
+							if (this.props.rank && i <= this.props.rank.counter)
 							{
 								return (
 									<div className={s.rankingsLevel} key={i}>

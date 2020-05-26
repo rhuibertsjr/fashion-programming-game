@@ -37,3 +37,8 @@ interface LevelContent {
 interface IRankingState {
 	rank: Ranking
 }
+
+interface IRankingProps {
+	rank?: Ranking,
+	cb?: any
+}

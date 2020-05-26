@@ -80,8 +80,6 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		this.setState({
 			toggleLevelScreen: !this.state.toggleLevelScreen
 		});
-		
-		this.forceUpdate();
 	};
 	
 	public render(): JSX.Element
@@ -90,7 +88,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		return (
 			<Fragment>
 				<Title />
-				<RankingComponent />
+				<RankingComponent rank={this.state.ranking} cb={this.levelPopup} />
 				<div className={s.appEditorContainer}>
 					<div className={s.appRunButton}>
 						<button onClick={this.onRunEventHandler} />
