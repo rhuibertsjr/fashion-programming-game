@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { Route, Link } from 'react-router-dom';
 import s from './ranking.module.less';
 

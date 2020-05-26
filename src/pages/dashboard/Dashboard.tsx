@@ -83,11 +83,11 @@ export const Dashboard = (): JSX.Element =>
 						<h1> Nodig vrienden uit! </h1>
 						<p>Kopieer deze link en stuur het door naar je vriendinnen om ze uit te nodigen! Hoe leuk is het om met elkaar te kunnen chatten en modeshows van elkaar te bekijken?</p>
 						<input type="text"
-							   placeholder="JOUWLINK123"
+							   placeholder="Groepsnaam"
 							   onChange={(event) => setRoom(event.target.value)}
 						/>
 						<Link  onClick={e => (!room) ? e.preventDefault() : null} to={`/werkplaats?room=${room}`}>
-							<button className={s.maakGroep} type="submit">Groep aanmaken</button>
+							<button className={s.maakGroep} style={{ border: 'none' }} type="submit">Groep aanmaken</button>
 						</Link>
 						<p>of</p>
 						<p> Bekijk jouw vrienden </p>
