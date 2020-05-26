@@ -58,7 +58,6 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
                    <SocketRooms />
                </div>
                <div className={s.chatContainerDiv}>{this.renderChat()}</div>
-               <br/>
                <div className={s.inputContainerDiv}>
                    <textarea
                        className={s.inputField}
