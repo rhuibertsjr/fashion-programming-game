@@ -67,16 +67,6 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		
 	};
 	
-	private nextLevel = (): void =>
-	{
-		this.state.ranking.incrementLevel();
-	};
-	
-	private previousLevel = (): void =>
-	{
-		this.state.ranking.decreaseLevel();
-	};
-	
 	private clearWorkspace = (): void =>
 	{
 		if (this.workspace !== undefined)
@@ -90,13 +80,12 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		this.setState({
 			toggleLevelScreen: !this.state.toggleLevelScreen
 		});
+		
 		this.forceUpdate();
 	};
 	
 	public render(): JSX.Element
 	{
-		
-		if (this.workspace) console.log(this.nextLevel(), this.previousLevel());
 		
 		return (
 			<Fragment>
@@ -115,8 +104,8 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					>
 						{
 							this.state.toggleLevelScreen ? <Modal
-								title="Hallo"
-								paragraph="Dit is een test"
+								title={this.state.ranking.getLevelDetails()[0]}
+								paragraph={this.state.ranking.getLevelDetails()[1]}
 								to="/werkplaats"
 								width={{width: '34%'}}
 								onClick={this.levelPopup}

@@ -13,16 +13,20 @@ const Ranking = function (this: any)
 	this.levelContent =
 	[
 		{
-			title: 'Hallo ik ben level 1'
+			title: 'Level 1: Het eerste figuur.',
+			paragraph: 'Level 1'
 		},
 		{
-			title: 'Hallo ik ben level 2'
+			title: 'Hallo ik ben level 2',
+			paragraph: 'Level 2'
 		},
 		{
-			title: 'Hallo ik ben level 3'
+			title: 'Hallo ik ben level 3',
+			paragraph: 'Level 3'
 		},
 		{
-			title: 'Hallo ik ben level 4'
+			title: 'Vrijspel',
+			paragraph: 'Vrijspel'
 		}
 	];
 	
@@ -61,9 +65,12 @@ Ranking.prototype.decreaseLevel = function (): void
 	localStorage.setItem('level', this.counter);
 };
 
-Ranking.prototype.getLevelDetails = function (): string
+Ranking.prototype.getLevelDetails = function (): string[]
 {
-	return this.levelContent[this.counter].title;
+	return [
+		this.levelContent[this.counter].title,
+		this.levelContent[this.counter].paragraph
+	];
 };
 
 export {

@@ -19,7 +19,7 @@ declare interface Ranking {
 	/*
 		Returns the level content of the current level.
 	 */
-	getLevelDetails(): string;
+	getLevelDetails(): string[];
 	/*
 		Increments the current level.
 	 */
