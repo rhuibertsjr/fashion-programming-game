@@ -57,7 +57,7 @@ const isMember = (): string =>
 		return '/login';
 	}
 	
-	return 'registreren';
+	return '/registreren';
 	
 };
 
