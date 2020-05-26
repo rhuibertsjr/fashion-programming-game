@@ -9,6 +9,9 @@ import clothes from "@assets/game/clothes/clothes_1.png";
 
 export const Modeshow = (): JSX.Element =>
 {
+	
+	const username = localStorage.getItem('username');
+	
 	return (
 		<Fragment>
 			<Title
@@ -23,7 +26,7 @@ export const Modeshow = (): JSX.Element =>
 			<RankingComponent />
 			<div className={s.appModeshowContainer}>
 				<div className={s.appModeshow}>
-					<h1> [Character Name] </h1>
+					<h1> { username ? username : '[Character Name]' } </h1>
 					<div className={s.appModeshowFloor} />
 					<img className={s.appModeshowSpotlightFirst} src={spotlight} alt="Dresscode spotlight"/>
 					<img className={s.appModeshowSpotlightLast} src={spotlight} alt="Dresscode spotlight"/>
@@ -33,7 +36,7 @@ export const Modeshow = (): JSX.Element =>
 					</div>
 				</div>
 				<div className={s.appFriends}>
-				
+					<h1> Aantal bezoekers: 1 </h1>
 				</div>
 			</div>
 		</Fragment>

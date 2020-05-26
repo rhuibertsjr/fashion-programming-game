@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import s from './ranking.module.less';
 
 import { Ranking } from "@components/index";
@@ -35,38 +35,45 @@ export class RankingComponent extends PureComponent<{}, IRankingState> {
 				<Route path="/werkplaats">
 					<div className={s.rankings}>
 						<p> Level: </p>
-						<button className={s.rankingsButton} onClick={this.previousLevel} />
-						{ this.state.rank.levelContent.map((_value, i, _array) => {
-							if (i <= this.state.rank.counter) {
+						<button className={s.rankingsButton} onClick={this.previousLevel}/>
+						{this.state.rank.levelContent.map((_value, i, _array) =>
+						{
+							if (i <= this.state.rank.counter)
+							{
 								return (
 									<div className={s.rankingsLevel} key={i}>
 										<p>{i + 1}</p>
 									</div>
 								)
-							} else {
-								return <div className={s.rankingsLevel} key={i} style={{ opacity: .6 }} />
+							} else
+							{
+								return <div className={s.rankingsLevel} key={i} style={{opacity: .6}}/>
 							}
 						})}
-						<button className={s.rankingsButton} onClick={this.nextLevel} />
+						<button className={s.rankingsButton} onClick={this.nextLevel}/>
 						<p> Modeshow punten: </p>
-						<div className={s.rankingsPoints} />
+						<div className={s.rankingsPoints}/>
 					</div>
 					<div className={s.rankingContainerButtons}>
-						<button> Terug naar lobby </button>
-						<button> Chat </button>
+						<button>
+							<Link to="/dashboard" style={{ textDecoration: 'none', color: '#FFFFFF' }}>
+								Terug naar lobby
+							</Link>
+						</button>
+						<button> Chat</button>
 					</div>
 				</Route>
 				<Route path={['/dashboard', '/modeshow']}>
-					<div className={s.rankings} style={{ width: '40%' }}>
+					<div className={s.rankings} style={{width: '40%'}}>
 						<p> Level: </p>
 						<div className={s.rankingsLevel}>
 							<p>{(this.state.rank.getLevel() + 1)}</p>
 						</div>
 						<p> Modeshow punten: </p>
-						<div className={s.rankingsPoints} />
+						<div className={s.rankingsPoints}/>
 					</div>
 					<div className={s.rankingContainerButtons}>
-						<button style={{ width: '40%' }}> Jouw vriendenlijst </button>
+						<button style={{width: '40%'}}> Jouw vriendenlijst</button>
 					</div>
 				</Route>
 			</div>
