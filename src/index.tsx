@@ -5,6 +5,7 @@ import './index.less';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Dashboard, Landing, Loading, Login, Modeshow, Registreren, Uitleg } from "@pages/index";
+
 const Werkplaats = React.lazy(() => import('./pages/index'));
 
 export const App = (): JSX.Element =>

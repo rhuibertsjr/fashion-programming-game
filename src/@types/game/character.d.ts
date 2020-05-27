@@ -11,7 +11,7 @@ declare interface Character
 	
 	previousCharacter(): void;
 	
-	isMemeber(): boolean;
+	isMember(): boolean;
 }
 
 declare interface ICharacterHubState

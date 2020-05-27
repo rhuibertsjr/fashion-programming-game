@@ -31,7 +31,7 @@ module.exports = merge(common, {
 					mangle: true
 				}
 			}),
-			new OptimizeCssAssetsPlugin({})
+			new OptimizeCssAssetsPlugin({}),
 		]
 	},
 
@@ -44,7 +44,7 @@ module.exports = merge(common, {
 		new BundleAnalyzerPlugin({
 			defaultSizes: 'gzip',
 			logLevel: 'debug'
-		})
+		}),
 	]
 
 });

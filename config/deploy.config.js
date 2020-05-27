@@ -31,9 +31,7 @@ module.exports = merge(common, {
 					mangle: true
 				}
 			}),
-			new OptimizeCssAssetsPlugin({
-
-			})
+			new OptimizeCssAssetsPlugin({}),
 		]
 	},
 
@@ -42,7 +40,7 @@ module.exports = merge(common, {
 		new CopyPlugin([
 			path.join(__dirname, '.htacces'),
 			path.join(__dirname, 'robots.txt')
-		])
+		]),
 	]
 
 });

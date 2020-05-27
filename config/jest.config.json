@@ -27,6 +27,10 @@
     "<rootDir>../tests/setupEnzyme.ts"
   ],
   "moduleNameMapper": {
-    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "@assets/(.*)": "<rootDir>../src/assets/$1",
+    "@components/(.*)": "<rootDir>../src/components/$1",
+    "@containers/(.*)": "<rootDir>../src/containers/$1",
+    "@pages/(.*)": "<rootDir>../src/pages/$1"
   }
 }

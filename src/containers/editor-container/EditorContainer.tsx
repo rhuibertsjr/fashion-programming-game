@@ -9,8 +9,8 @@ import './components/blocks/Language';
 
 import { toolbox, Styles } from './components';
 import './components/blocks/Blocks';
-import {socket} from "@components/socket-client/SocketClient";
-import { Title, Ranking, RankingComponent } from "@components/index";
+import * as sk from "@components/socket-client/SocketClient";
+import {Title, Ranking, RankingComponent, Modal} from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
 {
@@ -21,7 +21,8 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	{
 		code: " ",
 		ranking: new Ranking(),
-		visualCodeToggle: false
+		visualCodeToggle: false,
+		toggleLevelScreen: true
 	};
 	
 	constructor(props: any)
@@ -54,11 +55,11 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	{
 		const code = Compiler.workspaceToCode(this.workspace);
 		
-		socket.on("share code", (getdata: any) => {
+		sk.socket.on("share code", (getdata: any) => {
 			console.log('Shared code: ' + getdata);
-			console.log('User: ', socket.id);
+			console.log('User: ', sk.socket.id);
 		});
-		socket.emit("share code", code);
+		sk.socket.emit("share code", code);
 
 		this.setState({
 			code: Compiler.workspaceToCode(this.workspace)
@@ -84,6 +85,13 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		}
 	};
 	
+	private levelPopup = (): void =>
+	{
+		this.setState({
+			toggleLevelScreen: !this.state.toggleLevelScreen
+		});
+	};
+
 	public render(): JSX.Element
 	{
 		
@@ -92,7 +100,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		return (
 			<Fragment>
 				<Title />
-				<RankingComponent />
+				<RankingComponent rank={this.state.ranking} cb={this.levelPopup} />
 				<div className={s.appEditorContainer}>
 					<div className={s.appRunButton}>
 						<button onClick={this.onRunEventHandler} />
@@ -103,7 +111,17 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					<div
 						className={s.appEditor}
 						ref={this.editor}
-					/>
+					>
+						{
+							this.state.toggleLevelScreen ? <Modal
+								title={this.state.ranking.getLevelDetails()[0]}
+								paragraph={this.state.ranking.getLevelDetails()[1]}
+								to="/werkplaats"
+								width={{width: '34%'}}
+								onClick={this.levelPopup}
+							/> : <div />
+						}
+					</div>
 				</div>
 				<GameContainer code={this.state.code} />
 				<div className={s.toolboxButtons}>
@@ -120,4 +138,4 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 }
 
-export default EditorContainer
+export default EditorContainer;

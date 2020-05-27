@@ -47,9 +47,9 @@ Character.prototype.previousCharacter = function (): void
 	localStorage.setItem('character', this.currentCharacter);
 };
 
-Character.prototype.isMemeber = function (): boolean
+Character.prototype.isMember = function (): boolean
 {
-	return !!(localStorage.getItem('username'));
+	return !(localStorage.getItem('username'));
 };
 
 export {
