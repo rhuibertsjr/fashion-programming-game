@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {socket, ENDPOINT} from "@components/socket-client/SocketClient";
 import queryString from "query-string";
 
-import './room.module.less';
+// import './room.module.less';
 
 function SocketRooms() {
     const [room, setRoom] = useState('');
@@ -28,7 +28,7 @@ function SocketRooms() {
 
 
     return (
-        <div className="room-title">
+        <div>
                 <div>{room}</div>
         </div>
     )

@@ -19,7 +19,7 @@ declare interface Ranking {
 	/*
 		Returns the level content of the current level.
 	 */
-	getLevelDetails(): string;
+	getLevelDetails(): string[];
 	/*
 		Increments the current level.
 	 */
@@ -37,4 +37,9 @@ interface LevelContent {
 interface IRankingState {
 	rank: Ranking
 	toggle: boolean
+}
+
+interface IRankingProps {
+	rank?: Ranking,
+	cb?: any
 }

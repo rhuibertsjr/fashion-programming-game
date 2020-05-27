@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {socket} from "@components/socket-client/SocketClient";
-import './chat.module.less';
+import s from './chat.module.less';
 import SocketRooms from "@components/socket-client/socket-rooms/SocketRooms";
 
 
@@ -43,8 +43,8 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
         const { chat } = this.state;
         return chat.map(({ id, msg }: any, idx: any) => (
             <div key={idx}>
-                <div className="usernameDiv">{id}</div>
-                <div className="messageDiv">{msg}</div>
+                <div className={s.usernameDiv}>{id}</div>
+                <div className={s.messageDiv}>{msg}</div>
             </div>
 
         ));
@@ -57,17 +57,16 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
                <div style={{paddingLeft: '45%'}}>
                    <SocketRooms />
                </div>
-               <div className="chatContainerDiv">{this.renderChat()}</div>
-               <br/>
-               <div className="inputContainerDiv">
+               <div className={s.chatContainerDiv}>{this.renderChat()}</div>
+               <div className={s.inputContainerDiv}>
                    <textarea
-                       className="inputField"
+                       className={s.inputField}
                        onChange={e => this.onTextChange(e)}
                        value={this.state.msg} rows={11}
                        placeholder="Hier kan je type..."
                        spellCheck={"true"}
                    />
-                   <button className="versturenButton" onClick={this.onMessageSubmit}>Versturen</button>
+                   <button className={s.versturenButton} onClick={this.onMessageSubmit}>Versturen</button>
                </div>
            </div>
        );

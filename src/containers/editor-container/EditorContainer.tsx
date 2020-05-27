@@ -10,7 +10,7 @@ import './components/blocks/Language';
 import { toolbox, Styles } from './components';
 import './components/blocks/Blocks';
 import * as sk from "@components/socket-client/SocketClient";
-import { Title, Ranking, RankingComponent } from "@components/index";
+import {Title, Ranking, RankingComponent, Modal} from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
 {
@@ -21,7 +21,8 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	{
 		code: " ",
 		ranking: new Ranking(),
-		visualCodeToggle: false
+		visualCodeToggle: false,
+		toggleLevelScreen: true
 	};
 	
 	constructor(props: any)
@@ -66,16 +67,6 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		
 	};
 	
-	private nextLevel = (): void =>
-	{
-		this.state.ranking.incrementLevel();
-	};
-	
-	private previousLevel = (): void =>
-	{
-		this.state.ranking.decreaseLevel();
-	};
-	
 	private clearWorkspace = (): void =>
 	{
 		if (this.workspace !== undefined)
@@ -84,15 +75,20 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		}
 	};
 	
+	private levelPopup = (): void =>
+	{
+		this.setState({
+			toggleLevelScreen: !this.state.toggleLevelScreen
+		});
+	};
+	
 	public render(): JSX.Element
 	{
-		
-		if (this.workspace) console.log(this.nextLevel(), this.previousLevel());
 		
 		return (
 			<Fragment>
 				<Title />
-				<RankingComponent />
+				<RankingComponent rank={this.state.ranking} cb={this.levelPopup} />
 				<div className={s.appEditorContainer}>
 					<div className={s.appRunButton}>
 						<button onClick={this.onRunEventHandler} />
@@ -103,7 +99,17 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					<div
 						className={s.appEditor}
 						ref={this.editor}
-					/>
+					>
+						{
+							this.state.toggleLevelScreen ? <Modal
+								title={this.state.ranking.getLevelDetails()[0]}
+								paragraph={this.state.ranking.getLevelDetails()[1]}
+								to="/werkplaats"
+								width={{width: '34%'}}
+								onClick={this.levelPopup}
+							/> : <div />
+						}
+					</div>
 				</div>
 				<GameContainer code={this.state.code} />
 				<div className={s.toolboxButtons}>
@@ -120,4 +126,4 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	
 }
 
-export default EditorContainer
+export default EditorContainer;
