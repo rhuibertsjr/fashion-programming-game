@@ -118,14 +118,17 @@ Blockly.JavaScript['star'] = function(block)
 	
 	return (
 	`
-		const ${n} = new PIXIJS.Graphics();
+	const ${n} = new PIXIJS.Graphics();
+	
+	let x1${n} = 280 + ${x};
+	let y1${n} = 250 + ${y};
 		
-		${n}.beginFill(0x${c.replace("'", "").replace("'", "")});
-		${n}.drawStar(${x}, ${y}, ${p}, ${r});
-		${n}.endFill();
+	${n}.beginFill(0x${c.replace("'", "").replace("'", "")});
+	${n}.drawStar(x1${n}, y1${n}, ${p}, ${r});
+	${n}.endFill();
 		
-		${n}.mask = this.state.stage.children[3].children[0];
-		this.state.stage.children[3].addChild(${n});
+	${n}.mask = this.state.stage.children[3].children[0];
+	this.state.stage.children[3].addChild(${n});
 	`
 	);
 };
@@ -170,8 +173,11 @@ Blockly.JavaScript['rectangle'] = function(block)
 		`
 		const ${n} = new PIXIJS.Graphics();
 		
+		let x1${n} = 280 + ${x};
+		let y1${n} = 250 + ${y};
+		
 		${n}.beginFill(0x${c.replace("'", "").replace("'", "")});
-		${n}.drawRect(${x}, ${y}, ${w}, ${h});
+		${n}.drawRect(x1${n}, y1${n}, ${w}, ${h});
 		${n}.endFill();
 	
 		${n}.mask = this.state.stage.children[3].children[0];
