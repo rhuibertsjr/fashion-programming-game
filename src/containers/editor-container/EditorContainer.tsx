@@ -9,7 +9,7 @@ import './components/blocks/Language';
 
 import { toolbox, Styles } from './components';
 import './components/blocks/Blocks';
-import * as sk from "@components/socket-client/SocketClient";
+import {socket} from "@components/socket-client/SocketClient";
 import { Title, Ranking, RankingComponent } from "@components/index";
 
 class EditorContainer extends PureComponent<{}, IEditorState>
@@ -54,11 +54,11 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 	{
 		const code = Compiler.workspaceToCode(this.workspace);
 		
-		sk.socket.on("share code", (getdata: any) => {
+		socket.on("share code", (getdata: any) => {
 			console.log('Shared code: ' + getdata);
-			console.log('User: ', sk.socket.id);
+			console.log('User: ', socket.id);
 		});
-		sk.socket.emit("share code", code);
+		socket.emit("share code", code);
 
 		this.setState({
 			code: Compiler.workspaceToCode(this.workspace)
