@@ -3,6 +3,7 @@ import {socket} from "@components/socket-client/SocketClient";
 import s from './chat.module.less';
 import SocketRooms from "@components/socket-client/socket-rooms/SocketRooms";
 
+import char from '@assets/game/characters/character_hero_chat.png';
 
 // @ts-ignore
 class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
@@ -35,18 +36,21 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
            @TODO: check if it comes from the user and then give it
                 a different styling.
          */
+        // @ts-ignore
         // let isCurrentUser = false;
-        // if (!isCurrentUser) {
+        // if () {
         //     isCurrentUser = true;
         // }
 
         const { chat } = this.state;
         return chat.map(({ id, msg }: any, idx: any) => (
-            <div key={idx}>
-                <div className={s.usernameDiv}>{id}</div>
-                <div className={s.messageDiv}>{msg}</div>
-            </div>
-
+                <div key={idx}>
+                    <div className={s.profielPicBack}>
+                        <img className={s.profielPic} src={char} alt="profile pic chat"/>
+                    </div>
+                    <div className={s.usernameDiv}>{id}</div>
+                    <div className={s.messageDiv}>{msg}</div>
+                </div>
         ));
     }
 
