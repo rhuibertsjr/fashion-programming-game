@@ -9,6 +9,8 @@ import char from '@assets/game/characters/test_char.png';
 // @ts-ignore
 class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
 
+
+
     constructor(props: any) {
         super(props);
         this.state = { msg: "", chat: []}
@@ -42,14 +44,14 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
         // if () {
         //     isCurrentUser = true;
         // }
-
+        const username = localStorage.getItem('username');
         const { chat } = this.state;
         return chat.map(({ id, msg }: any, idx: any) => (
                 <div key={idx} className={s.chatInnerDiv}>
                     <div className={s.profielPicBack}>
                         <img className={s.profielPic} src={char} alt="profile pic chat"/>
                     </div>
-                    <div className={s.usernameDiv}>{id}</div>
+                    <div className={s.usernameDiv}>{username ? username : id} </div>
                     <div className={s.messageDiv}>{msg}</div>
                 </div>
         ));
