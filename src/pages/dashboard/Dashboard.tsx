@@ -12,7 +12,6 @@ import clothes from '@assets/game/clothes/clothes_1.png';
 
 export const Dashboard = (): JSX.Element =>
 {
-
 	let [ showPanel, setPanel ] = useState(false);
 
 	const character = [
