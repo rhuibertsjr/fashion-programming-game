@@ -3,7 +3,8 @@ import {socket} from "@components/socket-client/SocketClient";
 import s from './chat.module.less';
 import SocketRooms from "@components/socket-client/socket-rooms/SocketRooms";
 
-import char from '@assets/game/characters/character_hero_chat.png';
+// import char from '@assets/game/characters/character_hero_chat.png';
+import char from '@assets/game/characters/test_char.png';
 
 // @ts-ignore
 class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
