@@ -84,7 +84,7 @@ module.exports = {
 			title: appConfig['dresscode.app.name'],
 			noscript: appConfig['dresscode.app.noscript'],
 			template: path.join(__dirname, '../public', 'index.ejs'),
-			favicon: dev ? '../public/favicon.ico' : './assets/favicon.ico',
+			favicon: dev ? './public/favicon.png' : './assets/favicon.png',
 
 			meta: {
 				viewport: 'width=device-width, initial-scale=1',
@@ -120,12 +120,11 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.ico$/,
+				test: /favicon\.png$/,
 				use: [
 					{
 						loader: 'file-loader',
 						options: {
-							limit: 1,
 							name: 'assets/' + '[name]' + '.[ext]'
 						}
 					}
