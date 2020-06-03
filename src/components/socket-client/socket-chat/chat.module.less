@@ -1,36 +1,58 @@
 
 .chat-container-div {
+  font-family: 'Roboto Slab', sans-serif;
+  color: #9B9B9B;
   overflow: auto;
-  padding: 20px;
   height: 50vh;
+  padding: 20px;
 
+  .chat-inner-div {
+    height: 30%;
 
- .username-div{
-    padding: 10px;
-  }
-  .message-div{
-    padding: 10px;
+    .profiel-pic-back {
+      width: 15%;
+      //background-color: #939393;
+      position: relative;
+      float: left;
+
+      .profiel-pic {
+        width: 12vh;
+
+      }
+    }
+
+    .username-div {
+      font-size: 20px;
+      padding-left: 20%;
+    }
+
+    .message-div {
+      padding-left: 20%;
+      padding-top: 10px;
+    }
   }
 }
 
 .input-container-div {
+  font-family: 'Roboto Slab', sans-serif;
   background-color: #FFFFFF;
   position: fixed;
-  top: 75%;
-  left: 61%;
+  top: 73%;
+  left: 64%;
 
   .input-field {
     padding: 20px;
     left: 10%;
-    width: 75vh;
-    border-radius: 20px;
+    width: 65vh;
+    border-radius: 10px;
   }
 
   .versturen-button {
     position: absolute !important;
     top: 70%;
-    left: 80%;
+    left: 75%;
     right: 0;
     background-color: #FD659B !important;
+    border-radius: 7px !important;
   }
 }
