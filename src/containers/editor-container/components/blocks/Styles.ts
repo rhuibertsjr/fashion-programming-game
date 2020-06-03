@@ -32,7 +32,7 @@ export const Styles: Blockly.BlocklyThemeOptions =
 	blockStyles: {
 		// @ts-ignore
 		"colour_blocks": {
-			"colourPrimary": "20"
+			"colourPrimary": "#7572B0"
 		},
 		// @ts-ignore
 		"list_blocks": {
@@ -40,19 +40,22 @@ export const Styles: Blockly.BlocklyThemeOptions =
 		},
 		// @ts-ignore
 		"logic_blocks": {
-			"colourPrimary": "210"
+			"colourPrimary": "#FAE5E8",
+			// "colourSecondary": "#000000",
+			// "colourTertiary": "#000000",
+			// "hat": "#000000"
 		},
 		// @ts-ignore
 		"loop_blocks": {
-			"colourPrimary": "120"
+			"colourPrimary": "#FD659B"
 		},
 		// @ts-ignore
 		"math_blocks": {
-			"colourPrimary": "230"
+			"colourPrimary": "#BEBBF4"
 		},
 		// @ts-ignore
 		"procedure_blocks": {
-			"colourPrimary": "290"
+			"colourPrimary": "#9B9B9B"
 		},
 		// @ts-ignore
 		"text_blocks": {
@@ -60,11 +63,11 @@ export const Styles: Blockly.BlocklyThemeOptions =
 		},
 		// @ts-ignore
 		"variable_blocks": {
-			"colourPrimary": "330"
+			"colourPrimary": "#FFDF58"
 		},
 		// @ts-ignore
 		"variable_dynamic_blocks": {
-			"colourPrimary": "310"
+			"colourPrimary": "#FFDF58"
 		},
 		// @ts-ignore
 		"hat_blocks": {
