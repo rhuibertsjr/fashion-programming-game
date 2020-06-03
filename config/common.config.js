@@ -109,23 +109,23 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-				use: [
-					{
-						loader: 'file-loader',
-						options: {
-							name: 'assets/' + filename + '.[ext]'
-						}
-					}
-				]
-			},
-			{
 				test: /favicon\.png$/,
 				use: [
 					{
 						loader: 'file-loader',
 						options: {
 							name: 'assets/' + '[name]' + '.[ext]'
+						}
+					}
+				]
+			},
+			{
+				test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'assets/' + filename + '.[ext]'
 						}
 					}
 				]
