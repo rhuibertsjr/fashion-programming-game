@@ -40,6 +40,7 @@ export const Dashboard = (): JSX.Element =>
 			<div className={s.appDashboardContainer}>
 				<div className={s.appDashboardContainerUser}>
 					<div className={s.appDashboardContainerUserFloor} />
+					<h1 className={s.lobby}> Lobby </h1>
 					<h1> {username ? username : ''} </h1>
 					<div className={s.appDashboardContainerUserProfile}>
 						<img src={character[currentCharacter]} alt="Dresscode Character"/>
