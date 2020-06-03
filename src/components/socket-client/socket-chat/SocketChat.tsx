@@ -44,7 +44,7 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
 
         const { chat } = this.state;
         return chat.map(({ id, msg }: any, idx: any) => (
-                <div key={idx}>
+                <div key={idx} className={s.chatInnerDiv}>
                     <div className={s.profielPicBack}>
                         <img className={s.profielPic} src={char} alt="profile pic chat"/>
                     </div>
