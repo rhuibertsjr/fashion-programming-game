@@ -87,7 +87,7 @@ export const Dashboard = (): JSX.Element =>
 							   placeholder="Groepsnaam"
 							   onChange={(event) => setRoom(event.target.value)}
 						/>
-						<Link  onClick={e => (!room) ? e.preventDefault() : null} to={`/werkplaats?room=${room}`}>
+						<Link  onClick={e => (!room) ? e.preventDefault() : null} to={`/#/werkplaats?room=${room}`}>
 							<button className={s.maakGroep} style={{ border: 'none' }} type="submit">Groep aanmaken</button>
 						</Link>
 						<p>of</p>
