@@ -3,9 +3,9 @@
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 100%; width: 100%;
-  z-index: 100;
+  z-index: 1000;
 
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px) grayscale(40%);
 
 }
 
@@ -15,7 +15,7 @@
   left: 50%; top: 50%;
   transform: translate(-50%, -50%);
   height: 60%; width: 60%;
-  z-index: 1000;
+  z-index: 100;
 
   -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
   -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
@@ -75,6 +75,7 @@
   &-paragraph {
     font-family: 'Roboto Slab', sans-serif;
     color: #707070;
+    font-size: 2vh;
     line-height: 1.2;
   }
 

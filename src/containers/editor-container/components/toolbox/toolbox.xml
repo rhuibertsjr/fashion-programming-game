@@ -4,7 +4,6 @@
         <block type="create_ellipse"/>
         <block type="star"/>
         <block type="rectangle"/>
-        <block type="start" />
     </category>
     <category name="Logica" categorystyle="logica">
         <block type="controls_if"></block>

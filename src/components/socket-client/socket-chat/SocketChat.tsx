@@ -3,9 +3,13 @@ import {socket} from "@components/socket-client/SocketClient";
 import s from './chat.module.less';
 import SocketRooms from "@components/socket-client/socket-rooms/SocketRooms";
 
+// import char from '@assets/game/characters/character_hero_chat.png';
+import char from '@assets/game/characters/test_char.png';
 
 // @ts-ignore
 class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
+
+
 
     constructor(props: any) {
         super(props);
@@ -35,18 +39,21 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
            @TODO: check if it comes from the user and then give it
                 a different styling.
          */
+        // @ts-ignore
         // let isCurrentUser = false;
-        // if (!isCurrentUser) {
+        // if () {
         //     isCurrentUser = true;
         // }
-
+        const username = localStorage.getItem('username');
         const { chat } = this.state;
         return chat.map(({ id, msg }: any, idx: any) => (
-            <div key={idx}>
-                <div className={s.usernameDiv}>{id}</div>
-                <div className={s.messageDiv}>{msg}</div>
-            </div>
-
+                <div key={idx} className={s.chatInnerDiv}>
+                    <div className={s.profielPicBack}>
+                        <img className={s.profielPic} src={char} alt="profile pic chat"/>
+                    </div>
+                    <div className={s.usernameDiv}>{username ? username : id} </div>
+                    <div className={s.messageDiv}>{msg}</div>
+                </div>
         ));
     }
 
@@ -62,8 +69,8 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
                    <textarea
                        className={s.inputField}
                        onChange={e => this.onTextChange(e)}
-                       value={this.state.msg} rows={11}
-                       placeholder="Hier kan je type..."
+                       value={this.state.msg}
+                       placeholder="hier kan je typen…"
                        spellCheck={"true"}
                    />
                    <button className={s.versturenButton} onClick={this.onMessageSubmit}>Versturen</button>

@@ -81,10 +81,9 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 			toggleLevelScreen: !this.state.toggleLevelScreen
 		});
 	};
-	
+
 	public render(): JSX.Element
 	{
-		
 		return (
 			<Fragment>
 				<Title />

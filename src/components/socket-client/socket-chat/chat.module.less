@@ -1,36 +1,72 @@
 
 .chat-container-div {
-  padding: 20px;
-  position: absolute;
+  font-family: 'Roboto Slab', sans-serif;
+  color: #9B9B9B;
+  overflow: auto;
   height: 50vh;
+  padding: 20px;
 
+  .chat-inner-div {
+    height: 30%;
 
- .username-div{
-    padding: 10px;
-  }
-  .message-div{
-    padding: 10px;
+    .profiel-pic-back {
+      width: 15%;
+      //background-color: #939393;
+      position: relative;
+      float: left;
+
+      .profiel-pic {
+        width: 12vh;
+
+      }
+    }
+
+    .username-div {
+      font-size: 20px;
+      padding-left: 20%;
+    }
+
+    .message-div {
+      font-size: 15px;
+      padding-left: 20%;
+      padding-top: 10px;
+    }
   }
 }
 
 .input-container-div {
+  font-family: 'Roboto Slab', sans-serif;
   background-color: #FFFFFF;
   position: fixed;
-  top: 75%;
-  left: 61%;
+  top: 73%;
+  left: 64%;
 
   .input-field {
     padding: 20px;
     left: 10%;
-    width: 75vh;
-    border-radius: 20px;
+    height: 23vh;
+    width: 55vh;
+    border-radius: 2px;
+    -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   }
 
   .versturen-button {
     position: absolute !important;
-    top: 70%;
-    left: 80%;
+    top: 68%;
+    left: 72%;
     right: 0;
-    background-color: #FD659B;
+    background-color: #FD659B !important;
+    border-radius: 7px !important;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .input-field{
+    width: 65vh !important;
+  }
+  .versturen-button {
+    left: 76% !important;
   }
 }

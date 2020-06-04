@@ -20,6 +20,10 @@ app.use(express.static('dist'));
 app.use(cors());
 app.use(router);
 
+if (process.env.NODE_ENV === 'production'){
+    app.use(express.static('dist'));
+}
+
 io.on('connection', socket => {
     const {id} = socket.client;
     console.log('A user connected: ' + id);

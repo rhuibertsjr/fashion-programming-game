@@ -11,7 +11,7 @@
     input {
       background: url("../../../src/assets/icons/user.svg") no-repeat scroll 5% 50%;
       background-size: 10%;
-      padding-left: 50px !important;
+      padding-left: 6.5vh !important;
     }
 
   }
@@ -22,7 +22,7 @@
     input {
       background: url("../../../src/assets/icons/email.svg") no-repeat scroll 7% 50%;
       background-size: 6%;
-      padding-left: 50px !important;
+      padding-left: 6.5vh !important;
     }
 
   }
@@ -33,13 +33,13 @@
     input {
       background: url("../../../src/assets/icons/calendar.svg") no-repeat scroll 7% 50%;
       background-size: 8%;
-      padding-left: 50px !important;
+      padding-left: 6.5vh !important;
     }
 
     .birthyear {
       background: url("../../../src/assets/icons/cake.svg") no-repeat scroll 7% 50%;
       background-size: 9%;
-      padding-left: 50px !important;
+      padding-left: 6.5vh !important;
     }
   }
 
@@ -52,8 +52,8 @@
     border: none;
     width: 40%;
     font-family: 'Roboto Slab', sans-serif;
+    color: #7B7B7B;
     letter-spacing: .8px;
-    color: #707070;
     margin-right: 10%;
     font-size: 1.4vh;
   }
@@ -62,7 +62,7 @@
     font-family: 'Roboto Slab', sans-serif;
     font-weight: bold;
     letter-spacing: .8px;
-    color: #BEBEBE;
+    color: #7B7B7B;
   }
 
   &-username input:focus, &-email input:focus, &-age input:focus {
@@ -81,12 +81,17 @@
     margin-bottom: 5vh;
     margin-top: 10vh;
 
+    label {
+      white-space: nowrap;
+    }
+
     p {
       display: inline-block;
       font-family: 'Roboto Slab', sans-serif;
       font-size: 1.7vh;
+      margin-left: 10px;
       white-space: nowrap;
-      color: #707070;
+      color: #7B7B7B;
     }
 
     input[type="radio"] {
@@ -98,7 +103,7 @@
       width: 16px;
       height: 16px;
 
-      transform: translateY(25%);
+      transform: translateY(20%);
 
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -112,8 +117,6 @@
     }
 
   }
-
-
 
   &-button {
     position: absolute;

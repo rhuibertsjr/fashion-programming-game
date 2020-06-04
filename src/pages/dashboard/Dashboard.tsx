@@ -12,7 +12,6 @@ import clothes from '@assets/game/clothes/clothes_1.png';
 
 export const Dashboard = (): JSX.Element =>
 {
-
 	let [ showPanel, setPanel ] = useState(false);
 
 	const character = [
@@ -40,6 +39,7 @@ export const Dashboard = (): JSX.Element =>
 			<div className={s.appDashboardContainer}>
 				<div className={s.appDashboardContainerUser}>
 					<div className={s.appDashboardContainerUserFloor} />
+					<h1 className={s.lobby}> Lobby </h1>
 					<h1> {username ? username : ''} </h1>
 					<div className={s.appDashboardContainerUserProfile}>
 						<img src={character[currentCharacter]} alt="Dresscode Character"/>
@@ -86,7 +86,7 @@ export const Dashboard = (): JSX.Element =>
 							   placeholder="Groepsnaam"
 							   onChange={(event) => setRoom(event.target.value)}
 						/>
-						<Link  onClick={e => (!room) ? e.preventDefault() : null} to={`/werkplaats?room=${room}`}>
+						<Link  onClick={e => (!room) ? e.preventDefault() : null} to={`/#/werkplaats?room=${room}`}>
 							<button className={s.maakGroep} style={{ border: 'none' }} type="submit">Groep aanmaken</button>
 						</Link>
 						<p>of</p>
