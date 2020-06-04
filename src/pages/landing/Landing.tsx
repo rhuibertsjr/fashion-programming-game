@@ -33,6 +33,11 @@ export const Landing = (): JSX.Element =>
 				<p> Ik heb al een account </p>
 			</Link>
 		</div>
+		
+		<a href="http://milenaspaan.nl">
+			<button className={s.contact}>Contact</button>
+		</a>
+		
 		<div className={s.imageContainer}>
 			<div className={s.codeImage}>
 				<img className={s.image} src={codeImage} alt="Dresscode code image"/>
