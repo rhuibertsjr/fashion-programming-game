@@ -10,7 +10,7 @@ export const Styles: Blockly.BlocklyThemeOptions =
 			colour: '#61C6E1'
 		},
 		'logica': {
-			colour: '#FAE5E8'
+			colour: '#edb2bb'
 		},
 		'herhaling': {
 			colour: '#FD659B'
@@ -40,7 +40,7 @@ export const Styles: Blockly.BlocklyThemeOptions =
 		},
 		// @ts-ignore
 		"logic_blocks": {
-			"colourPrimary": "#FAE5E8",
+			"colourPrimary": "#edb2bb",
 			// "colourSecondary": "#000000",
 			// "colourTertiary": "#000000",
 			// "hat": "#000000"
