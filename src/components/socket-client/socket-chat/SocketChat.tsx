@@ -69,8 +69,8 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
                    <textarea
                        className={s.inputField}
                        onChange={e => this.onTextChange(e)}
-                       value={this.state.msg} rows={11}
-                       placeholder="Hier kan je type..."
+                       value={this.state.msg}
+                       placeholder="hier kan je typen…"
                        spellCheck={"true"}
                    />
                    <button className={s.versturenButton} onClick={this.onMessageSubmit}>Versturen</button>

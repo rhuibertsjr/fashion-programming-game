@@ -27,6 +27,7 @@
     }
 
     .message-div {
+      font-size: 15px;
       padding-left: 20%;
       padding-top: 10px;
     }
@@ -43,16 +44,27 @@
   .input-field {
     padding: 20px;
     left: 10%;
-    width: 65vh;
-    border-radius: 10px;
+    height: 23vh;
+    width: 55vh;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px 0 rgb(168,168,168);
   }
 
   .versturen-button {
     position: absolute !important;
-    top: 70%;
-    left: 75%;
+    top: 68%;
+    left: 72%;
     right: 0;
     background-color: #FD659B !important;
     border-radius: 7px !important;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .input-field{
+    width: 65vh !important;
+  }
+  .versturen-button {
+    left: 76% !important;
   }
 }
