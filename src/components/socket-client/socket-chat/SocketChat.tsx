@@ -70,7 +70,7 @@ class SocketChat extends PureComponent<{}, {msg: string, chat: any}>{
                        className={s.inputField}
                        onChange={e => this.onTextChange(e)}
                        value={this.state.msg}
-                       placeholder="Typ een bericht"
+                       placeholder="hier kan je typen…"
                        spellCheck={"true"}
                    />
                    <button className={s.versturenButton} onClick={this.onMessageSubmit}>Versturen</button>
