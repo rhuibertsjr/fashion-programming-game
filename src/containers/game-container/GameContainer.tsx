@@ -32,7 +32,7 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		this.gameRef = createRef();
 		this.game = new PIXI.Application({
 			backgroundColor: 0xffffff,
-			width: 600,
+			width: 700,
 			height: 800,
 		});
 		PIXI.settings.RESOLUTION = window.devicePixelRatio;
@@ -60,19 +60,20 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		const stage = new PIXI.Container();
 		const container = new PIXI.Container();
 		
+		const body = PIXI.Sprite.from(this.state.charachters[this.state.currentCharacter]);
 		const under = PIXI.Sprite.from(clothes_1);
+		const backstage = new PIXI.Graphics();
+		
 		under.anchor.set(.5, .5);
 		under.position.set(
 			this.game.renderer.width / 2,
 			this.game.renderer.height /2
 		);
 		
-		const backstage = new PIXI.Graphics();
 		backstage.beginFill(0xFAFAFA);
 		backstage.drawRect(0, this.game.renderer.height - 100, this.game.renderer.width, 100);
 		backstage.endFill();
 		
-		let body = PIXI.Sprite.from(this.state.charachters[this.state.currentCharacter]);
 		body.anchor.set(.5, .5);
 		body.position.set(
 			this.game.renderer.width / 2,
@@ -129,7 +130,6 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 	{
 		return (
 			<div className={s.appGameContainer}>
-				
 				<div
 					className={s.appGame}
 					ref={this.gameRef}

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import s from './landing.module.less';
 import { useHistory } from 'react-router-dom';
-import * as sk from "@components/socket-client/SocketClient";
+import {socket} from "@components/socket-client/SocketClient";
 
 export const Landing = (): JSX.Element =>
 {
@@ -21,8 +21,8 @@ export const Landing = (): JSX.Element =>
 				<button
 					onClick={() => {
 						history.push('/dashboard');
-						sk.socket.emit("new user", sk.socket.id);
-						sk.socket.on("new user", (getUser: any) => {
+						socket.emit("new user", socket.id);
+						socket.on("new user", (getUser: any) => {
 							console.log('a new user joined: ' +  getUser);
 						});
 					}}

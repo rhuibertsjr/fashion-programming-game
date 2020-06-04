@@ -10,7 +10,7 @@
     "build:test": "yarn clean && cross-env NODE_ENV=production webpack --progress --config=config/production.config.js",
     "build": "node server/index.js",
     "heroku-postbuild": "NODE_ENV=production webpack --progress --config=config/deploy.config.js ",
-    "test": "jest --config ./config/jest.config.json",
+    "test": "jest --detectOpenHandles --config ./config/jest.config.json",
     "clean": "rimraf ./dist"
   },
   "engines": {

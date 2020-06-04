@@ -2,10 +2,11 @@ import React, {useEffect, useState} from "react";
 import {socket, ENDPOINT} from "@components/socket-client/SocketClient";
 import queryString from "query-string";
 
-import './room.module.less';
+// import './room.module.less';
 
 function SocketRooms() {
     const [room, setRoom] = useState('');
+    // @ts-ignore
     const [users, setUsers] = useState('');
 
     useEffect(() => {
@@ -23,12 +24,11 @@ function SocketRooms() {
         socket.on("roomData", ({users}: any) => {
             setUsers(users);
         });
-        console.log(users);
     }, []);
 
 
     return (
-        <div className="room-title">
+        <div>
                 <div>{room}</div>
         </div>
     )

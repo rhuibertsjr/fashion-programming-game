@@ -12,7 +12,6 @@ import clothes from '@assets/game/clothes/clothes_1.png';
 
 export const Dashboard = (): JSX.Element =>
 {
-
 	let [ showPanel, setPanel ] = useState(false);
 
 	const character = [
@@ -22,9 +21,7 @@ export const Dashboard = (): JSX.Element =>
 	const characterLib = new Character();
 	const currentCharacter = characterLib.getCharacter();
 	const username = localStorage.getItem('username');
-
-
-
+	
 	const [room, setRoom] = useState('');
 
 	return (
@@ -42,6 +39,7 @@ export const Dashboard = (): JSX.Element =>
 			<div className={s.appDashboardContainer}>
 				<div className={s.appDashboardContainerUser}>
 					<div className={s.appDashboardContainerUserFloor} />
+					<h1 className={s.lobby}> Lobby </h1>
 					<h1> {username ? username : ''} </h1>
 					<div className={s.appDashboardContainerUserProfile}>
 						<img src={character[currentCharacter]} alt="Dresscode Character"/>
@@ -50,11 +48,11 @@ export const Dashboard = (): JSX.Element =>
 					<div className={s.appDashboardContainerUserPaletteContainer}>
 						<div className={s.info}>
 							<div className={s.infoFirstView} style={ showPanel ? { opacity: '0' } : { opacity: '1' } }>
-								<p>Hier worden de patronen opgeslagen. Bij het ben je klaar om jouw gemaakte patronen te showen op de modeshow.</p>
+								<p>Hier worden de patronen opgeslagen. Bij het &hearts; ben je klaar om jouw gemaakte patronen te showen op de modeshow.</p>
 								<button onClick={() => setPanel(true)}> Volgende </button>
 							</div>
 							<div className={s.infoSecondView} style={ showPanel ? { opacity: '1' } : { opacity: '0' } }>
-								<p>Op jouw dashboard kun je je vriendenlijst zien en de code die je door kunt sturen. Start het spel door op het aangegeven + te klikken</p>
+								<p>Op jouw dashboard kun je je vriendinnenlijst zien en de code die je door kunt sturen. Start het spel door op een aangegeven + te klikken</p>
 							</div>
 						</div>
 						<Link to="/werkplaats">
@@ -85,11 +83,11 @@ export const Dashboard = (): JSX.Element =>
 						<h1> Nodig vrienden uit! </h1>
 						<p>Kopieer deze link en stuur het door naar je vriendinnen om ze uit te nodigen! Hoe leuk is het om met elkaar te kunnen chatten en modeshows van elkaar te bekijken?</p>
 						<input type="text"
-							   placeholder="JOUWLINK123"
+							   placeholder="Groepsnaam"
 							   onChange={(event) => setRoom(event.target.value)}
 						/>
-						<Link onClick={e => (!room) ? e.preventDefault() : null} to={`/werkplaats?room=${room}`}>
-							<button type="submit">maak groep</button>
+						<Link  onClick={e => (!room) ? e.preventDefault() : null} to={`/#/werkplaats?room=${room}`}>
+							<button className={s.maakGroep} style={{ border: 'none' }} type="submit">Groep aanmaken</button>
 						</Link>
 						<p>of</p>
 						<p> Bekijk jouw vrienden </p>

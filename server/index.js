@@ -11,6 +11,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 const {addUser, removeUser, getUser, getUsersInRoom} = require('./client/rooms');
+
 const router = require('./routes/router');
 
 app.use(express.json());
@@ -18,6 +19,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('dist'));
 app.use(cors());
 app.use(router);
+
+if (process.env.NODE_ENV === 'production'){
+    app.use(express.static('dist'));
+}
 
 io.on('connection', socket => {
     const {id} = socket.client;

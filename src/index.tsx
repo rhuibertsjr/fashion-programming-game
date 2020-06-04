@@ -3,13 +3,15 @@ import React, { Suspense } from "react";
 import { render } from "react-dom";
 import './index.less';
 
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import { Dashboard, Landing, Loading, Login, Modeshow, Registreren, Uitleg } from "@pages/index";
+import '../public/favicon.png';
+
 const Werkplaats = React.lazy(() => import('./pages/index'));
 
 export const App = (): JSX.Element =>
 (
-	<BrowserRouter>
+	<HashRouter>
 		<Switch>
 			<Route exact path="/">
 				<Landing />
@@ -35,7 +37,7 @@ export const App = (): JSX.Element =>
 				<Modeshow/>
 			</Route>
 		</Switch>
-	</BrowserRouter>
+	</HashRouter>
 );
 
 document.addEventListener('DOMContentLoaded', () => render(

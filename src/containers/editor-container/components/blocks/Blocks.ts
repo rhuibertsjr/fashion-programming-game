@@ -15,6 +15,7 @@ function getRandomString(length: number)
 Blockly.Blocks['create_ellipse'] =
 {
 	init: function() {
+		this.setColour('#61C6E1');
 		this.appendValueInput("x")
 		.setCheck("Number")
 		.appendField("Teken een cirkel, x");
@@ -30,7 +31,6 @@ Blockly.Blocks['create_ellipse'] =
 		this.setInputsInline(true);
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
-		this.setColour(330);
 		this.setTooltip("");
 		this.setHelpUrl("");
 	}
@@ -49,7 +49,7 @@ Blockly.JavaScript['create_ellipse'] = function(block)
 	//================================================
 	const ${n} = new PIXIJS.Graphics();
 	
-	let x1${n} = 280 + ${x};
+	let x1${n} = 330 + ${x};
 	let y1${n} = 250 + ${y};
 
 	${n}.beginFill(0x${c.replace("'", "").replace("'", "")});
@@ -101,7 +101,7 @@ Blockly.Blocks['star'] =
 		this.setInputsInline(true);
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
-		this.setColour(330);
+		this.setColour('#61C6E1');
 		this.setTooltip("");
 		this.setHelpUrl("");
 	}
@@ -118,14 +118,17 @@ Blockly.JavaScript['star'] = function(block)
 	
 	return (
 	`
-		const ${n} = new PIXIJS.Graphics();
+	const ${n} = new PIXIJS.Graphics();
+	
+	let x1${n} = 330 + ${x};
+	let y1${n} = 250 + ${y};
 		
-		${n}.beginFill(0x${c.replace("'", "").replace("'", "")});
-		${n}.drawStar(${x}, ${y}, ${p}, ${r});
-		${n}.endFill();
+	${n}.beginFill(0x${c.replace("'", "").replace("'", "")});
+	${n}.drawStar(x1${n}, y1${n}, ${p}, ${r});
+	${n}.endFill();
 		
-		${n}.mask = this.state.stage.children[3].children[0];
-		this.state.stage.children[3].addChild(${n});
+	${n}.mask = this.state.stage.children[3].children[0];
+	this.state.stage.children[3].addChild(${n});
 	`
 	);
 };
@@ -151,7 +154,7 @@ Blockly.Blocks['rectangle'] =
 			this.setInputsInline(true);
 			this.setPreviousStatement(true, null);
 			this.setNextStatement(true, null);
-			this.setColour(330);
+			this.setColour('#61C6E1');
 			this.setTooltip("");
 			this.setHelpUrl("");
 		}
@@ -170,8 +173,11 @@ Blockly.JavaScript['rectangle'] = function(block)
 		`
 		const ${n} = new PIXIJS.Graphics();
 		
+		let x1${n} = 330 + ${x};
+		let y1${n} = 250 + ${y};
+		
 		${n}.beginFill(0x${c.replace("'", "").replace("'", "")});
-		${n}.drawRect(${x}, ${y}, ${w}, ${h});
+		${n}.drawRect(x1${n}, y1${n}, ${w}, ${h});
 		${n}.endFill();
 	
 		${n}.mask = this.state.stage.children[3].children[0];
