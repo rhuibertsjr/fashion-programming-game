@@ -166,9 +166,14 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					</div>
 				</div>
 				<GameContainer code={this.state.code} />
-				<div className={s.toolboxButtons}>
-					<button> Hint! </button>
-					<button onClick={this.clearWorkspace}> Reset </button>
+				<div className={s.toolboxButtons} >
+					<button
+						className={ this.state.toggleLevelScreen ? s.buttonToolbox : '' }
+					> Hint! </button>
+					<button
+						className={this.state.toggleLevelScreen ? s.buttonToolbox : ''}
+						onClick={this.clearWorkspace}
+					> Reset </button>
 				</div>
 				<div className={s.appCodeGenerator} style={this.state.visualCodeToggle ? { right: '0' } : { right: '-30%' }}>
 					<h1> Hier is je geschreven code: </h1>
