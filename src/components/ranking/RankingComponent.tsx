@@ -10,7 +10,6 @@ export class RankingComponent extends PureComponent<IRankingProps, IRankingState
 	
 	public state: IRankingState =
 	{
-		toggle: false,
 		rank: new Ranking()
 	};
 	
@@ -32,7 +31,7 @@ export class RankingComponent extends PureComponent<IRankingProps, IRankingState
 		if (this.props.cb) this.props.cb();
 		this.forceUpdate();
 	};
-
+	
 	public render(): JSX.Element
 	{
 		return (
@@ -65,8 +64,8 @@ export class RankingComponent extends PureComponent<IRankingProps, IRankingState
 								Terug naar lobby
 							</Link>
 						</button>
-						<button onClick={() => {this.setState({toggle: !this.state.toggle})}}>Chat</button>
-						<div className={s.chatOuterDiv} style={ this.state.toggle ? {right: '0%', display: 'block'} : {right:'-100%', display: 'none'}}>
+						<button onClick={this.props.chatToggle}>Chat</button>
+						<div className={s.chatOuterDiv} style={ this.props.isOpen ? {right: '0%', display: 'block'} : {right:'-100%', display: 'none'}}>
 							<SocketChat />
 						</div>
 					</div>
