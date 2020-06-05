@@ -36,10 +36,11 @@ interface LevelContent {
 
 interface IRankingState {
 	rank: Ranking
-	toggle: boolean
 }
 
 interface IRankingProps {
+	isOpen?: boolean,
+	chatToggle?: any,
 	rank?: Ranking,
 	cb?: any
 }

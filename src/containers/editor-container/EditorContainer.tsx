@@ -22,6 +22,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		code: " ",
 		ranking: new Ranking(),
 		visualCodeToggle: false,
+		isOpen: false,
 		toggleLevelScreen: true
 	};
 	
@@ -81,19 +82,73 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 			toggleLevelScreen: !this.state.toggleLevelScreen
 		});
 	};
-
+	
+	private toggleChat = () =>
+	{
+		const { visualCodeToggle, isOpen } = this.state;
+		
+		this.setState({
+			isOpen: !isOpen
+		});
+		
+		if (visualCodeToggle)
+		{
+			this.setState({
+				visualCodeToggle: false
+			});
+		}
+		else if (!visualCodeToggle && isOpen)
+		{
+			this.setState({
+				visualCodeToggle: false
+			});
+		}
+		else if (visualCodeToggle && !isOpen)
+		{
+			this.setState({
+				visualCodeToggle: true
+			});
+		}
+	};
+	
+	private toggleCode = () =>
+	{
+		const { visualCodeToggle, isOpen } = this.state;
+		
+		this.setState({
+			visualCodeToggle: !visualCodeToggle
+		});
+		
+		if (isOpen)
+		{
+			this.setState({
+				isOpen: false
+			});
+		}
+		else if (!isOpen && visualCodeToggle)
+		{
+			this.setState({
+				isOpen: false
+			});
+		}
+		else if (isOpen && !visualCodeToggle)
+		{
+			this.setState({
+				isOpen: true
+			});
+		}
+	};
+	
 	public render(): JSX.Element
 	{
 		return (
 			<Fragment>
 				<Title />
-				<RankingComponent rank={this.state.ranking} cb={this.levelPopup} />
+				<RankingComponent rank={this.state.ranking} cb={this.levelPopup} chatToggle={this.toggleChat} isOpen={this.state.isOpen} />
 				<div className={s.appEditorContainer}>
 					<div className={s.appRunButton}>
 						<button onClick={this.onRunEventHandler} />
-						<button onClick={() => {
-							this.setState({ visualCodeToggle: !this.state.visualCodeToggle });
-						}} />
+						<button onClick={this.toggleCode} />
 					</div>
 					<div
 						className={s.appEditor}
