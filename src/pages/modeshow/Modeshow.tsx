@@ -10,6 +10,7 @@ import char2 from "@assets/game/characters/character_2.png";
 import char3 from "@assets/game/characters/character_3.png";
 import char4 from "@assets/game/characters/character_4.png";
 import charIcon from '@assets/game/characters/test_char.png';
+import charIcon_2 from '@assets/game/characters/chat_character.png';
 
 export const Modeshow = (): JSX.Element =>
 {
@@ -47,7 +48,7 @@ export const Modeshow = (): JSX.Element =>
 				</div>
 				<div className={s.appFriends}>
 					<h1> Aantal bezoekers: 1 </h1>
-					<p> {username}'s show </p>
+					<p> {username ? username + "'s show" : ""} </p>
 					<div className={s.modeshowUsers}>
 						<div className={s.modeshowUsersCon}>
 							<img src={charIcon} alt="Dresscode char icon"/>
@@ -57,7 +58,7 @@ export const Modeshow = (): JSX.Element =>
 							</div>
 						</div>
 						<div className={s.modeshowUsersCon}>
-							<img src={charIcon} alt="Dresscode char icon"/>
+							<img src={charIcon_2} alt="Dresscode char icon"/>
 							<div className={s.modeshowUsersConText}>
 								<h1>Samx</h1>
 								<p>Level: 1</p>
