@@ -64,27 +64,24 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 		const under = PIXI.Sprite.from(clothes_1);
 		const backstage = new PIXI.Graphics();
 		
-		under.anchor.set(.5, .5);
 		under.position.set(
-			this.game.renderer.width / 2,
-			this.game.renderer.height /2
+			(this.game.renderer.width / 2) - 150,
+			0
 		);
 		
 		backstage.beginFill(0xFAFAFA);
 		backstage.drawRect(0, this.game.renderer.height - 100, this.game.renderer.width, 100);
 		backstage.endFill();
 		
-		body.anchor.set(.5, .5);
 		body.position.set(
-			this.game.renderer.width / 2,
-			this.game.renderer.height / 2
+			(this.game.renderer.width / 2) - 150,
+			0
 		);
 		
 		let character_clothes = this.state.clothes[0];
-		character_clothes.anchor.set(.5, .5);
 		character_clothes.position.set(
-			this.game.renderer.width / 2,
-			this.game.renderer.height /2
+			(this.game.renderer.width / 2) - 150,
+			0
 		);
 		
 		container.addChild(character_clothes);

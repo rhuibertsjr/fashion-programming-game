@@ -111,7 +111,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 		}
 	};
 	
-	private toggleCode = () =>
+	private toggleCode = (): void =>
 	{
 		const { visualCodeToggle, isOpen } = this.state;
 		
