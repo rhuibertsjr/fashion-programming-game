@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as sk from "@components/socket-client/SocketClient";
 
 import codeImage from '@assets/images/codeImage.jpg';
-import modeshow from '@assets/images/modeshow.jpg';
+import modeshow from '@assets/images/modeshow.png';
 import users from '@assets/images/users.jpg';
 
 export const Landing = (): JSX.Element =>
