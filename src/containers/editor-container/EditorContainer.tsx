@@ -166,6 +166,7 @@ class EditorContainer extends PureComponent<{}, IEditorState>
 					</div>
 				</div>
 				<GameContainer code={this.state.code} />
+				<div className={this.state.toggleLevelScreen ? s.toolboxButtonsBg : ''} />
 				<div className={s.toolboxButtons} >
 					<button
 						className={ this.state.toggleLevelScreen ? s.buttonToolbox : '' }
