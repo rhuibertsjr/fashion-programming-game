@@ -8,6 +8,9 @@ export const Modal = (props: IModalProps): JSX.Element =>
 {
 	return (
 		<div className={s.modalContainer}>
+			<div className={s.modalContainerBg}>
+			
+			</div>
 			<div className={s.modal}>
 				<div className={s.modalTextContainer}>
 					<h1 className={s.modalTitle}> {props.title} </h1>

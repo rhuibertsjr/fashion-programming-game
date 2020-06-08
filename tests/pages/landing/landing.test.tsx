@@ -1,22 +1,25 @@
-import React from 'react';
+
+import React from "react";
 import { shallow } from "enzyme";
 
-import { Landing } from '../../../src/pages';
-
-
-it('ORKAY', async () =>
+describe('Dresscode intro', () =>
 {
-	try
+	it('User can continue', () =>
 	{
-		const result = shallow(<Landing/>).contains(<button> Start het spel </button>);
-		return expect(result).toBeTruthy();
-	}
-	catch (error)
+		const button = shallow(
+			<button> Start het spel {">"} </button>
+		);
+		
+		expect(button.find('button').html()).toMatch("Start het spel &gt;")
+	});
+	
+	it('User is able to login ', () =>
 	{
-		expect(error).toEqual(new Error());
-	}
-});
-
-beforeAll(done => {
-	done()
+		const button = shallow(
+			<p> Ik heb al een account </p>
+		);
+		
+		expect(button.find('p').html()).toMatch("Ik heb al een account")
+	});
+	
 });

@@ -26,7 +26,7 @@ export const Landing = (): JSX.Element =>
 							console.log('a new user joined: ' +  getUser);
 						});
 					}}
-				> Start het spel >
+				> Start het spel {">"}
 				</button>
 			</Link>
 			<Link to="/login">
