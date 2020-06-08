@@ -99,10 +99,10 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 	private updateUserObjects = (): void =>
 	{
 		// @ts-ignore
-		this.state.stage?.children[3].children.map((child: any, index: number) => {
+		this.state.stage.children[3].children.map((child: any, index: number) => {
 			if (index > 0) {
 				//@ts-ignore
-				this.state.stage?.children[3].removeChild(child);
+				this.state.stage.children[3].removeChild(child);
 			}
 		});
 		
