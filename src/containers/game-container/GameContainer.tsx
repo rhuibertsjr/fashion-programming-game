@@ -35,7 +35,6 @@ class GameContainer extends PureComponent<IGameProps, IGameState>
 			width: 700,
 			height: 800,
 		});
-		PIXI.settings.RESOLUTION = window.devicePixelRatio;
 	}
 	
 	public componentDidMount(): void
