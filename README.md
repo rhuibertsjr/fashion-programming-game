@@ -60,7 +60,7 @@ yarn test
 Simply use the deploy script with your password etc.
 
 ```
-yarn deploy
+git push https://git.heroku.com/dresscode-fun.git master
 ```
 ## Built With
 
